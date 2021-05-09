@@ -1,0 +1,18 @@
+{
+  "name": "mrm-task-next",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "repository": "git@github.com:chooin/mrm-task-next.git",
+  "author": "Devin.Zhu <chooin@126.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^15.0.2",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "mrm-core": "^6.0.0"
+  }
+}
