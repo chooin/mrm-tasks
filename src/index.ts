@@ -1,29 +1,35 @@
 import { json, packageJson, lines, install } from 'mrm-core'
 
-interface Config {
-  projectName: string;
+interface Config {}
+
+const packages = ['styled-components']
+
+function environment() {
+
 }
 
-function createNextApp(projectName: string) {
-  const packages = ['yarn', 'create', 'next-app']
+function typescript() {
+  const tsconfig = json('tsconfig.json');
 
-  if (projectName) {
-    packages.push(projectName)
-  }
+  tsconfig.set('baseUrl', '.')
+  tsconfig.set('compilerOptions.target', 'es5')
+  tsconfig.set('compilerOptions.allowJs', true)
+  tsconfig.set('compilerOptions.paths.@/*', ['./src/*'])
+  tsconfig.set('compilerOptions.exclude', ['node_modules'])
 
-  install(packages)
+  tsconfig.save()
 }
 
-module.exports = function task({projectName}: Config) {
-  createNextApp(projectName)
+module.exports = function task({}: Config) {
+  environment()
+  typescript()
+  install(packages, {
+    yarn: true,
+    dev: false
+  })
 }
 
 module.exports.parameters = {
-  projectName: {
-    type: 'input',
-    message: 'What is your project named?',
-    default: 'example'
-  }
 }
 
 module.exports.description = 'Mrm task for next.js'
