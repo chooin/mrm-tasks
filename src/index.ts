@@ -1,25 +1,29 @@
 import { json, packageJson, lines, install } from 'mrm-core'
 
-function checkYarn() {
-  if (!/yarn\.js$/.test(process.env.npm_execpath || '')) {
-    console.warn(
-      '\u001b[33mThis repository requires Yarn 1.x for scripts to work properly.\u001b[39m\n'
-    )
-    process.exit(1)
-  }
+interface Config {
+  projectName: string;
 }
 
-function createNextApp() {
+function createNextApp(projectName: string) {
   const packages = ['yarn', 'create', 'next-app']
+
+  if (projectName) {
+    packages.push(projectName)
+  }
 
   install(packages)
 }
 
-function task() {
-  checkYarn()
-  createNextApp()
+module.exports = function task({projectName}: Config) {
+  createNextApp(projectName)
 }
 
-task.description = 'Mrm task for next.js'
+module.exports.parameters = {
+  projectName: {
+    type: 'input',
+    message: 'What is your project named?',
+    default: 'example'
+  }
+}
 
-module.exports = task
+module.exports.description = 'Mrm task for next.js'
