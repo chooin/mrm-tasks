@@ -4,10 +4,11 @@ import path from 'path'
 interface Config {}
 
 const dependencies = [
-  'styled-components'
+  'styled-components',
+  'axios',
 ]
 
-function installDependencies() {
+function dependency() {
   install(dependencies, {
     yarn: true,
     dev: false
@@ -37,15 +38,15 @@ function typescript() {
   tsconfig.save()
 }
 
-function next() {
+function src() {
 
 }
 
 module.exports = function task({}: Config) {
-  installDependencies()
+  dependency()
   environment()
   typescript()
-  next()
+  src()
 }
 
 module.exports.parameters = {

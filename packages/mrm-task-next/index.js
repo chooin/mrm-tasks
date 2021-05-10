@@ -6,9 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mrm_core_1 = require("mrm-core");
 const path_1 = __importDefault(require("path"));
 const dependencies = [
-    'styled-components'
+    'styled-components',
+    'axios',
 ];
-function installDependencies() {
+function dependency() {
     mrm_core_1.install(dependencies, {
         yarn: true,
         dev: false
@@ -30,13 +31,13 @@ function typescript() {
     const tsconfig = mrm_core_1.json('tsconfig.json');
     tsconfig.save();
 }
-function next() {
+function src() {
 }
 module.exports = function task({}) {
-    installDependencies();
+    dependency();
     environment();
     typescript();
-    next();
+    src();
 };
 module.exports.parameters = {};
 module.exports.description = 'Mrm task for next.js';

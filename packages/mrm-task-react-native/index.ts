@@ -9,12 +9,13 @@ const dependencies = [
   'react-native-screens',
   'react-native-lifecycle',
   'styled-components',
+  'axios',
 ]
 const devDependencies = [
   'typescript'
 ]
 
-function installDependencies() {
+function dependency() {
   install(dependencies, {
     yarn: true,
     dev: false
@@ -53,13 +54,14 @@ function src() {
 
   templates.forEach((item) => {
     template(
+      
       path.join(__dirname, item)
     )
   })
 }
 
 module.exports = function task() {
-  installDependencies()
+  dependency()
   typescript()
   src()
 }

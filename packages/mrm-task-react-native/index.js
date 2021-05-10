@@ -10,11 +10,12 @@ const dependencies = [
     'react-native-screens',
     'react-native-lifecycle',
     'styled-components',
+    'axios',
 ];
 const devDependencies = [
     'typescript'
 ];
-function installDependencies() {
+function dependency() {
     mrm_core_1.install(dependencies, {
         yarn: true,
         dev: false
@@ -52,7 +53,7 @@ function src() {
     });
 }
 module.exports = function task() {
-    installDependencies();
+    dependency();
     typescript();
     src();
 };

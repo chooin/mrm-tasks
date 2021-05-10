@@ -8,7 +8,7 @@
     "preinstall": "node ./scripts/check-yarn.js",
     "build": "npm-run-all build:*",
     "build:next": "yarn workspace mrm-task-next build",
-    "build:react-native": "yarn workspace mrm-task-react-native build",
+    "build:serve": "yarn workspace mrm-task-serve build",
     "np:next": "cd packages/mrm-task-next && np && cd -",
     "np:react-native": "cd packages/mrm-task-react-native && np && cd -"
   },
