@@ -20,7 +20,7 @@ function src({ dist, port }) {
         'templates/serve.js',
     ];
     files.forEach((file) => {
-        mrm_core_1.template(file.replace(/templates/, ''), path_1.default.join(__dirname, file))
+        mrm_core_1.template(file.replace(/templates\//, ''), path_1.default.join(__dirname, file))
             .apply({
             dist,
             port,

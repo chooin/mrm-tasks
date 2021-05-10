@@ -56,7 +56,7 @@ function src() {
         'templates/src/routes/routes.tsx',
     ];
     files.forEach((file) => {
-        mrm_core_1.template(file.replace(/templates/, ''), path_1.default.join(__dirname, file))
+        mrm_core_1.template(file.replace(/templates\//, ''), path_1.default.join(__dirname, file))
             .apply({})
             .save();
     });
