@@ -1,4 +1,4 @@
-import { json, install } from 'mrm-core'
+import { json, install, makeDirs } from 'mrm-core'
 
 interface Config {}
 
@@ -25,11 +25,35 @@ function typescript() {
     })
     .save()
 
-  install(packages)
+  install(packages, {
+    dev: true,
+  })
+}
+
+function src() {
+  makeDirs([
+    'src'
+  ])
+
+  const packages = [
+    '@react-navigation/native',
+    '@react-navigation/stack',
+    'react-native-gesture-handler',
+    'react-native-reanimated',
+    'react-native-safe-area-context',
+    'react-native-screens',
+    'react-native-lifecycle',
+    'styled-components',
+  ]
+
+  install(packages, {
+    dev: false,
+  })
 }
 
 module.exports = function task({}: Config) {
   typescript()
+  src()
 }
 
 module.exports.parameters = {

@@ -5,7 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mrm_core_1 = require("mrm-core");
 const path_1 = __importDefault(require("path"));
-const packages = ['styled-components'];
+const packages = [
+    'styled-components'
+];
 function environment() {
     const files = [
         '.env.development',

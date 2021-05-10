@@ -3,7 +3,9 @@ import path from 'path'
 
 interface Config {}
 
-const packages = ['styled-components']
+const packages = [
+  'styled-components'
+]
 
 function environment() {
   const files = [
