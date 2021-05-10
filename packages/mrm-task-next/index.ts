@@ -3,9 +3,16 @@ import path from 'path'
 
 interface Config {}
 
-const packages = [
+const dependencies = [
   'styled-components'
 ]
+
+function installDependencies() {
+  install(dependencies, {
+    yarn: true,
+    dev: false
+  })
+}
 
 function environment() {
   const files = [
@@ -18,7 +25,7 @@ function environment() {
 }
 
 function typescript() {
-  const tsconfig = json('tsconfig.json');
+  const tsconfig = json('tsconfig.json')
 
   tsconfig.save()
 }
@@ -28,12 +35,9 @@ function next() {
 }
 
 module.exports = function task({}: Config) {
+  installDependencies()
   environment()
   typescript()
-  install(packages, {
-    yarn: true,
-    dev: false
-  })
   next()
 }
 

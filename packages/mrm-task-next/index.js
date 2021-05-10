@@ -5,9 +5,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mrm_core_1 = require("mrm-core");
 const path_1 = __importDefault(require("path"));
-const packages = [
+const dependencies = [
     'styled-components'
 ];
+function installDependencies() {
+    mrm_core_1.install(dependencies, {
+        yarn: true,
+        dev: false
+    });
+}
 function environment() {
     const files = [
         '.env.development',
@@ -23,12 +29,9 @@ function typescript() {
 function next() {
 }
 module.exports = function task({}) {
+    installDependencies();
     environment();
     typescript();
-    mrm_core_1.install(packages, {
-        yarn: true,
-        dev: false
-    });
     next();
 };
 module.exports.parameters = {};
