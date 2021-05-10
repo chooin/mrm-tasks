@@ -12,4 +12,5 @@ app.use(history({
   verbose: true
 }));
 app.use(express.static('${dist}'));
+
 app.listen(${port}, '0.0.0.0');

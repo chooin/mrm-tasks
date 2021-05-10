@@ -19,15 +19,21 @@ function dependency() {
 }
 
 function src({dist, port}: Config) {
-  template(
-    'serve.js',
-    path.join(__dirname, 'templates/serve.js')
-  )
-    .apply({
-      dist,
-      port,
-    })
-    .save()
+  const files = [
+    'templates/serve.js',
+  ]
+
+  files.forEach((file) => {
+    template(
+      file.replace(/templates\//, ''),
+      path.join(__dirname, file)
+    )
+      .apply({
+        dist,
+        port,
+      })
+      .save()
+  })
 }
 
 module.exports = function task(config: Config) {
@@ -51,4 +57,4 @@ module.exports.parameters = {
   }
 }
 
-module.exports.description = 'Mrm task for react native'
+module.exports.description = 'Mrm task for serve'

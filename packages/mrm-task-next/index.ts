@@ -17,15 +17,15 @@ function dependency() {
 
 function environment() {
   const files = [
-    '.env.development',
-    '.env.production',
-    '.env.test',
+    'templates/.env.development',
+    'templates/.env.production',
+    'templates/.env.test',
   ]
 
   files.forEach((file) => {
     template(
-      file,
-      path.join(__dirname, 'templates/.env')
+      file.replace(/templates\//, ''),
+      path.join(__dirname, file)
     )
     .apply({})
     .save()

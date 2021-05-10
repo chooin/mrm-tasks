@@ -17,12 +17,12 @@ function dependency() {
 }
 function environment() {
     const files = [
-        '.env.development',
-        '.env.production',
-        '.env.test',
+        'templates/.env.development',
+        'templates/.env.production',
+        'templates/.env.test',
     ];
     files.forEach((file) => {
-        mrm_core_1.template(file, path_1.default.join(__dirname, 'templates/.env'))
+        mrm_core_1.template(file.replace(/templates/, ''), path_1.default.join(__dirname, file))
             .apply({})
             .save();
     });

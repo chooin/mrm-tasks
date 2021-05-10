@@ -16,12 +16,17 @@ function dependency() {
     });
 }
 function src({ dist, port }) {
-    mrm_core_1.template('serve.js', path_1.default.join(__dirname, 'templates/serve.js'))
-        .apply({
-        dist,
-        port,
-    })
-        .save();
+    const files = [
+        'templates/serve.js',
+    ];
+    files.forEach((file) => {
+        mrm_core_1.template(file.replace(/templates/, ''), path_1.default.join(__dirname, file))
+            .apply({
+            dist,
+            port,
+        })
+            .save();
+    });
 }
 module.exports = function task(config) {
     dependency();
@@ -42,4 +47,4 @@ module.exports.parameters = {
         }
     }
 };
-module.exports.description = 'Mrm task for react native';
+module.exports.description = 'Mrm task for serve';
