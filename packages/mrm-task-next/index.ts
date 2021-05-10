@@ -1,14 +1,14 @@
-import { json, install, template } from 'mrm-core'
+import { json, install, template, makeDirs } from 'mrm-core'
 import path from 'path'
 
 interface Config {}
 
-const dependencies = [
-  'styled-components',
-  'axios',
-]
-
 function dependency() {
+  const dependencies = [
+    'styled-components',
+    'axios',
+  ]
+
   install(dependencies, {
     yarn: true,
     dev: false
@@ -17,17 +17,17 @@ function dependency() {
 
 function environment() {
   const files = [
-    'templates/.env.development',
-    'templates/.env.production',
-    'templates/.env.test',
+    '.env.development',
+    '.env.production',
+    '.env.test',
   ]
 
   files.forEach((file) => {
     template(
-      file.replace(/templates\//, ''),
-      path.join(__dirname, file)
+      file,
+      path.join(__dirname, 'templates', file)
     )
-    .apply({})
+    .apply()
     .save()
   })
 }
@@ -39,7 +39,7 @@ function typescript() {
 }
 
 function src() {
-
+  makeDirs(['src'])
 }
 
 module.exports = function task({}: Config) {

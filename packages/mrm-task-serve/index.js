@@ -5,11 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mrm_core_1 = require("mrm-core");
 const path_1 = __importDefault(require("path"));
-const dependencies = [
-    'express',
-    'connect-history-api-fallback',
-];
 function dependency() {
+    const dependencies = [
+        'express',
+        'connect-history-api-fallback',
+    ];
     mrm_core_1.install(dependencies, {
         yarn: true,
         dev: false
@@ -17,10 +17,10 @@ function dependency() {
 }
 function src({ dist, port }) {
     const files = [
-        'templates/serve.js',
+        'serve.js',
     ];
     files.forEach((file) => {
-        mrm_core_1.template(file.replace(/templates\//, ''), path_1.default.join(__dirname, file))
+        mrm_core_1.template(file, path_1.default.join(__dirname, 'templates', file))
             .apply({
             dist,
             port,

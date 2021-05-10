@@ -5,11 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mrm_core_1 = require("mrm-core");
 const path_1 = __importDefault(require("path"));
-const dependencies = [
-    'styled-components',
-    'axios',
-];
 function dependency() {
+    const dependencies = [
+        'styled-components',
+        'axios',
+    ];
     mrm_core_1.install(dependencies, {
         yarn: true,
         dev: false
@@ -17,13 +17,13 @@ function dependency() {
 }
 function environment() {
     const files = [
-        'templates/.env.development',
-        'templates/.env.production',
-        'templates/.env.test',
+        '.env.development',
+        '.env.production',
+        '.env.test',
     ];
     files.forEach((file) => {
-        mrm_core_1.template(file.replace(/templates\//, ''), path_1.default.join(__dirname, file))
-            .apply({})
+        mrm_core_1.template(file, path_1.default.join(__dirname, 'templates', file))
+            .apply()
             .save();
     });
 }
@@ -32,6 +32,7 @@ function typescript() {
     tsconfig.save();
 }
 function src() {
+    mrm_core_1.makeDirs(['src']);
 }
 module.exports = function task({}) {
     dependency();

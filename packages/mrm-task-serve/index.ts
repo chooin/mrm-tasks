@@ -6,12 +6,12 @@ interface Config {
   port: number;
 }
 
-const dependencies = [
-  'express',
-  'connect-history-api-fallback',
-]
-
 function dependency() {
+  const dependencies = [
+    'express',
+    'connect-history-api-fallback',
+  ]
+
   install(dependencies, {
     yarn: true,
     dev: false
@@ -20,13 +20,13 @@ function dependency() {
 
 function src({dist, port}: Config) {
   const files = [
-    'templates/serve.js',
+    'serve.js',
   ]
 
   files.forEach((file) => {
     template(
-      file.replace(/templates\//, ''),
-      path.join(__dirname, file)
+      file,
+      path.join(__dirname, 'templates', file)
     )
       .apply({
         dist,
