@@ -1,22 +1,22 @@
-import { json, install, template } from 'mrm-core'
+import { json, install, template, makeDirs, packageJson } from 'mrm-core'
 import path from 'path'
 
-const dependencies = [
-  '@react-navigation/native',
-  '@react-navigation/stack',
-  'react-native-gesture-handler',
-  'react-native-reanimated',
-  'react-native-safe-area-context',
-  'react-native-screens',
-  'react-native-lifecycle',
-  'styled-components',
-  'axios',
-]
-const devDependencies = [
-  'typescript'
-]
-
 function dependency() {
+  const dependencies = [
+    '@react-navigation/native',
+    '@react-navigation/stack',
+    'react-native-gesture-handler',
+    'react-native-reanimated',
+    'react-native-safe-area-context',
+    'react-native-screens',
+    'react-native-lifecycle',
+    'styled-components',
+    'axios',
+  ]
+
+  const devDependencies = [
+    'typescript'
+  ]
   install(dependencies, {
     yarn: true,
     dev: false
@@ -50,26 +50,39 @@ function typescript() {
 
 function src() {
   const files = [
-    'templates/src/pages/home/index/index.tsx',
-    'templates/src/pages/home/index/styled.ts',
-    'templates/src/routes/routes.tsx',
-    'templates/src/routes/routes.tsx',
+    'src/pages/home/index/index.tsx',
+    'src/pages/home/index/styled.ts',
+    'src/routes/routes.tsx',
+    'src/routes/routes.tsx',
   ]
 
+  makeDirs([
+    'src/pages/home/index',
+    'src/routes',
+  ])
   files.forEach((file) => {
     template(
-      file.replace(/templates\//, ''),
-      path.join(__dirname, file)
+      file,
+      path.join(__dirname, 'templates', file)
     )
-      .apply({})
+      .apply()
       .save()
   })
+}
+
+function script() {
+  const pkg = packageJson()
+
+  pkg
+    .setScript('install', 'npx pod-install')
+    .save()
 }
 
 module.exports = function task() {
   dependency()
   typescript()
   src()
+  script()
 }
 
 module.exports.parameters = {

@@ -5,21 +5,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mrm_core_1 = require("mrm-core");
 const path_1 = __importDefault(require("path"));
-const dependencies = [
-    '@react-navigation/native',
-    '@react-navigation/stack',
-    'react-native-gesture-handler',
-    'react-native-reanimated',
-    'react-native-safe-area-context',
-    'react-native-screens',
-    'react-native-lifecycle',
-    'styled-components',
-    'axios',
-];
-const devDependencies = [
-    'typescript'
-];
 function dependency() {
+    const dependencies = [
+        '@react-navigation/native',
+        '@react-navigation/stack',
+        'react-native-gesture-handler',
+        'react-native-reanimated',
+        'react-native-safe-area-context',
+        'react-native-screens',
+        'react-native-lifecycle',
+        'styled-components',
+        'axios',
+    ];
+    const devDependencies = [
+        'typescript'
+    ];
     mrm_core_1.install(dependencies, {
         yarn: true,
         dev: false
@@ -50,21 +50,32 @@ function typescript() {
 }
 function src() {
     const files = [
-        'templates/src/pages/home/index/index.tsx',
-        'templates/src/pages/home/index/styled.ts',
-        'templates/src/routes/routes.tsx',
-        'templates/src/routes/routes.tsx',
+        'src/pages/home/index/index.tsx',
+        'src/pages/home/index/styled.ts',
+        'src/routes/routes.tsx',
+        'src/routes/routes.tsx',
     ];
+    mrm_core_1.makeDirs([
+        'src/pages/home/index',
+        'src/routes',
+    ]);
     files.forEach((file) => {
-        mrm_core_1.template(file.replace(/templates\//, ''), path_1.default.join(__dirname, file))
-            .apply({})
+        mrm_core_1.template(file, path_1.default.join(__dirname, 'templates', file))
+            .apply()
             .save();
     });
+}
+function script() {
+    const pkg = mrm_core_1.packageJson();
+    pkg
+        .setScript('install', 'npx pod-install')
+        .save();
 }
 module.exports = function task() {
     dependency();
     typescript();
     src();
+    script();
 };
 module.exports.parameters = {};
 module.exports.description = 'Mrm task for react native';
