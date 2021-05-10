@@ -1,5 +1,4 @@
 import { json, install, copyFiles } from 'mrm-core'
-import path from 'path'
 
 interface Config {}
 
@@ -16,10 +15,10 @@ function installDependencies() {
 
 function environment() {
   const files = [
-    '.env.development',
-    '.env.production',
-    '.env.test',
-  ].map((file) => path.resolve(__dirname, `./environment/${file}`))
+    'templates/environment/.env.development',
+    'templates/environment/.env.production',
+    'templates/environment/.env.test',
+  ]
 
   copyFiles(__dirname, files)
 }
