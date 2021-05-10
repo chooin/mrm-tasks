@@ -60,6 +60,17 @@ function src() {
         'src/routes',
     ]);
     mrm_core_1.copyFiles(path_1.default.resolve(__dirname, 'templates'), files, { overwrite: false });
+    files.forEach((file) => {
+        mrm_core_1.lines(file)
+            .add('')
+            .save();
+    });
+    mrm_core_1.copyFiles(path_1.default.resolve(__dirname, 'templates'), [
+        'App.js'
+    ], { overwrite: true });
+    mrm_core_1.lines('App.js')
+        .add('')
+        .save();
 }
 function script() {
     const pkg = mrm_core_1.packageJson();

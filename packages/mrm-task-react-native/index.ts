@@ -1,4 +1,4 @@
-import { json, install, makeDirs, packageJson, copyFiles } from 'mrm-core'
+import { json, install, makeDirs, packageJson, copyFiles, lines } from 'mrm-core'
 import path from 'path'
 
 function dependency() {
@@ -65,6 +65,21 @@ function src() {
     files,
     { overwrite: false }
   )
+  files.forEach((file) => {
+    lines(file)
+      .add('')
+      .save()
+  })
+  copyFiles(
+    path.resolve(__dirname, 'templates'),
+    [
+      'App.js'
+    ],
+    { overwrite: true }
+  )
+  lines('App.js')
+    .add('')
+    .save()
 }
 
 function script() {
