@@ -1,12 +1,32 @@
 import { json, install, makeDirs } from 'mrm-core'
 
-interface Config {}
+const dependencies = [
+  '@react-navigation/native',
+  '@react-navigation/stack',
+  'react-native-gesture-handler',
+  'react-native-reanimated',
+  'react-native-safe-area-context',
+  'react-native-screens',
+  'react-native-lifecycle',
+  'styled-components',
+]
+const devDependencies = [
+  'typescript'
+]
+
+function installDependencies() {
+  install(dependencies, {
+    yarn: true,
+    dev: false
+  })
+  install(devDependencies, {
+    yarn: true,
+    dev: true
+  })
+}
 
 function typescript() {
   const tsconfig = json('tsconfig.json')
-  const packages = [
-    'typescript'
-  ]
 
   tsconfig
     .merge({
@@ -24,34 +44,16 @@ function typescript() {
       exclude: ['node_modules', 'ios', 'android']
     })
     .save()
-
-  install(packages, {
-    dev: true,
-  })
 }
 
 function src() {
   makeDirs([
     'src'
   ])
-
-  const packages = [
-    '@react-navigation/native',
-    '@react-navigation/stack',
-    'react-native-gesture-handler',
-    'react-native-reanimated',
-    'react-native-safe-area-context',
-    'react-native-screens',
-    'react-native-lifecycle',
-    'styled-components',
-  ]
-
-  install(packages, {
-    dev: false,
-  })
 }
 
-module.exports = function task({}: Config) {
+module.exports = function task() {
+  installDependencies()
   typescript()
   src()
 }

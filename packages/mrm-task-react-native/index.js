@@ -1,11 +1,31 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mrm_core_1 = require("mrm-core");
+const dependencies = [
+    '@react-navigation/native',
+    '@react-navigation/stack',
+    'react-native-gesture-handler',
+    'react-native-reanimated',
+    'react-native-safe-area-context',
+    'react-native-screens',
+    'react-native-lifecycle',
+    'styled-components',
+];
+const devDependencies = [
+    'typescript'
+];
+function installDependencies() {
+    mrm_core_1.install(dependencies, {
+        yarn: true,
+        dev: false
+    });
+    mrm_core_1.install(devDependencies, {
+        yarn: true,
+        dev: true
+    });
+}
 function typescript() {
     const tsconfig = mrm_core_1.json('tsconfig.json');
-    const packages = [
-        'typescript'
-    ];
     tsconfig
         .merge({
         compilerOptions: {
@@ -22,27 +42,14 @@ function typescript() {
         exclude: ['node_modules', 'ios', 'android']
     })
         .save();
-    mrm_core_1.install(packages, {
-        dev: true
-    });
 }
 function src() {
     mrm_core_1.makeDirs([
         'src'
     ]);
-    const packages = [
-        '@react-navigation/native',
-        '@react-navigation/stack',
-        'react-native-gesture-handler',
-        'react-native-reanimated',
-        'react-native-safe-area-context',
-        'react-native-screens',
-        'react-native-lifecycle',
-        'styled-components',
-    ];
-    mrm_core_1.install(packages);
 }
-module.exports = function task({}) {
+module.exports = function task() {
+    installDependencies();
     typescript();
     src();
 };
