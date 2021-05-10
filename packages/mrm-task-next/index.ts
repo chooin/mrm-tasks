@@ -1,23 +1,28 @@
-import { json, packageJson, lines, install } from 'mrm-core'
+import { json, install, copyFiles } from 'mrm-core'
+import path from 'path'
 
 interface Config {}
 
 const packages = ['styled-components']
 
 function environment() {
+  const files = [
+    '.env.development',
+    '.env.production',
+    '.env.test',
+  ].map((file) => path.resolve(__dirname, `./environment/${file}`))
 
+  copyFiles(__dirname, files)
 }
 
 function typescript() {
   const tsconfig = json('tsconfig.json');
 
-  tsconfig.set('baseUrl', '.')
-  tsconfig.set('compilerOptions.target', 'es5')
-  tsconfig.set('compilerOptions.allowJs', true)
-  tsconfig.set('compilerOptions.paths.@/*', ['./src/*'])
-  tsconfig.set('compilerOptions.exclude', ['node_modules'])
-
   tsconfig.save()
+}
+
+function next() {
+
 }
 
 module.exports = function task({}: Config) {
@@ -27,6 +32,7 @@ module.exports = function task({}: Config) {
     yarn: true,
     dev: false
   })
+  next()
 }
 
 module.exports.parameters = {

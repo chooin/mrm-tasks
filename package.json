@@ -1,18 +1,19 @@
 {
-  "name": "mrm-task-next",
-  "version": "0.0.7",
-  "main": "dist/index.js",
-  "repository": "git@github.com:chooin/mrm-task-next.git",
+  "name": "mrm-tasks",
+  "private": true,
+  "repository": "git@github.com:chooin/mrm-tasks.git",
   "author": "Devin.Zhu <chooin@126.com>",
   "license": "MIT",
   "scripts": {
-    "build": "npx tsc"
+    "preinstall": "node ./scripts/checkYarn.js",
+    "build": "npm-run-all build:*",
+    "build:next": "yarn workspace mrm-task-next build"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@types/node": "^15.0.2",
     "typescript": "^4.2.4"
-  },
-  "dependencies": {
-    "mrm-core": "^6.0.0"
   }
 }

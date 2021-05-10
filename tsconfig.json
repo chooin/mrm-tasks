@@ -8,9 +8,9 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "pretty": true,
-    "outDir": "dist"
+    "esModuleInterop": true,
   },
   "exclude": [
-    "./node_modules"
-  ]
+    "node_modules",
+  ],
 }
