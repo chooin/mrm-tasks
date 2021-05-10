@@ -1,4 +1,5 @@
-import { json, install, copyFiles } from 'mrm-core'
+import { json, install, template } from 'mrm-core'
+import path from 'path'
 
 interface Config {}
 
@@ -15,12 +16,19 @@ function installDependencies() {
 
 function environment() {
   const files = [
-    'templates/environment/.env.development',
-    'templates/environment/.env.production',
-    'templates/environment/.env.test',
+    '.env.development',
+    '.env.production',
+    '.env.test',
   ]
 
-  copyFiles(__dirname, files)
+  files.forEach((file) => {
+    template(
+      file,
+      path.join(__dirname, 'templates/.env')
+    )
+    .apply({})
+    .save()
+  })
 }
 
 function typescript() {

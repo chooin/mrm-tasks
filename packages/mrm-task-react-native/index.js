@@ -44,10 +44,12 @@ function typescript() {
         .save();
 }
 function src() {
-    const files = [
+    const templates = [
         'templates/src'
     ];
-    mrm_core_1.copyFiles(`${__dirname}/src`, files);
+    templates.forEach((item) => {
+        mrm_core_1.template(path.join(__dirname, item));
+    });
 }
 module.exports = function task() {
     installDependencies();

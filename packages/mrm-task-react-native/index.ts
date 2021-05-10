@@ -1,4 +1,4 @@
-import { json, install, copyFiles } from 'mrm-core'
+import { json, install, template } from 'mrm-core'
 
 const dependencies = [
   '@react-navigation/native',
@@ -47,11 +47,15 @@ function typescript() {
 }
 
 function src() {
-  const files = [
+  const templates = [
     'templates/src'
   ]
 
-  copyFiles(`${__dirname}/src`, files)
+  templates.forEach((item) => {
+    template(
+      path.join(__dirname, item)
+    )
+  })
 }
 
 module.exports = function task() {
