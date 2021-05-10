@@ -1,4 +1,4 @@
-import { json, install, template, makeDirs, packageJson } from 'mrm-core'
+import { json, install, makeDirs, packageJson, copyFiles } from 'mrm-core'
 import path from 'path'
 
 function dependency() {
@@ -52,7 +52,7 @@ function src() {
   const files = [
     'src/pages/home/index/index.tsx',
     'src/pages/home/index/styled.ts',
-    'src/routes/routes.tsx',
+    'src/routes/index.tsx',
     'src/routes/routes.tsx',
   ]
 
@@ -60,14 +60,11 @@ function src() {
     'src/pages/home/index',
     'src/routes',
   ])
-  files.forEach((file) => {
-    template(
-      file,
-      path.join(__dirname, 'templates', file)
-    )
-      .apply()
-      .save()
-  })
+  copyFiles(
+    path.resolve(__dirname, 'templates'),
+    files,
+    { overwrite: false }
+  )
 }
 
 function script() {

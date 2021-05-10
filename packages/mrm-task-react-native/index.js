@@ -52,18 +52,14 @@ function src() {
     const files = [
         'src/pages/home/index/index.tsx',
         'src/pages/home/index/styled.ts',
-        'src/routes/routes.tsx',
+        'src/routes/index.tsx',
         'src/routes/routes.tsx',
     ];
     mrm_core_1.makeDirs([
         'src/pages/home/index',
         'src/routes',
     ]);
-    files.forEach((file) => {
-        mrm_core_1.template(file, path_1.default.join(__dirname, 'templates', file))
-            .apply()
-            .save();
-    });
+    mrm_core_1.copyFiles(path_1.default.resolve(__dirname, 'templates'), files, { overwrite: false });
 }
 function script() {
     const pkg = mrm_core_1.packageJson();
