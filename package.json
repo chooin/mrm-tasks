@@ -5,7 +5,7 @@
   "author": "Devin.Zhu <chooin@126.com>",
   "license": "MIT",
   "scripts": {
-    "preinstall": "node ./scripts/checkYarn.js",
+    "preinstall": "node ./scripts/check-yarn.js",
     "build": "npm-run-all build:*",
     "build:next": "yarn workspace mrm-task-next build"
   },
