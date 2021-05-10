@@ -1,6 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const mrm_core_1 = require("mrm-core");
+const path_1 = __importDefault(require("path"));
 const dependencies = [
     '@react-navigation/native',
     '@react-navigation/stack',
@@ -45,11 +49,16 @@ function typescript() {
         .save();
 }
 function src() {
-    const templates = [
-        'templates/src'
+    const files = [
+        'templates/src/pages/home/index/index.tsx',
+        'templates/src/pages/home/index/styled.ts',
+        'templates/src/routes/routes.tsx',
+        'templates/src/routes/routes.tsx',
     ];
-    templates.forEach((item) => {
-        mrm_core_1.template(path.join(__dirname, item));
+    files.forEach((file) => {
+        mrm_core_1.template(file.replace(/templates/, ''), path_1.default.join(__dirname, file))
+            .apply({})
+            .save();
     });
 }
 module.exports = function task() {

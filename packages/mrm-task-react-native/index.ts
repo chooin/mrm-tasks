@@ -1,4 +1,5 @@
 import { json, install, template } from 'mrm-core'
+import path from 'path'
 
 const dependencies = [
   '@react-navigation/native',
@@ -48,15 +49,20 @@ function typescript() {
 }
 
 function src() {
-  const templates = [
-    'templates/src'
+  const files = [
+    'templates/src/pages/home/index/index.tsx',
+    'templates/src/pages/home/index/styled.ts',
+    'templates/src/routes/routes.tsx',
+    'templates/src/routes/routes.tsx',
   ]
 
-  templates.forEach((item) => {
+  files.forEach((file) => {
     template(
-      
-      path.join(__dirname, item)
+      file.replace(/templates\//, ''),
+      path.join(__dirname, file)
     )
+      .apply({})
+      .save()
   })
 }
 
