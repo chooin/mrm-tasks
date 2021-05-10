@@ -12,7 +12,7 @@ function environment() {
         '.env.production',
         '.env.test',
     ].map((file) => path_1.default.resolve(__dirname, `./environment/${file}`));
-    mrm_core_1.copyFiles('.', files);
+    mrm_core_1.copyFiles(__dirname, files);
 }
 function typescript() {
     const tsconfig = mrm_core_1.json('tsconfig.json');
