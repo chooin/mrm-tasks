@@ -8,20 +8,22 @@ function typescript() {
     'typescript'
   ]
 
-  tsconfig.merge({
-    compilerOptions: {
-      jsx: 'react',
-      experimentalDecorators: true,
-      allowJs: true,
-      esModuleInterop: true,
-      baseUrl: '.',
-      paths: {
-        '@/*': ['./src/*']
-      }
-    },
-    include: ['src/**/*'],
-    exclude: ['node_modules', 'ios', 'android']
-  })
+  tsconfig
+    .merge({
+      compilerOptions: {
+        jsx: 'react',
+        experimentalDecorators: true,
+        allowJs: true,
+        esModuleInterop: true,
+        baseUrl: '.',
+        paths: {
+          '@/*': ['./src/*']
+        }
+      },
+      include: ['src/**/*'],
+      exclude: ['node_modules', 'ios', 'android']
+    })
+    .save()
 
   install(packages)
 }
