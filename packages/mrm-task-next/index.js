@@ -32,13 +32,35 @@ function typescript() {
     tsconfig.save();
 }
 function src() {
-    mrm_core_1.makeDirs(['src']);
+    const files = [
+        'src/client/configs/index.ts',
+        'src/client/pages/home/index/index.tsx',
+        'src/client/pages/home/index/styled.ts',
+        'src/client/pages/layout/index.tsx',
+        'src/client/pages/layout/styled.ts',
+        'src/server/configs/index.ts',
+        'src/shared/typings/axios.d.ts',
+        'src/shared/utils/check-yarn.js',
+        'Dockerfile',
+    ];
+    mrm_core_1.copyFiles(path_1.default.resolve(__dirname, 'templates'), files, { overwrite: false });
+    mrm_core_1.makeDirs([
+        'src/client/utils',
+        'src/server/utils',
+    ]);
+}
+function script() {
+    const pkg = mrm_core_1.packageJson();
+    pkg
+        .setScript('preinstall', 'node ./scripts/check-yarn.js')
+        .save();
 }
 module.exports = function task({}) {
     dependency();
     environment();
     typescript();
     src();
+    script();
 };
 module.exports.parameters = {};
 module.exports.description = 'Mrm task for next.js';

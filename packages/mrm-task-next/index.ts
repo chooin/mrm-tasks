@@ -1,4 +1,4 @@
-import { json, install, template, makeDirs } from 'mrm-core'
+import {json, install, template, packageJson, copyFiles, makeDirs} from 'mrm-core'
 import path from 'path'
 
 interface Config {}
@@ -39,11 +39,39 @@ function typescript() {
 }
 
 function src() {
+  const files = [
+    'src/client/configs/index.ts',
+    'src/client/pages/home/index/index.tsx',
+    'src/client/pages/home/index/styled.ts',
+    'src/client/pages/layout/index.tsx',
+    'src/client/pages/layout/styled.ts',
+
+    'src/server/configs/index.ts',
+
+    'src/shared/typings/axios.d.ts',
+    'src/shared/utils/check-yarn.js',
+
+    'Dockerfile',
+  ]
+
+  copyFiles(
+    path.resolve(__dirname, 'templates'),
+    files,
+    { overwrite: false }
+  )
   makeDirs([
-    'src/client',
-    'src/server',
-    'src/shared',
+    'src/client/utils',
+
+    'src/server/utils',
   ])
+}
+
+function script() {
+  const pkg = packageJson()
+
+  pkg
+    .setScript('preinstall', 'node ./scripts/check-yarn.js')
+    .save()
 }
 
 module.exports = function task({}: Config) {
@@ -51,6 +79,7 @@ module.exports = function task({}: Config) {
   environment()
   typescript()
   src()
+  script()
 }
 
 module.exports.parameters = {
