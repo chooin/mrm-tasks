@@ -39,7 +39,11 @@ function typescript() {
 }
 
 function src() {
-  makeDirs(['src'])
+  makeDirs([
+    'src/client',
+    'src/server',
+    'src/shared',
+  ])
 }
 
 module.exports = function task({}: Config) {
