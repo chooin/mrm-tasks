@@ -40,8 +40,8 @@ function src() {
         'src/client/pages/layout/styled.ts',
         'src/server/configs/index.ts',
         'src/shared/typings/axios.d.ts',
-        'src/shared/utils/check-yarn.js',
         'Dockerfile',
+        'scripts/check-yarn.js',
     ];
     mrm_core_1.copyFiles(path_1.default.resolve(__dirname, 'templates'), files, { overwrite: false });
     mrm_core_1.makeDirs([
@@ -52,7 +52,7 @@ function src() {
 function script() {
     const pkg = mrm_core_1.packageJson();
     pkg
-        .setScript('preinstall', 'node ./scripts/check-yarn.js')
+        .setScript('preinstall', 'node scripts/check-yarn.js')
         .save();
 }
 module.exports = function task({}) {

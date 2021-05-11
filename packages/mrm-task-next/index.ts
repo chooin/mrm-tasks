@@ -49,9 +49,9 @@ function src() {
     'src/server/configs/index.ts',
 
     'src/shared/typings/axios.d.ts',
-    'src/shared/utils/check-yarn.js',
 
     'Dockerfile',
+    'scripts/check-yarn.js',
   ]
 
   copyFiles(
@@ -70,7 +70,7 @@ function script() {
   const pkg = packageJson()
 
   pkg
-    .setScript('preinstall', 'node ./scripts/check-yarn.js')
+    .setScript('preinstall', 'node scripts/check-yarn.js')
     .save()
 }
 
