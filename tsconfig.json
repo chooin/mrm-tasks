@@ -9,6 +9,7 @@
     "emitDecoratorMetadata": true,
     "pretty": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
   },
   "exclude": [
     "node_modules",

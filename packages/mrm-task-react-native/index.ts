@@ -1,4 +1,4 @@
-import { json, install, makeDirs, packageJson, copyFiles, lines } from 'mrm-core'
+import { json, install, packageJson, copyFiles } from 'mrm-core'
 import path from 'path'
 
 function dependency() {
@@ -12,10 +12,18 @@ function dependency() {
     'react-native-lifecycle',
     'styled-components',
     'axios',
+    '@react-native-community/async-storage',
+    '@react-navigation/bottom-tabs',
   ]
 
   const devDependencies = [
-    'typescript'
+    'typescript',
+    '@babel/plugin-proposal-export-default-from',
+    '@babel/plugin-proposal-export-namespace-from',
+    '@types/react',
+    '@types/react-native',
+    '@types/styled-components',
+    'babel-plugin-module-resolver',
   ]
   install(dependencies, {
     yarn: true,
@@ -54,39 +62,32 @@ function src() {
     'src/pages/home/index/styled.ts',
     'src/routes/index.tsx',
     'src/routes/routes.tsx',
+    'scripts/check-yarn.js',
+    'scripts/pod-update.sh',
   ]
 
-  makeDirs([
-    'src/pages/home/index',
-    'src/routes',
-  ])
   copyFiles(
     path.resolve(__dirname, 'templates'),
     files,
     { overwrite: false }
   )
-  files.forEach((file) => {
-    lines(file)
-      .add('')
-      .save()
-  })
   copyFiles(
     path.resolve(__dirname, 'templates'),
     [
-      'App.js'
+      'App.js',
+      'babel.config.js'
     ],
     { overwrite: true }
   )
-  lines('App.js')
-    .add('')
-    .save()
 }
 
 function script() {
   const pkg = packageJson()
 
   pkg
+    .setScript('preinstall', 'node scripts/check-yarn.js')
     .setScript('install', 'npx pod-install')
+    .setScript('pod-update', 'sh scripts/pod-update.sh')
     .save()
 }
 
