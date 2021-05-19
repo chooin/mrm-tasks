@@ -1,4 +1,4 @@
-import { json, install, packageJson, copyFiles } from 'mrm-core'
+import {json, install, packageJson, copyFiles, makeDirs} from 'mrm-core'
 import path from 'path'
 
 function dependency() {
@@ -58,12 +58,17 @@ function typescript() {
 
 function src() {
   const files = [
-    'src/pages/home/index/index.tsx',
-    'src/pages/home/index/styled.ts',
-    'src/routes/index.tsx',
-    'src/routes/routes.tsx',
     'scripts/check-yarn.js',
     'scripts/pod-update.sh',
+
+    'src/hooks/index.ts',
+    'src/pages/home/index/index.tsx',
+    'src/pages/home/index/styled.ts',
+    'src/plugins/storage.ts',
+    'src/routes/index.tsx',
+    'src/routes/routes.tsx',
+    'src/typings/index.d.ts',
+    'src/typings/react-navigation.d.ts',
   ]
 
   copyFiles(
@@ -79,6 +84,10 @@ function src() {
     ],
     { overwrite: true }
   )
+  makeDirs([
+    'src/components',
+    'src/services',
+  ])
 }
 
 function script() {

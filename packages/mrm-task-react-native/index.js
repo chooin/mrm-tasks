@@ -58,18 +58,26 @@ function typescript() {
 }
 function src() {
     const files = [
-        'src/pages/home/index/index.tsx',
-        'src/pages/home/index/styled.ts',
-        'src/routes/index.tsx',
-        'src/routes/routes.tsx',
         'scripts/check-yarn.js',
         'scripts/pod-update.sh',
+        'src/hooks/index.ts',
+        'src/pages/home/index/index.tsx',
+        'src/pages/home/index/styled.ts',
+        'src/plugins/storage.ts',
+        'src/routes/index.tsx',
+        'src/routes/routes.tsx',
+        'src/typings/index.d.ts',
+        'src/typings/react-navigation.d.ts',
     ];
     mrm_core_1.copyFiles(path_1.default.resolve(__dirname, 'templates'), files, { overwrite: false });
     mrm_core_1.copyFiles(path_1.default.resolve(__dirname, 'templates'), [
         'App.js',
         'babel.config.js'
     ], { overwrite: true });
+    mrm_core_1.makeDirs([
+        'src/components',
+        'src/services',
+    ]);
 }
 function script() {
     const pkg = mrm_core_1.packageJson();
