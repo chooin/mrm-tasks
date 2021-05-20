@@ -3,27 +3,40 @@ import path from 'path'
 
 function dependency() {
   const dependencies = [
+    // route
     '@react-navigation/native',
     '@react-navigation/stack',
     'react-native-gesture-handler',
     'react-native-reanimated',
     'react-native-safe-area-context',
     'react-native-screens',
+    '@react-navigation/bottom-tabs',
+    // lifecycle
     'react-native-lifecycle',
+    // style
     'styled-components',
+    // ant-design
+    '@react-native-community/cameraroll',
+    '@react-native-picker/picker',
+    '@react-native-community/segmented-control',
+    '@react-native-community/slider',
+    'react-native-pager-view',
+    // other
     'axios',
     '@react-native-community/async-storage',
-    '@react-navigation/bottom-tabs',
   ]
 
   const devDependencies = [
+    // ts and ts helper
     'typescript',
-    '@babel/plugin-proposal-export-default-from',
-    '@babel/plugin-proposal-export-namespace-from',
     '@types/react',
     '@types/react-native',
-    '@types/styled-components',
+    // babel
+    '@babel/plugin-proposal-export-default-from',
+    '@babel/plugin-proposal-export-namespace-from',
     'babel-plugin-module-resolver',
+    // other
+    '@types/styled-components',
   ]
   install(dependencies, {
     yarn: true,

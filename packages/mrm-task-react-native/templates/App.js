@@ -7,8 +7,13 @@
  */
 
 import React from 'react';
+import {Provider} from '@ant-design/react-native';
 import Routes from './src/routes';
 
 export default () => {
-  return <Routes />;
+  return (
+    <Provider>
+      <Routes />
+    </Provider>
+  );
 };
