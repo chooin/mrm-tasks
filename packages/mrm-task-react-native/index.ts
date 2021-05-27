@@ -1,4 +1,4 @@
-import {json, install, packageJson, copyFiles, makeDirs} from 'mrm-core'
+import {json, install, packageJson, makeDirs, template} from 'mrm-core'
 import path from 'path'
 
 function dependency() {
@@ -82,21 +82,19 @@ function src() {
     'src/routes/routes.tsx',
     'src/typings/index.d.ts',
     'src/typings/react-navigation.d.ts',
-  ]
 
-  copyFiles(
-    path.resolve(__dirname, 'templates'),
-    files,
-    { overwrite: false }
-  )
-  copyFiles(
-    path.resolve(__dirname, 'templates'),
-    [
-      'App.js',
-      'babel.config.js'
-    ],
-    { overwrite: true }
-  )
+    'App.js',
+    'babel.config.js',
+  ]
+  files.forEach((file) => {
+    template(
+      file,
+      path.join(__dirname, 'templates', file)
+    )
+      .apply()
+      .save()
+  })
+
   makeDirs([
     'src/components',
     'src/services',

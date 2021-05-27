@@ -8,6 +8,7 @@ const path_1 = __importDefault(require("path"));
 function dependency() {
     const dependencies = [
         'styled-components',
+        'react-query',
         'axios',
     ];
     mrm_core_1.install(dependencies, {
@@ -33,17 +34,21 @@ function typescript() {
 }
 function src() {
     const files = [
-        'src/client/configs/index.ts',
+        'src/client/config/index.ts',
         'src/client/pages/home/index/index.tsx',
         'src/client/pages/home/index/styled.ts',
         'src/client/pages/layout/index.tsx',
         'src/client/pages/layout/styled.ts',
-        'src/server/configs/index.ts',
+        'src/server/config/index.ts',
         'src/shared/typings/axios.d.ts',
         'Dockerfile',
         'scripts/check-yarn.js',
     ];
-    mrm_core_1.copyFiles(path_1.default.resolve(__dirname, 'templates'), files, { overwrite: false });
+    files.forEach((file) => {
+        mrm_core_1.template(file, path_1.default.join(__dirname, 'templates', file))
+            .apply()
+            .save();
+    });
     mrm_core_1.makeDirs([
         'src/client/utils',
         'src/server/utils',

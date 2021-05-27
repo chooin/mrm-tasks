@@ -1,4 +1,4 @@
-import {json, install, template, packageJson, copyFiles, makeDirs} from 'mrm-core'
+import {json, install, template, packageJson, makeDirs} from 'mrm-core'
 import path from 'path'
 
 interface Config {}
@@ -6,6 +6,7 @@ interface Config {}
 function dependency() {
   const dependencies = [
     'styled-components',
+    'react-query',
     'axios',
   ]
 
@@ -40,13 +41,13 @@ function typescript() {
 
 function src() {
   const files = [
-    'src/client/configs/index.ts',
+    'src/client/config/index.ts',
     'src/client/pages/home/index/index.tsx',
     'src/client/pages/home/index/styled.ts',
     'src/client/pages/layout/index.tsx',
     'src/client/pages/layout/styled.ts',
 
-    'src/server/configs/index.ts',
+    'src/server/config/index.ts',
 
     'src/shared/typings/axios.d.ts',
 
@@ -54,11 +55,15 @@ function src() {
     'scripts/check-yarn.js',
   ]
 
-  copyFiles(
-    path.resolve(__dirname, 'templates'),
-    files,
-    { overwrite: false }
-  )
+  files.forEach((file) => {
+    template(
+      file,
+      path.join(__dirname, 'templates', file)
+    )
+      .apply()
+      .save()
+  })
+
   makeDirs([
     'src/client/utils',
 
