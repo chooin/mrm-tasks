@@ -1,9 +1,14 @@
+import {Layout} from '../../layout/styled';
 import {Page} from './styled'
 
 export default ({}) => {
-  return <Page>home/index</Page>
+  return (
+    <Layout>
+      <Page>home/index</Page>
+    </Layout>
+  )
 }
 
-export async function getStaticProps() {
+export const getStaticProps = async ({}) => {
   return {}
 }

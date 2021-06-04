@@ -9,10 +9,20 @@ function dependency() {
     'react-query',
     'axios',
   ]
+  const devDependencies = [
+    '@types/react',
+    '@types/styled-components',
+    'typescript',
+    'babel-plugin-module-resolver',
+  ]
 
   install(dependencies, {
     yarn: true,
     dev: false
+  })
+  install(devDependencies, {
+    yarn: true,
+    dev: true
   })
 }
 
@@ -53,6 +63,8 @@ function src() {
 
     'Dockerfile',
     'scripts/check-yarn.js',
+    'babel.config.js',
+    'tsconfig.json',
   ]
 
   files.forEach((file) => {

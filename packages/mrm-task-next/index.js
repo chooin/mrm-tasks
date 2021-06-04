@@ -11,9 +11,19 @@ function dependency() {
         'react-query',
         'axios',
     ];
+    const devDependencies = [
+        '@types/react',
+        '@types/styled-components',
+        'typescript',
+        'babel-plugin-module-resolver',
+    ];
     mrm_core_1.install(dependencies, {
         yarn: true,
         dev: false
+    });
+    mrm_core_1.install(devDependencies, {
+        yarn: true,
+        dev: true
     });
 }
 function environment() {
@@ -43,6 +53,8 @@ function src() {
         'src/shared/typings/axios.d.ts',
         'Dockerfile',
         'scripts/check-yarn.js',
+        'babel.config.js',
+        'tsconfig.json',
     ];
     files.forEach((file) => {
         mrm_core_1.template(file, path_1.default.join(__dirname, 'templates', file))
