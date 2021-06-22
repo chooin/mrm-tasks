@@ -1,7 +1,7 @@
 import { Layout } from './styled';
 
-export default ({children}: Page): JSX.Element => {
+export default ({children}: UMI.Layout): JSX.Element => {
   return (
-    <Layout>{children}32132132</Layout>
+    <Layout>{children}</Layout>
   );
 };

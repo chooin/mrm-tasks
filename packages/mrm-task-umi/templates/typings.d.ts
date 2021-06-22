@@ -9,10 +9,17 @@ declare module '*.svg' {
   export default url;
 }
 
-declare interface Page<T> {
-  children: React.ReactNode;
-}
-declare interface Page<T = undefined> {
-  children: React.ReactNode;
+declare namespace UMI {
+  export interface Layout {
+    children: React.ReactNode;
+  }
+  export interface Page<T> {}
+  export interface Page<T = undefined> {}
+  export interface Component<T> {
+    children: React.ReactNode;
+  }
+  export interface Component<T = undefined> {
+    children: React.ReactNode;
+  }
 }
 declare const API_URL: string;
