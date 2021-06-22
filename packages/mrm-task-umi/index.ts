@@ -24,11 +24,13 @@ function dependency() {
     '@types/styled-components',
 
     // eslint
+    'eslint',
     'eslint-plugin-import',
     'eslint-plugin-jsx-a11y',
     'eslint-plugin-react',
     'eslint-plugin-react-hooks',
     '@typescript-eslint/eslint-plugin',
+    'eslint-config-airbnb-typescript',
   ]
 
   install(dependencies, {

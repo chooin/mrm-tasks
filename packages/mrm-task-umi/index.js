@@ -26,11 +26,13 @@ function dependency() {
         'cross-env',
         '@types/styled-components',
         // eslint
+        'eslint',
         'eslint-plugin-import',
         'eslint-plugin-jsx-a11y',
         'eslint-plugin-react',
         'eslint-plugin-react-hooks',
         '@typescript-eslint/eslint-plugin',
+        'eslint-config-airbnb-typescript',
     ];
     mrm_core_1.install(dependencies, {
         yarn: true,
