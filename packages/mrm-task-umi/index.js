@@ -61,7 +61,7 @@ function src() {
         'scripts/check-yarn.js',
         'Dockerfile',
         'typings.d.ts',
-        '.eslintrc.js',
+        '.eslintrc',
     ];
     files.forEach((file) => {
         mrm_core_1.template(file, path_1.default.join(__dirname, 'templates', file))

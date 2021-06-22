@@ -64,7 +64,7 @@ function src() {
 
     'Dockerfile',
     'typings.d.ts',
-    '.eslintrc.js',
+    '.eslintrc',
   ]
 
   files.forEach((file) => {
