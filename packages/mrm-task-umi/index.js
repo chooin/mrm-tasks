@@ -27,6 +27,7 @@ function dependency() {
         '@types/styled-components',
         // eslint
         'eslint',
+        'eslint-plugin-promise',
         'eslint-plugin-import',
         'eslint-plugin-jsx-a11y',
         'eslint-plugin-react',
