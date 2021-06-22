@@ -50,7 +50,6 @@ function src() {
         'scripts/check-yarn.js',
         'routes.ts',
         'app.tsx',
-        '.dockerignore',
         'Dockerfile',
     ];
     files.forEach((file) => {
@@ -65,8 +64,8 @@ function src() {
 }
 function environment() {
     const files = [
-        '.umirc.development.ts',
-        '.umirc.production.ts',
+        '.umirc.dev.ts',
+        '.umirc.prod.ts',
         '.umirc.ts',
     ];
     files.forEach((file) => {
@@ -82,15 +81,15 @@ function script() {
     const pkg = mrm_core_1.packageJson();
     pkg
         .setScript('preinstall', 'node scripts/check-yarn.js')
-        .setScript('start', 'cross-env UMI_ENV=development umi dev')
-        .setScript('build:development', 'cross-env UMI_ENV=development umi build')
+        .setScript('start', 'cross-env UMI_ENV=dev umi dev')
+        .setScript('build:dev', 'cross-env UMI_ENV=dev umi build')
         .setScript('build:production', 'cross-env UMI_ENV=production umi build')
         .removeScript('build')
         .save();
 }
 module.exports = function task() {
+    src();
     environment();
     dependency();
     script();
-    src();
 };

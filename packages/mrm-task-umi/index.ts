@@ -55,7 +55,6 @@ function src() {
     'routes.ts',
     'app.tsx',
 
-    '.dockerignore',
     'Dockerfile',
   ]
 
@@ -76,8 +75,8 @@ function src() {
 
 function environment() {
   const files = [
-    '.umirc.development.ts',
-    '.umirc.production.ts',
+    '.umirc.dev.ts',
+    '.umirc.prod.ts',
     '.umirc.ts',
   ]
 
@@ -100,16 +99,16 @@ function script() {
 
   pkg
     .setScript('preinstall', 'node scripts/check-yarn.js')
-    .setScript('start', 'cross-env UMI_ENV=development umi dev')
-    .setScript('build:development', 'cross-env UMI_ENV=development umi build')
+    .setScript('start', 'cross-env UMI_ENV=dev umi dev')
+    .setScript('build:dev', 'cross-env UMI_ENV=dev umi build')
     .setScript('build:production', 'cross-env UMI_ENV=production umi build')
     .removeScript('build')
     .save()
 }
 
 module.exports = function task() {
+  src()
   environment()
   dependency()
   script()
-  src()
 }
