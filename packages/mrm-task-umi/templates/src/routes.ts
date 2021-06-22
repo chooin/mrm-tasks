@@ -4,7 +4,7 @@ interface Route {
   title: string;
   redirect?: string;
   exact?: boolean;
-  routes?: Route[],
+  routes?: Route[];
 }
 
 /**
@@ -26,5 +26,5 @@ export default [
         title: 'Home Page',
       },
     ],
-  }
+  },
 ] as Route[];
