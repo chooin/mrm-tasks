@@ -1,4 +1,4 @@
-import {install, packageJson, template, uninstall, deleteFiles, makeDirs, lines} from 'mrm-core'
+import {install, packageJson, template, uninstall, deleteFiles, makeDirs} from 'mrm-core'
 import path from 'path'
 
 function dependency() {
@@ -18,7 +18,6 @@ function dependency() {
     'styled-components',
     'antd-mobile',
     'dayjs',
-    'axios',
   ]
   const devDependencies = [
     'cross-env',
@@ -43,19 +42,17 @@ function src() {
   ])
 
   const files = [
+    'src/pages/home/layout/index.tsx',
+    'src/pages/home/layout/styled.ts',
     'src/pages/home/index/index.tsx',
     'src/pages/home/index/styled.ts',
-
+    'src/routes.ts',
     'src/404.tsx',
     'src/document.ejs',
-    'src/vendor/axios.ts',
-
     'scripts/check-yarn.js',
 
-    'routes.ts',
-    'app.tsx',
-
     'Dockerfile',
+    'typings.d.ts',
   ]
 
   files.forEach((file) => {
@@ -88,10 +85,6 @@ function environment() {
       .apply()
       .save()
   })
-
-  lines('typings.d.ts')
-    .add('declare const API_URL: string;')
-    .save()
 }
 
 function script() {

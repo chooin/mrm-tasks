@@ -6,7 +6,7 @@ export default (): JSX.Element => {
 
   return (
     <Page>
-      Home/index
+      /home/index
     </Page>
   );
 };

@@ -21,7 +21,6 @@ function dependency() {
         'styled-components',
         'antd-mobile',
         'dayjs',
-        'axios',
     ];
     const devDependencies = [
         'cross-env',
@@ -42,15 +41,17 @@ function src() {
         'src/pages/index.less',
     ]);
     const files = [
+        'src/pages/home/layout/index.tsx',
+        'src/pages/home/layout/styled.ts',
         'src/pages/home/index/index.tsx',
         'src/pages/home/index/styled.ts',
+        'src/routes.ts',
         'src/404.tsx',
         'src/document.ejs',
         'src/vendor/axios.ts',
         'scripts/check-yarn.js',
-        'routes.ts',
-        'app.tsx',
         'Dockerfile',
+        'typings.d.ts',
     ];
     files.forEach((file) => {
         mrm_core_1.template(file, path_1.default.join(__dirname, 'templates', file))
