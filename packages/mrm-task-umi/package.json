@@ -1,0 +1,14 @@
+{
+  "name": "mrm-task-umi",
+  "version": "0.0.8",
+  "main": "index.js",
+  "repository": "git@github.com:chooin/mrm-tasks.git",
+  "author": "Devin.Zhu <chooin@126.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "dependencies": {
+    "mrm-core": "^6.0.0"
+  }
+}
