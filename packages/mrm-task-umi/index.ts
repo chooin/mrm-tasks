@@ -22,6 +22,13 @@ function dependency() {
   const devDependencies = [
     'cross-env',
     '@types/styled-components',
+
+    // eslint
+    'eslint-plugin-import',
+    'eslint-plugin-jsx-a11y',
+    'eslint-plugin-react',
+    'eslint-plugin-react-hooks',
+    '@typescript-eslint/eslint-plugin',
   ]
 
   install(dependencies, {
@@ -54,6 +61,7 @@ function src() {
 
     'Dockerfile',
     'typings.d.ts',
+    '.eslintrc.js',
   ]
 
   files.forEach((file) => {

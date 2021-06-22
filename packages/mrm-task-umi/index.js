@@ -25,6 +25,12 @@ function dependency() {
     const devDependencies = [
         'cross-env',
         '@types/styled-components',
+        // eslint
+        'eslint-plugin-import',
+        'eslint-plugin-jsx-a11y',
+        'eslint-plugin-react',
+        'eslint-plugin-react-hooks',
+        '@typescript-eslint/eslint-plugin',
     ];
     mrm_core_1.install(dependencies, {
         yarn: true,
@@ -52,6 +58,7 @@ function src() {
         'scripts/check-yarn.js',
         'Dockerfile',
         'typings.d.ts',
+        '.eslintrc.js',
     ];
     files.forEach((file) => {
         mrm_core_1.template(file, path_1.default.join(__dirname, 'templates', file))
