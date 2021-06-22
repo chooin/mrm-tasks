@@ -9,7 +9,7 @@ declare module '*.svg' {
   export default url;
 }
 
-declare namespace UMI {
+declare namespace Umi {
   export interface Layout {
     children: React.ReactNode;
   }

@@ -1,5 +1,5 @@
 import { Layout } from './styled';
 
-export default ({ children }: UMI.Layout): JSX.Element => {
+export default ({ children }: Umi.Layout): JSX.Element => {
   return <Layout>{children}</Layout>;
 };
