@@ -1,3 +1,1 @@
-export default () => {
-  return <div>Page Not Found</div>;
-};
+export default () => <div>Page Not Found</div>;

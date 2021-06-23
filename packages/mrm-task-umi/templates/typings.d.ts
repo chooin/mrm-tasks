@@ -9,17 +9,11 @@ declare module '*.svg' {
   export default url;
 }
 
+// 和 Umi 相关
 declare namespace Umi {
-  export interface Layout {
-    children: React.ReactNode;
-  }
-  export interface Page<T> {}
-  export interface Page<T = undefined> {}
-  export interface Component<T> {
-    children: React.ReactNode;
-  }
-  export interface Component<T = undefined> {
-    children: React.ReactNode;
-  }
+  export type Layout = React.PropsWithChildren<undefined>;
+  export type Page<T = undefined> = React.PropsWithChildren<T>;
+  export type Component<T = undefined> = React.PropsWithChildren<T>;
 }
+// 全局变量
 declare const API_URL: string;

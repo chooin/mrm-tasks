@@ -1,7 +1,7 @@
 import { useMount } from '@/hooks';
 import { Page } from './styled';
 
-export default ({}: Umi.Page): JSX.Element => {
+export default (): JSX.Element => {
   useMount(() => {});
 
   return <Page>/home/index</Page>;

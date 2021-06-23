@@ -62,6 +62,7 @@ function src() {
         'Dockerfile',
         'typings.d.ts',
         '.eslintrc',
+        '.nvmrc'
     ];
     files.forEach((file) => {
         mrm_core_1.template(file, path_1.default.join(__dirname, 'templates', file))
