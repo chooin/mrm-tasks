@@ -1,7 +1,7 @@
 FROM node:14-alpine
 WORKDIR /app
 COPY . .
-RUN yarn
+RUN yarn install --frozen-lockfile
 RUN yarn build
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
