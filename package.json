@@ -11,9 +11,10 @@
     "build:react-native": "yarn workspace mrm-task-react-native build",
     "build:serve": "yarn workspace mrm-task-serve build",
     "build:umi": "yarn workspace mrm-task-umi build",
-    "np:next": "cd packages/mrm-task-next && npm publish && cd -",
-    "np:react-native": "cd packages/mrm-task-react-native && npm publish && cd -",
-    "np:umi": "cd packages/mrm-task-umi && npm publish && cd -"
+    "np:next": "cd packages/mrm-task-next && np && cd -",
+    "np:react-native": "cd packages/mrm-task-react-native && np && cd -",
+    "np:serve": "cd packages/mrm-task-serve && np && cd -",
+    "np:umi": "cd packages/mrm-task-umi && np && cd -"
   },
   "workspaces": [
     "packages/*"
