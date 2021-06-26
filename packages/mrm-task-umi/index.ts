@@ -1,4 +1,5 @@
 import {install, packageJson, template, uninstall, deleteFiles, makeDirs} from 'mrm-core'
+import {exec} from 'child_process'
 import path from 'path'
 
 function dependency() {
@@ -20,7 +21,6 @@ function dependency() {
     'dayjs',
   ]
   const devDependencies = [
-    'cross-env',
     '@types/styled-components',
 
     // eslint
@@ -32,6 +32,9 @@ function dependency() {
     'eslint-plugin-react-hooks',
     '@typescript-eslint/eslint-plugin',
     'eslint-config-airbnb-typescript',
+
+    '@commitlint/config-conventional',
+    '@commitlint/cli',
   ]
 
   install(dependencies, {
@@ -64,6 +67,7 @@ function src() {
 
     'Dockerfile',
     'typings.d.ts',
+    'commitlint.config.js',
 
     '.eslintrc',
     '.nvmrc'
@@ -105,17 +109,32 @@ function script() {
   const pkg = packageJson()
 
   pkg
+    .setScript('prepare', 'husky install')
     .setScript('preinstall', 'node scripts/check-yarn.js')
-    .setScript('start', 'cross-env UMI_ENV=dev umi dev')
-    .setScript('build:dev', 'cross-env UMI_ENV=dev umi build')
-    .setScript('build:production', 'cross-env UMI_ENV=production umi build')
+    .setScript('start', 'UMI_ENV=dev umi dev')
+    .setScript('build:dev', 'UMI_ENV=dev umi build')
+    .setScript('build:prod', 'UMI_ENV=prod umi build')
     .removeScript('build')
     .save()
 }
 
+function husky() {
+  const devDependencies = [
+    'husky',
+  ]
+
+  install(devDependencies, {
+    yarn: true,
+    dev: true,
+  })
+
+  exec('npx husky add .husky/commit-msg \'npx --no-install commitlint --edit "$1"\'')
+}
+
 module.exports = function task() {
+  husky()
   src()
   environment()
-  dependency()
   script()
+  dependency()
 }

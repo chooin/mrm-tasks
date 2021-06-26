@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mrm_core_1 = require("mrm-core");
+const child_process_1 = require("child_process");
 const path_1 = __importDefault(require("path"));
 function dependency() {
     const unDependencies = [
@@ -23,7 +24,6 @@ function dependency() {
         'dayjs',
     ];
     const devDependencies = [
-        'cross-env',
         '@types/styled-components',
         // eslint
         'eslint',
@@ -34,6 +34,8 @@ function dependency() {
         'eslint-plugin-react-hooks',
         '@typescript-eslint/eslint-plugin',
         'eslint-config-airbnb-typescript',
+        '@commitlint/config-conventional',
+        '@commitlint/cli',
     ];
     mrm_core_1.install(dependencies, {
         yarn: true,
@@ -61,6 +63,7 @@ function src() {
         'scripts/check-yarn.js',
         'Dockerfile',
         'typings.d.ts',
+        'commitlint.config.js',
         '.eslintrc',
         '.nvmrc'
     ];
@@ -89,16 +92,28 @@ function environment() {
 function script() {
     const pkg = mrm_core_1.packageJson();
     pkg
+        .setScript('prepare', 'husky install')
         .setScript('preinstall', 'node scripts/check-yarn.js')
-        .setScript('start', 'cross-env UMI_ENV=dev umi dev')
-        .setScript('build:dev', 'cross-env UMI_ENV=dev umi build')
-        .setScript('build:production', 'cross-env UMI_ENV=production umi build')
+        .setScript('start', 'UMI_ENV=dev umi dev')
+        .setScript('build:dev', 'UMI_ENV=dev umi build')
+        .setScript('build:prod', 'UMI_ENV=prod umi build')
         .removeScript('build')
         .save();
 }
+function husky() {
+    const devDependencies = [
+        'husky',
+    ];
+    mrm_core_1.install(devDependencies, {
+        yarn: true,
+        dev: true,
+    });
+    child_process_1.exec('npx husky add .husky/commit-msg \'npx --no-install commitlint --edit "$1"\'');
+}
 module.exports = function task() {
+    husky();
     src();
     environment();
-    dependency();
     script();
+    dependency();
 };
