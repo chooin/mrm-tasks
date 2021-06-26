@@ -1,11 +1,20 @@
-import {install, packageJson, template, uninstall, deleteFiles, makeDirs} from 'mrm-core'
+import {install, packageJson, template, uninstall, deleteFiles, makeDirs, json} from 'mrm-core'
 import {exec} from 'child_process'
 import path from 'path'
+
+function remove() {
+  json('package.json')
+    .unset('gitHooks')
+    .unset('lint-staged')
+    .save()
+}
 
 function dependency() {
   const unDependencies = [
     'react',
     'react-dom',
+    '@umijs/preset-react',
+    'lint-staged',
   ]
   uninstall(unDependencies, {
     yarn: true,
@@ -32,9 +41,13 @@ function dependency() {
     'eslint-plugin-react-hooks',
     '@typescript-eslint/eslint-plugin',
     'eslint-config-airbnb-typescript',
+    'eslint-config-prettier',
+    'eslint-plugin-prettier',
 
     '@commitlint/config-conventional',
     '@commitlint/cli',
+
+    '@umijs/preset-react',
   ]
 
   install(dependencies, {
@@ -115,6 +128,7 @@ function script() {
     .setScript('build:dev', 'UMI_ENV=dev umi build')
     .setScript('build:prod', 'UMI_ENV=prod umi build')
     .removeScript('build')
+    .removeScript('prettier')
     .save()
 }
 
@@ -132,6 +146,7 @@ function husky() {
 }
 
 module.exports = function task() {
+  remove()
   husky()
   src()
   environment()
