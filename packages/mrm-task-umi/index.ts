@@ -66,9 +66,9 @@ function src() {
     'src/pages/error/layout/index.tsx',
     'src/pages/error/layout/styled.ts',
     'src/pages/error/404/index.tsx',
+    'src/pages/document.ejs',
     'src/hooks/index.ts',
     'src/routes.ts',
-    'src/document.ejs',
     'scripts/check-yarn.js',
 
     'Dockerfile',
@@ -96,11 +96,6 @@ function src() {
 
   lines('.prettierignore')
     .add('dist')
-    .save()
-
-  json('package.json')
-    .unset('lint-staged')
-    .unset('gitHooks')
     .save()
 }
 
@@ -151,6 +146,11 @@ function husky() {
   exec('yarn prepare')
   exec('npx husky add .husky/pre-commit "yarn prettier"')
   exec('npx husky add .husky/commit-msg \'npx --no-install commitlint --edit "$1"\'')
+
+  json('package.json')
+    .unset('lint-staged')
+    .unset('gitHooks')
+    .save()
 }
 
 module.exports = function task() {

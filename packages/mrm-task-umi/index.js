@@ -62,9 +62,9 @@ function src() {
         'src/pages/error/layout/index.tsx',
         'src/pages/error/layout/styled.ts',
         'src/pages/error/404/index.tsx',
+        'src/pages/document.ejs',
         'src/hooks/index.ts',
         'src/routes.ts',
-        'src/document.ejs',
         'scripts/check-yarn.js',
         'Dockerfile',
         'typings.d.ts',
@@ -84,10 +84,6 @@ function src() {
     ]);
     mrm_core_1.lines('.prettierignore')
         .add('dist')
-        .save();
-    mrm_core_1.json('package.json')
-        .unset('lint-staged')
-        .unset('gitHooks')
         .save();
 }
 function environment() {
@@ -127,6 +123,10 @@ function husky() {
     child_process_1.exec('yarn prepare');
     child_process_1.exec('npx husky add .husky/pre-commit "yarn prettier"');
     child_process_1.exec('npx husky add .husky/commit-msg \'npx --no-install commitlint --edit "$1"\'');
+    mrm_core_1.json('package.json')
+        .unset('lint-staged')
+        .unset('gitHooks')
+        .save();
 }
 module.exports = function task() {
     husky();
