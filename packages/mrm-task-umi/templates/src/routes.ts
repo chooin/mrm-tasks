@@ -37,5 +37,5 @@ export default [
         title: 'Page Not Found',
       },
     ],
-  }
-] as Route[]
+  },
+] as Route[];

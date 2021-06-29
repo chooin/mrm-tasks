@@ -1,4 +1,4 @@
-import {install, packageJson, template, uninstall, deleteFiles, makeDirs} from 'mrm-core'
+import {install, packageJson, template, uninstall, deleteFiles, makeDirs, lines, json} from 'mrm-core'
 import {exec} from 'child_process'
 import path from 'path'
 
@@ -93,6 +93,15 @@ function src() {
     'src/services',
     'src/components',
   ])
+
+  lines('.prettierignore')
+    .add('dist')
+    .save()
+
+  json('package.json')
+    .unset('lint-staged')
+    .unset('gitHooks')
+    .save()
 }
 
 function environment() {
@@ -116,7 +125,6 @@ function script() {
   const pkg = packageJson()
 
   pkg
-    .setScript('prepare', 'husky install')
     .setScript('preinstall', 'node scripts/check-yarn.js')
     .setScript('start', 'UMI_ENV=dev umi dev')
     .setScript('dev', 'yarn start')
@@ -136,6 +144,12 @@ function husky() {
     dev: true,
   })
 
+  packageJson()
+    .setScript('prepare', 'husky install')
+    .save()
+
+  exec('yarn prepare')
+  exec('npx husky add .husky/pre-commit "yarn prettier"')
   exec('npx husky add .husky/commit-msg \'npx --no-install commitlint --edit "$1"\'')
 }
 

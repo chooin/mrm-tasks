@@ -82,6 +82,13 @@ function src() {
         'src/services',
         'src/components',
     ]);
+    mrm_core_1.lines('.prettierignore')
+        .add('dist')
+        .save();
+    mrm_core_1.json('package.json')
+        .unset('lint-staged')
+        .unset('gitHooks')
+        .save();
 }
 function environment() {
     const files = [
@@ -98,7 +105,6 @@ function environment() {
 function script() {
     const pkg = mrm_core_1.packageJson();
     pkg
-        .setScript('prepare', 'husky install')
         .setScript('preinstall', 'node scripts/check-yarn.js')
         .setScript('start', 'UMI_ENV=dev umi dev')
         .setScript('dev', 'yarn start')
@@ -115,6 +121,11 @@ function husky() {
         yarn: true,
         dev: true,
     });
+    mrm_core_1.packageJson()
+        .setScript('prepare', 'husky install')
+        .save();
+    child_process_1.exec('yarn prepare');
+    child_process_1.exec('npx husky add .husky/pre-commit "yarn prettier"');
     child_process_1.exec('npx husky add .husky/commit-msg \'npx --no-install commitlint --edit "$1"\'');
 }
 module.exports = function task() {
