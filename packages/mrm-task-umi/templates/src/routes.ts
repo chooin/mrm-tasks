@@ -27,4 +27,15 @@ export default [
       },
     ],
   },
-] as Route[];
+  {
+    path: '/*',
+    component: '@/pages/error/layout',
+    routes: [
+      {
+        path: '/*',
+        component: '@/pages/error/404',
+        title: 'Page Not Found',
+      },
+    ],
+  }
+] as Route[]

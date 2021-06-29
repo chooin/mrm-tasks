@@ -72,9 +72,11 @@ function src() {
     'src/pages/home/layout/styled.ts',
     'src/pages/home/index/index.tsx',
     'src/pages/home/index/styled.ts',
+    'src/pages/error/layout/index.tsx',
+    'src/pages/error/layout/styled.ts',
+    'src/pages/error/404/index.tsx',
     'src/hooks/index.ts',
     'src/routes.ts',
-    'src/404.tsx',
     'src/document.ejs',
     'scripts/check-yarn.js',
 
