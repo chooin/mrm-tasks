@@ -6,12 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mrm_core_1 = require("mrm-core");
 const child_process_1 = require("child_process");
 const path_1 = __importDefault(require("path"));
-function remove() {
-    mrm_core_1.json('package.json')
-        .unset('gitHooks')
-        .unset('lint-staged')
-        .save();
-}
 function dependency() {
     const unDependencies = [
         'react',
@@ -42,8 +36,6 @@ function dependency() {
         'eslint-plugin-react-hooks',
         '@typescript-eslint/eslint-plugin',
         'eslint-config-airbnb-typescript',
-        'eslint-config-prettier',
-        'eslint-plugin-prettier',
         '@commitlint/config-conventional',
         '@commitlint/cli',
         '@umijs/preset-react',
@@ -113,7 +105,6 @@ function script() {
         .setScript('build:dev', 'UMI_ENV=dev umi build')
         .setScript('build:prod', 'UMI_ENV=prod umi build')
         .removeScript('build')
-        .removeScript('prettier')
         .save();
 }
 function husky() {
@@ -127,7 +118,6 @@ function husky() {
     child_process_1.exec('npx husky add .husky/commit-msg \'npx --no-install commitlint --edit "$1"\'');
 }
 module.exports = function task() {
-    remove();
     husky();
     src();
     environment();
