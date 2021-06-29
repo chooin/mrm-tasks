@@ -14,10 +14,10 @@ function dependency() {
     'react',
     'react-dom',
     '@umijs/preset-react',
-    'lint-staged',
   ]
   uninstall(unDependencies, {
     yarn: true,
+    dev: false,
   })
 
   const dependencies = [
@@ -83,6 +83,7 @@ function src() {
     'commitlint.config.js',
 
     '.eslintrc',
+    '.eslintignore',
     '.nvmrc'
   ]
 
@@ -125,6 +126,7 @@ function script() {
     .setScript('prepare', 'husky install')
     .setScript('preinstall', 'node scripts/check-yarn.js')
     .setScript('start', 'UMI_ENV=dev umi dev')
+    .setScript('dev', 'yarn start')
     .setScript('build:dev', 'UMI_ENV=dev umi build')
     .setScript('build:prod', 'UMI_ENV=prod umi build')
     .removeScript('build')

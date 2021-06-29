@@ -1,13 +1,23 @@
+import { IGetInitialProps } from 'umi'
 import { useMount } from '@/hooks';
 import { Page } from './styled';
-import { Hello } from './components';
 
-export default (): JSX.Element => {
+interface Props {
+  path: string
+}
+
+const Index = ({ path }: Umi.Page<Props>): Umi.Element => {
   useMount(() => {});
 
   return (
     <Page>
-      <Hello>/home/index</Hello>
+      {path}
     </Page>
   );
 };
+
+Index.getInitialProps = (async (ctx) => ({
+  path: ctx.path
+})) as IGetInitialProps<Props>
+
+export default Index

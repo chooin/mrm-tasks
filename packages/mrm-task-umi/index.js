@@ -17,7 +17,6 @@ function dependency() {
         'react',
         'react-dom',
         '@umijs/preset-react',
-        'lint-staged',
     ];
     mrm_core_1.uninstall(unDependencies, {
         yarn: true,
@@ -76,6 +75,7 @@ function src() {
         'typings.d.ts',
         'commitlint.config.js',
         '.eslintrc',
+        '.eslintignore',
         '.nvmrc'
     ];
     files.forEach((file) => {
@@ -106,6 +106,7 @@ function script() {
         .setScript('prepare', 'husky install')
         .setScript('preinstall', 'node scripts/check-yarn.js')
         .setScript('start', 'UMI_ENV=dev umi dev')
+        .setScript('dev', 'yarn start')
         .setScript('build:dev', 'UMI_ENV=dev umi build')
         .setScript('build:prod', 'UMI_ENV=prod umi build')
         .removeScript('build')
