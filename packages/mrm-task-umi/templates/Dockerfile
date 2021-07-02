@@ -7,4 +7,6 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
 RUN echo $TZ > /etc/timezone
 EXPOSE 3000
-CMD ['yarn', 'start']
+CMD ["yarn", "start"]
+
+FROM node:14-alpine

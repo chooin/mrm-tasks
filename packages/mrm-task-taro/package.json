@@ -1,0 +1,14 @@
+{
+  "name": "mrm-task-taro",
+  "version": "0.0.7",
+  "main": "index.js",
+  "repository": "git@github.com:chooin/mrm-tasks.git",
+  "author": "Devin.Zhu <chooin@126.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "dependencies": {
+    "mrm-core": "^6.0.0"
+  }
+}
