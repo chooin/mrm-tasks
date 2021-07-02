@@ -27,8 +27,8 @@ function pages() {
         'src/pages/index/index.scss',
     ]);
     const files = [
-        'pages/home/index/index.config.ts',
-        'pages/home/index/index.tsx',
+        'src/pages/home/index/index.config.ts',
+        'src/pages/home/index/index.tsx',
     ];
     files.forEach((file) => {
         mrm_core_1.template(file, path_1.default.join(__dirname, 'templates', file))

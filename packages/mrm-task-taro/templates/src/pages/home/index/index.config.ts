@@ -1,4 +1,4 @@
-import Taro from '@taro/taro'
+import Taro from '@tarojs/taro'
 
 export default {
   navigationBarTitleText: '首页'

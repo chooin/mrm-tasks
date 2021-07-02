@@ -21,14 +21,13 @@ function dependency() {
 
 function pages() {
   deleteFiles([
-    'src/pages/index/index.tsx',
-    'src/pages/index/index.config.ts',
-    'src/pages/index/index.scss',
+    'src/pages/index',
   ])
 
   const files = [
-    'pages/home/index/index.config.ts',
-    'pages/home/index/index.tsx',
+    'src/pages/home/index/index.config.ts',
+    'src/pages/home/index/index.tsx',
+    'src/pages/home/index/index.scss',
   ]
 
   files.forEach((file) => {
