@@ -115,10 +115,15 @@
   resolved "https://registry.npmjs.org/@types/minimist/-/minimist-1.2.1.tgz#283f669ff76d7b8260df8ab7a4262cc83d988256"
   integrity sha512-fZQQafSREFyuZcdWFAExYjBiCL7AUCdgsk80iO0q4yihYYdcIiH28CcuPTGFgLOCC8RlW49GSQxdHwZP+I7CNg==
 
-"@types/node@*", "@types/node@^15.0.2":
+"@types/node@*":
   version "15.0.2"
   resolved "https://registry.npmjs.org/@types/node/-/node-15.0.2.tgz#51e9c0920d1b45936ea04341aa3e2e58d339fb67"
   integrity sha512-p68+a+KoxpoB47015IeYZYRrdqMUcpbK8re/zpFB8Ld46LHC1lPEbp3EXgkEhAYEcPvjJF6ZO+869SQ0aH1dcA==
+
+"@types/node@^16.11.1":
+  version "16.11.1"
+  resolved "https://registry.npmmirror.com/@types/node/download/@types/node-16.11.1.tgz#2e50a649a50fc403433a14f829eface1a3443e97"
+  integrity sha1-LlCmSaUPxANDOhT4Ke+s4aNEPpc=
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -135,17 +140,26 @@
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
 
-"@types/react-native@^0.64.5":
-  version "0.64.5"
-  resolved "https://registry.npmjs.org/@types/react-native/-/react-native-0.64.5.tgz#219738b52b2e372ec057d3c8f20fbd6c37b245cd"
-  integrity sha512-k0r8MnQX7UFboZDvMKLov26gFLXKrNgLhCfSVhjaZ6wMUofKijxvee7/wgfAqtT2zS5FR4an4+qn0r72SCbw3g==
+"@types/react-native@^0.65.8":
+  version "0.65.8"
+  resolved "https://registry.npmmirror.com/@types/react-native/download/@types/react-native-0.65.8.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40types%2Freact-native%2Fdownload%2F%40types%2Freact-native-0.65.8.tgz#0923cceb0cf59ae674d915296554e726ea3a768a"
+  integrity sha1-CSPM6wz1muZ02RUpZVTnJuo6doo=
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^17.0.5":
+"@types/react@*":
   version "17.0.5"
   resolved "https://registry.npmjs.org/@types/react/-/react-17.0.5.tgz#3d887570c4489011f75a3fc8f965bf87d09a1bea"
   integrity sha512-bj4biDB9ZJmGAYTWSKJly6bMr4BLUiBrx9ujiJEoP9XIDY9CTaPGxE5QWN/1WjpPLzYF7/jRNnV2nNxNe970sw==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
+"@types/react@^17.0.30":
+  version "17.0.30"
+  resolved "https://registry.npmmirror.com/@types/react/download/@types/react-17.0.30.tgz?cache=0&sync_timestamp=1634220752207&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40types%2Freact%2Fdownload%2F%40types%2Freact-17.0.30.tgz#2f8e6f5ab6415c091cc5e571942ee9064b17609e"
+  integrity sha1-L45vWrZBXAkcxeVxlC7pBksXYJ4=
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -163,10 +177,10 @@
   resolved "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.1.tgz#18845205e86ff0038517aab7a18a62a6b9f71275"
   integrity sha512-EaCxbanVeyxDRTQBkdLb3Bvl/HK7PBK6UJjsSixB0iHKoWxE5uu2Q/DgtpOhPIojN0Zl1whvOd7PoHs2P0s5eA==
 
-"@types/styled-components@^5.1.9":
-  version "5.1.9"
-  resolved "https://registry.npmjs.org/@types/styled-components/-/styled-components-5.1.9.tgz#00d3d84b501420521c4db727e3c195459f87a6cf"
-  integrity sha512-kbEG6YlwK8rucITpKEr6pA4Ho9KSQHUUOzZ9lY3va1mtcjvS3D0wDciFyHEiNHKLL/npZCKDQJqm0x44sPO9oA==
+"@types/styled-components@^5.1.15":
+  version "5.1.15"
+  resolved "https://registry.npmmirror.com/@types/styled-components/download/@types/styled-components-5.1.15.tgz?cache=0&sync_timestamp=1633622525711&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40types%2Fstyled-components%2Fdownload%2F%40types%2Fstyled-components-5.1.15.tgz#30855b40aa80b3b4e4c0e43a4af366e7c246d148"
+  integrity sha1-MIVbQKqAs7TkwOQ6SvNm58JG0Ug=
   dependencies:
     "@types/hoist-non-react-statics" "*"
     "@types/react" "*"
@@ -1783,10 +1797,10 @@ minimist@^1.2.0:
   resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
   integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
 
-mrm-core@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.npmjs.org/mrm-core/-/mrm-core-6.0.0.tgz#50210c3b911d4640f77eb9cff9490927552a0205"
-  integrity sha512-YDPzvzwigy2ke2aiw7kdaSeNy7x9MNVdXR6lyrKAYX9vufs4dOUjdtgkHuwAgAMqPElIMqchgLakpnuvXVh4bw==
+mrm-core@^6.1.7:
+  version "6.1.7"
+  resolved "https://registry.npmmirror.com/mrm-core/download/mrm-core-6.1.7.tgz#709193e789290c1c45d54b59c94ea8c5a9dfd5c1"
+  integrity sha1-cJGT54kpDBxF1UtZyU6oxanf1cE=
   dependencies:
     babel-code-frame "^6.26.0"
     comment-json "^2.2.0"
@@ -2793,10 +2807,10 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@^4.2.4:
-  version "4.2.4"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.2.4.tgz#8610b59747de028fda898a8aef0e103f156d0961"
-  integrity sha512-V+evlYHZnQkaz8TRBuxTA92yZBPotr5H+WhQ7bD3hZUndx5tGOa1fuCgeSjxAzM1RiN5IzvadIXTVefuuwZCRg==
+typescript@^4.4.4:
+  version "4.4.4"
+  resolved "https://registry.npmmirror.com/typescript/download/typescript-4.4.4.tgz?cache=0&sync_timestamp=1634627805458&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Ftypescript%2Fdownload%2Ftypescript-4.4.4.tgz#2cd01a1a1f160704d3101fd5a58ff0f9fcb8030c"
+  integrity sha1-LNAaGh8WBwTTEB/VpY/w+fy4Aww=
 
 unbox-primitive@^1.0.0:
   version "1.0.1"
