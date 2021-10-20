@@ -6,13 +6,9 @@ const config = dotenv.config({
 }).parsed
 const env = Object.create(null);
 Object.keys(config).forEach((key) => {
-  if (config[key] === 'true') {
-    env[key] = true
-  } else if (config[key] === 'false') {
-    env[key] = false
-  } else {
-    env[key] = '"' + config[key] + '"'
-  }
+  if (config[key] === 'true') return env[key] = true
+  if (config[key] === 'false') return env[key] = false
+  env[key] = '"' + config[key] + '"'
 });
 
 module.exports = {
