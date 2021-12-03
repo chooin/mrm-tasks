@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Layout = styled.div`
   background: #f6f6f6;

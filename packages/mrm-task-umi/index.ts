@@ -26,7 +26,6 @@ function dependency() {
       dev: false,
     },
   );
-
   install(
     [
       '@types/styled-components',
@@ -44,6 +43,8 @@ function src() {
   deleteFiles(['src/pages/index.tsx', 'src/pages/index.less']);
 
   const files = [
+    'src/layouts/default/index.tsx',
+    'src/layouts/default/styled.tsx',
     'src/pages/home/index/index.tsx',
     'src/pages/home/index/styled.ts',
     'src/pages/error/404/index.tsx',
@@ -99,7 +100,6 @@ function husky() {
   packageJson().setScript('prepare', 'husky install').save();
 
   exec('yarn prepare');
-  exec('npx husky add .husky/pre-commit "yarn prettier"');
   exec(
     'npx husky add .husky/commit-msg \'npx --no-install commitlint --edit "$1"\'',
   );

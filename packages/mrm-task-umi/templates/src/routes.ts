@@ -1,4 +1,4 @@
-import { IRoute } from "umi";
+import { IRoute } from 'umi';
 
 /**
  * 路由文档
@@ -6,23 +6,23 @@ import { IRoute } from "umi";
  */
 export default [
   {
-    path: "/",
-    redirect: "/home/index",
+    path: '/',
+    redirect: '/home/index',
   },
   {
-    path: "/home",
-    redirect: "/home/index",
-    component: "@/layouts/default",
+    path: '/home',
+    redirect: '/home/index',
+    component: '@/layouts/default',
     routes: [
       {
-        path: "/home/index",
-        component: "@/pages/home/index",
-        title: "Home Page",
+        path: '/home/index',
+        component: '@/pages/home/index',
+        title: 'Home Page',
       },
     ],
   },
   {
-    path: "/*",
-    component: "@/pages/error/404",
+    path: '/*',
+    component: '@/pages/error/404',
   },
 ] as IRoute[];

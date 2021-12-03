@@ -39,6 +39,8 @@ function dependency() {
 function src() {
   (0, mrm_core_1.deleteFiles)(['src/pages/index.tsx', 'src/pages/index.less']);
   const files = [
+    'src/layouts/default/index.tsx',
+    'src/layouts/default/styled.tsx',
     'src/pages/home/index/index.tsx',
     'src/pages/home/index/styled.ts',
     'src/pages/error/404/index.tsx',
@@ -93,7 +95,6 @@ function husky() {
   });
   (0, mrm_core_1.packageJson)().setScript('prepare', 'husky install').save();
   (0, child_process_1.exec)('yarn prepare');
-  (0, child_process_1.exec)('npx husky add .husky/pre-commit "yarn prettier"');
   (0, child_process_1.exec)(
     'npx husky add .husky/commit-msg \'npx --no-install commitlint --edit "$1"\'',
   );

@@ -1,6 +1,6 @@
 {
   "name": "mrm-task-umi",
-  "version": "0.0.58",
+  "version": "0.0.62",
   "main": "index.js",
   "repository": "git@github.com:chooin/mrm-tasks.git",
   "author": "Devin.Zhu <chooin@126.com>",

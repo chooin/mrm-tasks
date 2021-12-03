@@ -1,5 +1,6 @@
-import React from "react";
-import { Layout } from "./styled";
+import React from 'react';
+
+import { Layout } from './styled';
 
 type Props = {
   children: React.PropsWithChildren<undefined>;
