@@ -1,6 +1,10 @@
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from "@react-native-community/async-storage";
 
-export const getItem = async (key: string) => {
+enum Keys {
+  Token = "TOKEN",
+}
+
+export const getItem = async (key: Keys) => {
   try {
     const value = await AsyncStorage.getItem(key);
     if (value) {
@@ -13,7 +17,7 @@ export const getItem = async (key: string) => {
   }
 };
 
-export const setItem = async (key: string, value: any) => {
+export const setItem = async (key: Keys, value: any) => {
   try {
     value = JSON.stringify({
       data: value,
@@ -24,7 +28,7 @@ export const setItem = async (key: string, value: any) => {
   }
 };
 
-export const removeItem = async (key: string) => {
+export const removeItem = async (key: Keys) => {
   try {
     await AsyncStorage.removeItem(key);
   } catch {
@@ -48,7 +52,7 @@ export const getAllKeys = async () => {
   try {
     keys = await AsyncStorage.getAllKeys();
   } catch {
-    console.warn('读取 AsyncStorage allKeys 失败');
+    console.warn("读取 AsyncStorage allKeys 失败");
   }
   return keys;
 };

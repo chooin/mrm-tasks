@@ -1,4 +1,4 @@
-import {ParamListBase, NavigationProp} from '@react-navigation/native';
+import { ParamListBase, NavigationProp } from "@react-navigation/native";
 
 interface MergeNavigation extends NavigationProp<ParamListBase> {
   replace: (name: string, params?: object) => void;
@@ -17,7 +17,7 @@ export interface Route<T> {
   route: {
     key: string;
     name: string;
-    params?: T;
+    params: T;
   };
   [k: string]: any;
 }
@@ -26,5 +26,4 @@ export interface Page<T> extends Navigation, Route<T> {
   [k: string]: any;
 }
 
-export interface Page<T = undefined> extends Navigation {
-}
+export interface Page<T = undefined> extends Navigation {}
