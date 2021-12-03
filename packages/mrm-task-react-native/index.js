@@ -1,47 +1,47 @@
-"use strict";
+'use strict';
 var __importDefault =
   (this && this.__importDefault) ||
   function (mod) {
     return mod && mod.__esModule ? mod : { default: mod };
   };
-Object.defineProperty(exports, "__esModule", { value: true });
-const mrm_core_1 = require("mrm-core");
-const path_1 = __importDefault(require("path"));
+Object.defineProperty(exports, '__esModule', { value: true });
+const mrm_core_1 = require('mrm-core');
+const path_1 = __importDefault(require('path'));
 function dependency() {
   const dependencies = [
     // route
-    "@react-navigation/native",
-    "@react-navigation/stack",
-    "react-native-gesture-handler",
-    "react-native-reanimated",
-    "react-native-safe-area-context",
-    "react-native-screens",
-    "@react-navigation/bottom-tabs",
+    '@react-navigation/native',
+    '@react-navigation/stack',
+    'react-native-gesture-handler',
+    'react-native-reanimated',
+    'react-native-safe-area-context',
+    'react-native-screens',
+    '@react-navigation/bottom-tabs',
     // lifecycle
-    "react-native-lifecycle",
+    'react-native-lifecycle',
     // style
-    "styled-components",
+    'styled-components',
     // ant-design
-    "@react-native-community/cameraroll",
-    "@react-native-picker/picker",
-    "@react-native-community/segmented-control",
-    "@react-native-community/slider",
-    "react-native-pager-view",
+    '@react-native-community/cameraroll',
+    '@react-native-picker/picker',
+    '@react-native-community/segmented-control',
+    '@react-native-community/slider',
+    'react-native-pager-view',
     // other
-    "axios",
-    "@react-native-community/async-storage",
+    'axios',
+    '@react-native-community/async-storage',
   ];
   const devDependencies = [
     // ts and ts helper
-    "typescript",
-    "@types/react",
-    "@types/react-native",
+    'typescript',
+    '@types/react',
+    '@types/react-native',
     // babel
-    "@babel/plugin-proposal-export-default-from",
-    "@babel/plugin-proposal-export-namespace-from",
-    "babel-plugin-module-resolver",
+    '@babel/plugin-proposal-export-default-from',
+    '@babel/plugin-proposal-export-namespace-from',
+    'babel-plugin-module-resolver',
     // other
-    "@types/styled-components",
+    '@types/styled-components',
   ];
   (0, mrm_core_1.install)(dependencies, {
     yarn: true,
@@ -53,55 +53,55 @@ function dependency() {
   });
 }
 function typescript() {
-  const tsconfig = (0, mrm_core_1.json)("tsconfig.json");
+  const tsconfig = (0, mrm_core_1.json)('tsconfig.json');
   tsconfig
     .merge({
       compilerOptions: {
-        jsx: "react",
+        jsx: 'react',
         experimentalDecorators: true,
         allowJs: true,
         esModuleInterop: true,
-        baseUrl: ".",
+        baseUrl: '.',
         paths: {
-          "@/*": ["./src/*"],
+          '@/*': ['./src/*'],
         },
       },
-      include: ["src/**/*"],
-      exclude: ["node_modules", "ios", "android"],
+      include: ['src/**/*'],
+      exclude: ['node_modules', 'ios', 'android'],
     })
     .save();
 }
 function src() {
   const files = [
-    "scripts/check-yarn.js",
-    "scripts/pod-update.sh",
-    "src/hooks/index.ts",
-    "src/pages/home/index/index.tsx",
-    "src/pages/home/index/styled.ts",
-    "src/plugins/storage.ts",
-    "src/routes/index.tsx",
-    "src/routes/routes.tsx",
-    "src/typings/index.d.ts",
-    "src/typings/react-navigation.d.ts",
-    "App.js",
-    "babel.config.js",
+    'scripts/check-yarn.js',
+    'scripts/pod-update.sh',
+    'src/hooks/index.ts',
+    'src/pages/home/index/index.tsx',
+    'src/pages/home/index/styled.ts',
+    'src/plugins/storage.ts',
+    'src/routes/index.tsx',
+    'src/routes/routes.tsx',
+    'src/typings/index.d.ts',
+    'src/typings/react-navigation.d.ts',
+    'App.js',
+    'babel.config.js',
   ];
   files.forEach((file) => {
     (0, mrm_core_1.template)(
       file,
-      path_1.default.join(__dirname, "templates", file)
+      path_1.default.join(__dirname, 'templates', file),
     )
       .apply()
       .save();
   });
-  (0, mrm_core_1.makeDirs)(["src/components", "src/services"]);
+  (0, mrm_core_1.makeDirs)(['src/components', 'src/services']);
 }
 function script() {
   const pkg = (0, mrm_core_1.packageJson)();
   pkg
-    .setScript("preinstall", "node scripts/check-yarn.js")
-    .setScript("install", "npx pod-install")
-    .setScript("pod-update", "sh scripts/pod-update.sh")
+    .setScript('preinstall', 'node scripts/check-yarn.js')
+    .setScript('install', 'npx pod-install')
+    .setScript('pod-update', 'sh scripts/pod-update.sh')
     .save();
 }
 module.exports = function task() {
@@ -111,4 +111,4 @@ module.exports = function task() {
   script();
 };
 module.exports.parameters = {};
-module.exports.description = "Mrm task for react native";
+module.exports.description = 'Mrm task for react native';
