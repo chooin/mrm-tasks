@@ -5,7 +5,6 @@ import {
   deleteFiles,
   makeDirs,
   lines,
-  json,
 } from 'mrm-core';
 import { exec } from 'child_process';
 import path from 'path';
@@ -50,8 +49,6 @@ function src() {
     'src/pages/error/404/index.tsx',
     'src/pages/document.ejs',
     'src/hooks/index.ts',
-    'src/hooks/useLoad.ts',
-    'src/hooks/useUnload.ts',
     'src/routes.ts',
     'scripts/check-yarn.js',
     'typings.d.ts',
@@ -90,21 +87,16 @@ function script() {
 }
 
 function husky() {
-  const devDependencies = ['husky'];
-
-  install(devDependencies, {
+  install(['husky'], {
     yarn: true,
     dev: true,
   });
 
   packageJson().setScript('prepare', 'husky install').save();
-
   exec('yarn prepare');
   exec(
     'npx husky add .husky/commit-msg \'npx --no-install commitlint --edit "$1"\'',
   );
-
-  json('package.json').unset('lint-staged').unset('gitHooks').save();
 }
 
 module.exports = function task() {

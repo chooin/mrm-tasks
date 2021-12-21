@@ -46,8 +46,6 @@ function src() {
     'src/pages/error/404/index.tsx',
     'src/pages/document.ejs',
     'src/hooks/index.ts',
-    'src/hooks/useLoad.ts',
-    'src/hooks/useUnload.ts',
     'src/routes.ts',
     'scripts/check-yarn.js',
     'typings.d.ts',
@@ -88,8 +86,7 @@ function script() {
     .save();
 }
 function husky() {
-  const devDependencies = ['husky'];
-  (0, mrm_core_1.install)(devDependencies, {
+  (0, mrm_core_1.install)(['husky'], {
     yarn: true,
     dev: true,
   });
@@ -98,10 +95,6 @@ function husky() {
   (0, child_process_1.exec)(
     'npx husky add .husky/commit-msg \'npx --no-install commitlint --edit "$1"\'',
   );
-  (0, mrm_core_1.json)('package.json')
-    .unset('lint-staged')
-    .unset('gitHooks')
-    .save();
 }
 module.exports = function task() {
   husky();
