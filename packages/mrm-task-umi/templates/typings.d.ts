@@ -1,13 +1,14 @@
-declare module "*.css";
-declare module "*.less";
-declare module "*.png";
-declare module "*.svg" {
+declare module '*.css';
+declare module '*.less';
+declare module '*.png';
+declare module '*.svg' {
   export function ReactComponent(
-    props: React.SVGProps<SVGSVGElement>
+    props: React.SVGProps<SVGSVGElement>,
   ): React.ReactElement;
   const url: string;
   export default url;
 }
 
 // 全局变量
+declare const APP_DEBUG: boolean;
 declare const API_URL: string;
