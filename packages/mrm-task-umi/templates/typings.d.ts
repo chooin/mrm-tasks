@@ -9,6 +9,7 @@ declare module '*.svg' {
   export default url;
 }
 
-// 全局变量
+// global variables
+declare const APP_NAME: string;
 declare const APP_DEBUG: boolean;
 declare const API_URL: string;
