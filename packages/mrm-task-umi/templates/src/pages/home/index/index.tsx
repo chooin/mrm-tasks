@@ -1,9 +1,9 @@
 import React from 'react';
-import { IRouteProps } from 'umi';
+import { IRouteComponentProps } from 'umi';
 import { useMount } from '@/hooks';
 import { Page } from './styled';
 
-const Index: React.FC = ({ route }: IRouteProps): JSX.Element => {
+const Index: React.FC = ({ route }: IRouteComponentProps): JSX.Element => {
   useMount(() => {});
 
   return <Page>{route.title}</Page>;
