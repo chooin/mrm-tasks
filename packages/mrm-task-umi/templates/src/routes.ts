@@ -6,10 +6,6 @@ import { IRoute } from 'umi';
  */
 export default [
   {
-    path: '/',
-    redirect: '/home/index',
-  },
-  {
     path: '/home',
     redirect: '/home/index',
     component: '@/layouts/default',
@@ -23,6 +19,6 @@ export default [
   },
   {
     path: '/*',
-    component: '@/pages/error/404',
+    redirect: '/home/index',
   },
 ] as IRoute[];

@@ -19,6 +19,7 @@ function dependency() {
       'antd-mobile-icons',
       'umi-plugin-keep-alive',
       'dayjs',
+      'ts-pattern',
     ],
     {
       yarn: true,
@@ -46,13 +47,12 @@ function src() {
     'src/layouts/default/styled.tsx',
     'src/pages/home/index/index.tsx',
     'src/pages/home/index/styled.ts',
-    'src/pages/error/404/index.tsx',
     'src/pages/document.ejs',
     'src/hooks/index.ts',
     'src/routes.ts',
+    'commitlint.config.js',
     'scripts/check-yarn.js',
     'typings.d.ts',
-    'commitlint.config.js',
     '.nvmrc',
   ];
 

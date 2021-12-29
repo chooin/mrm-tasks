@@ -3,7 +3,7 @@ import { IRouteComponentProps } from 'umi';
 import { useMount } from '@/hooks';
 import { Page } from './styled';
 
-const Index: React.FC = ({ route }: IRouteComponentProps): JSX.Element => {
+const Index = ({ route }: IRouteComponentProps): JSX.Element => {
   useMount(() => {});
 
   return <Page>{route.title}</Page>;
