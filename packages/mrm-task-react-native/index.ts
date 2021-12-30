@@ -32,7 +32,6 @@ function dependency() {
     '@types/react',
     '@types/react-native',
     // babel
-    '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-proposal-export-namespace-from',
     'babel-plugin-module-resolver',
     // other
