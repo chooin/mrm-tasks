@@ -37,7 +37,6 @@ function dependency() {
     '@types/react',
     '@types/react-native',
     // babel
-    '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-proposal-export-namespace-from',
     'babel-plugin-module-resolver',
     // other
@@ -74,13 +73,15 @@ function typescript() {
 function src() {
   const files = [
     'scripts/check-yarn.js',
-    'scripts/pod-update.sh',
+    'scripts/pod-upgrade.sh',
     'src/hooks/index.ts',
     'src/pages/home/index/index.tsx',
     'src/pages/home/index/styled.ts',
     'src/plugins/storage.ts',
     'src/routes/index.tsx',
     'src/routes/routes.tsx',
+    'src/utils/index.ts',
+    'src/utils/request.ts',
     'src/typings/index.d.ts',
     'src/typings/react-navigation.d.ts',
     'App.js',
@@ -101,7 +102,7 @@ function script() {
   pkg
     .setScript('preinstall', 'node scripts/check-yarn.js')
     .setScript('install', 'npx pod-install')
-    .setScript('pod-update', 'sh scripts/pod-update.sh')
+    .setScript('pod-upgrade', 'sh scripts/pod-update.sh')
     .save();
 }
 module.exports = function task() {
