@@ -1,7 +1,7 @@
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from '@react-native-community/async-storage';
 
-enum Keys {
-  Token = "TOKEN",
+export enum Keys {
+  Token = 'TOKEN',
 }
 
 export const getItem = async (key: Keys) => {
@@ -52,15 +52,7 @@ export const getAllKeys = async () => {
   try {
     keys = await AsyncStorage.getAllKeys();
   } catch {
-    console.warn("读取 AsyncStorage allKeys 失败");
+    console.warn('读取 AsyncStorage allKeys 失败');
   }
   return keys;
-};
-
-export default {
-  getItem,
-  setItem,
-  removeItem,
-  clear,
-  getAllKeys,
 };

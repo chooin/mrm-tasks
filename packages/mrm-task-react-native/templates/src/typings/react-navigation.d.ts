@@ -1,4 +1,4 @@
-import { ParamListBase, NavigationProp } from "@react-navigation/native";
+import { ParamListBase, NavigationProp } from '@react-navigation/native';
 
 interface MergeNavigation extends NavigationProp<ParamListBase> {
   replace: (name: string, params?: object) => void;

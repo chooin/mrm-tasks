@@ -1,11 +1,11 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {pages} from './routes';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { pages } from './routes';
 
 const RootStack = createStackNavigator();
 
-export default () => {
+export default (): JSX.Element => {
   return (
     <NavigationContainer>
       <RootStack.Navigator>

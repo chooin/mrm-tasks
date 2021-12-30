@@ -1,5 +1,5 @@
-import {json, install, packageJson, makeDirs, template} from 'mrm-core'
-import path from 'path'
+import { json, install, packageJson, makeDirs, template } from 'mrm-core';
+import path from 'path';
 
 function dependency() {
   const dependencies = [
@@ -24,7 +24,7 @@ function dependency() {
     // other
     'axios',
     '@react-native-community/async-storage',
-  ]
+  ];
 
   const devDependencies = [
     // ts and ts helper
@@ -37,19 +37,19 @@ function dependency() {
     'babel-plugin-module-resolver',
     // other
     '@types/styled-components',
-  ]
+  ];
   install(dependencies, {
     yarn: true,
-    dev: false
-  })
+    dev: false,
+  });
   install(devDependencies, {
     yarn: true,
-    dev: true
-  })
+    dev: true,
+  });
 }
 
 function typescript() {
-  const tsconfig = json('tsconfig.json')
+  const tsconfig = json('tsconfig.json');
 
   tsconfig
     .merge({
@@ -60,19 +60,19 @@ function typescript() {
         esModuleInterop: true,
         baseUrl: '.',
         paths: {
-          '@/*': ['./src/*']
-        }
+          '@/*': ['./src/*'],
+        },
       },
       include: ['src/**/*'],
-      exclude: ['node_modules', 'ios', 'android']
+      exclude: ['node_modules', 'ios', 'android'],
     })
-    .save()
+    .save();
 }
 
 function src() {
   const files = [
     'scripts/check-yarn.js',
-    'scripts/pod-update.sh',
+    'scripts/pod-upgrade.sh',
 
     'src/hooks/index.ts',
     'src/pages/home/index/index.tsx',
@@ -80,45 +80,38 @@ function src() {
     'src/plugins/storage.ts',
     'src/routes/index.tsx',
     'src/routes/routes.tsx',
+    'src/utils/index.ts',
+    'src/utils/request.ts',
     'src/typings/index.d.ts',
     'src/typings/react-navigation.d.ts',
 
     'App.js',
     'babel.config.js',
-  ]
+  ];
   files.forEach((file) => {
-    template(
-      file,
-      path.join(__dirname, 'templates', file)
-    )
-      .apply()
-      .save()
-  })
+    template(file, path.join(__dirname, 'templates', file)).apply().save();
+  });
 
-  makeDirs([
-    'src/components',
-    'src/services',
-  ])
+  makeDirs(['src/components', 'src/services']);
 }
 
 function script() {
-  const pkg = packageJson()
+  const pkg = packageJson();
 
   pkg
     .setScript('preinstall', 'node scripts/check-yarn.js')
     .setScript('install', 'npx pod-install')
-    .setScript('pod-update', 'sh scripts/pod-update.sh')
-    .save()
+    .setScript('pod-upgrade', 'sh scripts/pod-update.sh')
+    .save();
 }
 
 module.exports = function task() {
-  dependency()
-  typescript()
-  src()
-  script()
-}
+  dependency();
+  typescript();
+  src();
+  script();
+};
 
-module.exports.parameters = {
-}
+module.exports.parameters = {};
 
-module.exports.description = 'Mrm task for react native'
+module.exports.description = 'Mrm task for react native';

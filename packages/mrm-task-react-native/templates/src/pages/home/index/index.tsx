@@ -8,10 +8,10 @@ import {
   useUnload,
   useResize,
 } from 'react-native-lifecycle';
-import {useNavigation} from '@react-navigation/native';
-import {Page, Pressable, Text} from './styled';
+import { useNavigation } from '@react-navigation/native';
+import { Page, Pressable, Text } from './styled';
 
-export default () => {
+const Index = () => {
   const navigation = useNavigation();
 
   const onClick = () => {
@@ -61,3 +61,5 @@ export default () => {
     </Page>
   );
 };
+
+export default Index;
