@@ -7,7 +7,6 @@ import { IRoute } from 'umi';
 export default [
   {
     path: '/home',
-    redirect: '/home/index',
     component: '@/layouts/default',
     routes: [
       {

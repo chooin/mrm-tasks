@@ -66,7 +66,12 @@ function src() {
 }
 
 function environment() {
-  const files = ['.umirc.dev.ts', '.umirc.prod.ts', '.umirc.ts'];
+  const files = [
+    '.umirc.dev.ts',
+    '.umirc.test.ts',
+    '.umirc.prod.ts',
+    '.umirc.ts',
+  ];
 
   files.forEach((file) => {
     template(file, path.join(__dirname, 'templates', file)).apply().save();
@@ -78,9 +83,9 @@ function script() {
 
   pkg
     .setScript('preinstall', 'node scripts/check-yarn.js')
-    .setScript('start', 'UMI_ENV=dev umi dev')
-    .setScript('dev', 'yarn start')
-    .setScript('build:dev', 'UMI_ENV=dev umi build')
+    .setScript('start', 'yarn dev')
+    .setScript('dev', 'UMI_ENV=dev umi dev')
+    .setScript('build:test', 'UMI_ENV=test umi build')
     .setScript('build:prod', 'UMI_ENV=prod umi build')
     .removeScript('build')
     .save();
