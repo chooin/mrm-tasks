@@ -6,8 +6,58 @@ var __importDefault =
   };
 Object.defineProperty(exports, '__esModule', { value: true });
 const mrm_core_1 = require('mrm-core');
-const child_process_1 = require('child_process');
 const path_1 = __importDefault(require('path'));
+function removeFiles() {
+  (0, mrm_core_1.deleteFiles)([
+    'src/pages/index.tsx',
+    'src/pages/index.less',
+    '.prettierrc',
+  ]);
+}
+function addFiles() {
+  const files = [
+    '.umirc.dev.ts',
+    '.umirc.test.ts',
+    '.umirc.prod.ts',
+    '.umirc.ts',
+    '.eslintrc.js',
+    '.prettierrc.js',
+    'src/layouts/default/index.tsx',
+    'src/layouts/default/styled.tsx',
+    'src/pages/home/index/index.tsx',
+    'src/pages/home/index/styled.ts',
+    'src/pages/document.ejs',
+    'src/hooks/index.ts',
+    'src/routes.ts',
+    'commitlint.config.js',
+    'scripts/check-yarn.js',
+    'typings.d.ts',
+    '.nvmrc',
+  ];
+  files.forEach((file) => {
+    (0, mrm_core_1.template)(
+      file,
+      path_1.default.join(__dirname, 'templates', file),
+    )
+      .apply()
+      .save();
+  });
+}
+function addDirs() {
+  (0, mrm_core_1.makeDirs)(['src/services', 'src/components']);
+}
+function changeFiles() {
+  (0, mrm_core_1.lines)('.prettierignore').add(['dist']).save();
+  (0, mrm_core_1.lines)('.prettierrc.js')
+    .add([
+      "const fabric = require('@umijs/fabric');",
+      '',
+      'module.exports = {',
+      '  ...fabric.prettier,',
+      '};',
+    ])
+    .save();
+}
 function dependency() {
   (0, mrm_core_1.install)(
     [
@@ -30,54 +80,13 @@ function dependency() {
       '@types/styled-components',
       '@commitlint/config-conventional',
       '@commitlint/cli',
+      '@umijs/fabric',
     ],
     {
       yarn: true,
       dev: true,
     },
   );
-}
-function src() {
-  (0, mrm_core_1.deleteFiles)(['src/pages/index.tsx', 'src/pages/index.less']);
-  const files = [
-    'src/layouts/default/index.tsx',
-    'src/layouts/default/styled.tsx',
-    'src/pages/home/index/index.tsx',
-    'src/pages/home/index/styled.ts',
-    'src/pages/document.ejs',
-    'src/hooks/index.ts',
-    'src/routes.ts',
-    'commitlint.config.js',
-    'scripts/check-yarn.js',
-    'typings.d.ts',
-    '.nvmrc',
-  ];
-  files.forEach((file) => {
-    (0, mrm_core_1.template)(
-      file,
-      path_1.default.join(__dirname, 'templates', file),
-    )
-      .apply()
-      .save();
-  });
-  (0, mrm_core_1.makeDirs)(['src/services', 'src/components']);
-  (0, mrm_core_1.lines)('.prettierignore').add(['dist']).save();
-}
-function environment() {
-  const files = [
-    '.umirc.dev.ts',
-    '.umirc.test.ts',
-    '.umirc.prod.ts',
-    '.umirc.ts',
-  ];
-  files.forEach((file) => {
-    (0, mrm_core_1.template)(
-      file,
-      path_1.default.join(__dirname, 'templates', file),
-    )
-      .apply()
-      .save();
-  });
 }
 function script() {
   const pkg = (0, mrm_core_1.packageJson)();
@@ -90,21 +99,11 @@ function script() {
     .removeScript('build')
     .save();
 }
-function husky() {
-  (0, mrm_core_1.install)(['husky'], {
-    yarn: true,
-    dev: true,
-  });
-  (0, mrm_core_1.packageJson)().setScript('prepare', 'husky install').save();
-  (0, child_process_1.exec)('yarn prepare');
-  (0, child_process_1.exec)(
-    'npx husky add .husky/commit-msg \'npx --no-install commitlint --edit "$1"\'',
-  );
-}
 module.exports = function task() {
-  husky();
-  src();
-  environment();
+  removeFiles();
+  addFiles();
+  changeFiles();
+  addDirs();
   script();
   dependency();
 };

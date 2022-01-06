@@ -6,8 +6,54 @@ import {
   makeDirs,
   lines,
 } from 'mrm-core';
-import { exec } from 'child_process';
 import path from 'path';
+
+function removeFiles() {
+  deleteFiles(['src/pages/index.tsx', 'src/pages/index.less', '.prettierrc']);
+}
+
+function addFiles() {
+  const files = [
+    '.umirc.dev.ts',
+    '.umirc.test.ts',
+    '.umirc.prod.ts',
+    '.umirc.ts',
+    '.eslintrc.js',
+    '.prettierrc.js',
+    'src/layouts/default/index.tsx',
+    'src/layouts/default/styled.tsx',
+    'src/pages/home/index/index.tsx',
+    'src/pages/home/index/styled.ts',
+    'src/pages/document.ejs',
+    'src/hooks/index.ts',
+    'src/routes.ts',
+    'commitlint.config.js',
+    'scripts/check-yarn.js',
+    'typings.d.ts',
+    '.nvmrc',
+  ];
+
+  files.forEach((file) => {
+    template(file, path.join(__dirname, 'templates', file)).apply().save();
+  });
+}
+
+function addDirs() {
+  makeDirs(['src/services', 'src/components']);
+}
+
+function changeFiles() {
+  lines('.prettierignore').add(['dist']).save();
+  lines('.prettierrc.js')
+    .add([
+      "const fabric = require('@umijs/fabric');",
+      '',
+      'module.exports = {',
+      '  ...fabric.prettier,',
+      '};',
+    ])
+    .save();
+}
 
 function dependency() {
   install(
@@ -31,51 +77,13 @@ function dependency() {
       '@types/styled-components',
       '@commitlint/config-conventional',
       '@commitlint/cli',
+      '@umijs/fabric',
     ],
     {
       yarn: true,
       dev: true,
     },
   );
-}
-
-function src() {
-  deleteFiles(['src/pages/index.tsx', 'src/pages/index.less']);
-
-  const files = [
-    'src/layouts/default/index.tsx',
-    'src/layouts/default/styled.tsx',
-    'src/pages/home/index/index.tsx',
-    'src/pages/home/index/styled.ts',
-    'src/pages/document.ejs',
-    'src/hooks/index.ts',
-    'src/routes.ts',
-    'commitlint.config.js',
-    'scripts/check-yarn.js',
-    'typings.d.ts',
-    '.nvmrc',
-  ];
-
-  files.forEach((file) => {
-    template(file, path.join(__dirname, 'templates', file)).apply().save();
-  });
-
-  makeDirs(['src/services', 'src/components']);
-
-  lines('.prettierignore').add(['dist']).save();
-}
-
-function environment() {
-  const files = [
-    '.umirc.dev.ts',
-    '.umirc.test.ts',
-    '.umirc.prod.ts',
-    '.umirc.ts',
-  ];
-
-  files.forEach((file) => {
-    template(file, path.join(__dirname, 'templates', file)).apply().save();
-  });
 }
 
 function script() {
@@ -91,23 +99,11 @@ function script() {
     .save();
 }
 
-function husky() {
-  install(['husky'], {
-    yarn: true,
-    dev: true,
-  });
-
-  packageJson().setScript('prepare', 'husky install').save();
-  exec('yarn prepare');
-  exec(
-    'npx husky add .husky/commit-msg \'npx --no-install commitlint --edit "$1"\'',
-  );
-}
-
 module.exports = function task() {
-  husky();
-  src();
-  environment();
+  removeFiles();
+  addFiles();
+  changeFiles();
+  addDirs();
   script();
   dependency();
 };
