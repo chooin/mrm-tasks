@@ -90,10 +90,10 @@ function dependency() {
 function script() {
   const pkg = (0, mrm_core_1.packageJson)();
   pkg
-    .prependScript('start', 'yarn dev')
-    .prependScript('dev', 'UMI_ENV=dev umi dev')
-    .prependScript('build:test', 'UMI_ENV=test umi build')
-    .prependScript('build:prod', 'UMI_ENV=prod umi build')
+    .setScript('start', 'yarn dev')
+    .setScript('dev', 'UMI_ENV=dev umi dev')
+    .setScript('build:test', 'UMI_ENV=test umi build')
+    .setScript('build:prod', 'UMI_ENV=prod umi build')
     .setScript('preinstall', 'node scripts/check-yarn.js')
     .removeScript('build')
     .save();
