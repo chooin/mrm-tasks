@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout } from './styled';
 
 type Props = {
-  children: React.FC<undefined>;
+  children: React.FC;
 };
 
 export default (props: Props): JSX.Element => {
