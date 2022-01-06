@@ -11,5 +11,5 @@ declare module '*.svg' {
 
 // global variables
 declare const APP_NAME: string;
-declare const APP_DEBUG: boolean;
+declare const APP_ENV: 'prod' | 'test' | 'dev';
 declare const API_URL: string;

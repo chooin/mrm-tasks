@@ -2,7 +2,7 @@ import { defineConfig } from 'umi';
 
 export default defineConfig({
   define: {
-    APP_DEBUG: false,
+    APP_ENV: 'prod',
     API_URL: 'https://example.com/v1/',
   },
 });

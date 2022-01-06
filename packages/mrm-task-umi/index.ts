@@ -90,11 +90,11 @@ function script() {
   const pkg = packageJson();
 
   pkg
+    .prependScript('start', 'yarn dev')
+    .prependScript('dev', 'UMI_ENV=dev umi dev')
+    .prependScript('build:test', 'UMI_ENV=test umi build')
+    .prependScript('build:prod', 'UMI_ENV=prod umi build')
     .setScript('preinstall', 'node scripts/check-yarn.js')
-    .setScript('start', 'yarn dev')
-    .setScript('dev', 'UMI_ENV=dev umi dev')
-    .setScript('build:test', 'UMI_ENV=test umi build')
-    .setScript('build:prod', 'UMI_ENV=prod umi build')
     .removeScript('build')
     .save();
 }
