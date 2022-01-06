@@ -19,7 +19,6 @@ function addFiles() {
     '.umirc.prod.ts',
     '.umirc.ts',
     '.eslintrc.js',
-    '.prettierrc.js',
     'src/layouts/default/index.tsx',
     'src/layouts/default/styled.tsx',
     'src/pages/home/index/index.tsx',
