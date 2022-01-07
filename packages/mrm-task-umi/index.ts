@@ -3,8 +3,8 @@ import {
   packageJson,
   template,
   deleteFiles,
-  makeDirs,
   lines,
+  makeDirs,
 } from 'mrm-core';
 import path from 'path';
 
@@ -54,7 +54,7 @@ function changeFiles() {
     .save();
 }
 
-function dependency() {
+function installDependencies() {
   install(
     [
       '@umijs/hooks',
@@ -85,24 +85,32 @@ function dependency() {
   );
 }
 
-function script() {
+function changeScripts() {
   const pkg = packageJson();
 
+  const postinstall = pkg.getScript('postinstall');
+  const prettier = pkg.getScript('prettier');
+  const test = pkg.getScript('test');
+  const testCoverage = pkg.getScript('test:coverage');
+  pkg.removeScript('build').save();
   pkg
     .setScript('start', 'yarn dev')
     .setScript('dev', 'UMI_ENV=dev umi dev')
     .setScript('build:test', 'UMI_ENV=test umi build')
     .setScript('build:prod', 'UMI_ENV=prod umi build')
     .setScript('preinstall', 'node scripts/check-yarn.js')
-    .removeScript('build')
+    .setScript('postinstall', postinstall)
+    .setScript('prettier', prettier)
+    .setScript('test', test)
+    .setScript('test:coverage', testCoverage)
     .save();
 }
 
 module.exports = function task() {
   removeFiles();
   addFiles();
-  changeFiles();
   addDirs();
-  script();
-  dependency();
+  changeFiles();
+  changeScripts();
+  installDependencies();
 };
