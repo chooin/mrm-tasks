@@ -16,11 +16,6 @@ function removeFiles() {
 }
 function addFiles() {
   const files = [
-    '.umirc.dev.ts',
-    '.umirc.test.ts',
-    '.umirc.prod.ts',
-    '.umirc.ts',
-    '.eslintrc.js',
     'src/layouts/default/index.tsx',
     'src/layouts/default/styled.tsx',
     'src/pages/home/index/index.tsx',
@@ -28,10 +23,18 @@ function addFiles() {
     'src/pages/document.ejs',
     'src/hooks/index.ts',
     'src/routes.ts',
-    'commitlint.config.js',
+    'src/utils/index.ts',
+    'src/utils/merge-props.ts',
+    'src/utils/storage.ts',
     'scripts/check-yarn.js',
     'typings.d.ts',
+    'commitlint.config.js',
     '.nvmrc',
+    '.umirc.dev.ts',
+    '.umirc.test.ts',
+    '.umirc.prod.ts',
+    '.umirc.ts',
+    '.eslintrc.js',
   ];
   files.forEach((file) => {
     (0, mrm_core_1.template)(
