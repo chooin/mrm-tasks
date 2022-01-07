@@ -33,6 +33,8 @@ function addFiles() {
     '.umirc.prod.ts',
     '.umirc.ts',
     '.eslintrc.js',
+    'app.tsx',
+    'global.less',
   ];
 
   files.forEach((file) => {
@@ -68,6 +70,7 @@ function installDependencies() {
       'umi-plugin-keep-alive',
       'dayjs',
       'ts-pattern',
+      '@ebay/nice-modal-react',
     ],
     {
       yarn: true,
