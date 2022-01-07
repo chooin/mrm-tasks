@@ -93,7 +93,13 @@ function changeScripts() {
   const prettier = pkg.getScript('prettier');
   const test = pkg.getScript('test');
   const testCoverage = pkg.getScript('test:coverage');
-  pkg.removeScript('build').save();
+  pkg
+    .removeScript('build')
+    .removeScript('postinstall')
+    .removeScript('prettier')
+    .removeScript('test')
+    .removeScript('test:coverage')
+    .save();
   pkg
     .setScript('start', 'yarn dev')
     .setScript('dev', 'UMI_ENV=dev umi dev')
