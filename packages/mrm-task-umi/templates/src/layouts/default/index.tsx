@@ -2,9 +2,9 @@ import React from 'react';
 import { Layout } from './styled';
 
 type Props = {
-  children: React.FC;
+  children: React.ReactElement;
 };
 
 export default (props: Props): JSX.Element => {
-  return <Layout>{props.children}</Layout>;
+  return <Layout>{React.cloneElement(props.children, {})}</Layout>;
 };
