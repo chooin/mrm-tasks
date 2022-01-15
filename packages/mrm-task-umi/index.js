@@ -63,6 +63,13 @@ function changeFiles() {
       '};',
     ])
     .save();
+  (0, mrm_core_1.json)('package.json')
+    .merge({
+      jest: {
+        testPathIgnorePatterns: ['.umirc*'],
+      },
+    })
+    .save();
 }
 function installDependencies() {
   (0, mrm_core_1.install)(

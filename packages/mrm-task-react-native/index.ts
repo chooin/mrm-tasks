@@ -100,7 +100,7 @@ function script() {
   pkg
     .setScript('preinstall', 'node scripts/check-yarn.js')
     .setScript('install', 'npx pod-install')
-    .setScript('pod-upgrade', 'sh scripts/pod-update.sh')
+    .setScript('pod-upgrade', 'sh scripts/pod-upgrade.sh')
     .save();
 }
 

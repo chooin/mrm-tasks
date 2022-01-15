@@ -5,6 +5,7 @@ import {
   deleteFiles,
   lines,
   makeDirs,
+  json,
 } from 'mrm-core';
 import path from 'path';
 
@@ -58,6 +59,13 @@ function changeFiles() {
       '  ...fabric.prettier,',
       '};',
     ])
+    .save();
+  json('package.json')
+    .merge({
+      jest: {
+        testPathIgnorePatterns: ['.umirc*'],
+      },
+    })
     .save();
 }
 
