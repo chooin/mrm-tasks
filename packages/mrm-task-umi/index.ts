@@ -23,6 +23,8 @@ function addFiles() {
     'src/routes.ts',
     'src/utils/index.ts',
     'src/utils/merge-props.ts',
+    'src/utils/merge-list.ts',
+    'src/utils/parse-query.ts',
     'src/utils/storage.ts',
     'scripts/check-yarn.js',
     'typings.d.ts',

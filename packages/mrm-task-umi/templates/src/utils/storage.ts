@@ -2,7 +2,7 @@ export enum Keys {
   User = 'USER',
 }
 
-export const getItem = (key: Keys): any => {
+export const getItem = <T extends any>(key: Keys): T | null => {
   try {
     const value = window.localStorage.getItem(key);
     if (value) {
@@ -32,4 +32,12 @@ export const removeItem = (key: Keys): void => {
 
 export const clear = (): void => {
   window.localStorage.clear();
+};
+
+export default {
+  getItem,
+  setItem,
+  removeItem,
+  clear,
+  Keys,
 };
