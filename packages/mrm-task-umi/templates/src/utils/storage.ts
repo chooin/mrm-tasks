@@ -10,9 +10,7 @@ export const getItem = <T extends any>(key: Keys): T | null => {
     }
 
     return null;
-  } catch {
-    console.warn(`读取 window.localStorage 数据失败: ${key}`);
-  }
+  } catch {}
 
   return null;
 };
