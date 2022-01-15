@@ -37,8 +37,8 @@ function addFiles() {
     '.umirc.prod.ts',
     '.umirc.ts',
     '.eslintrc.js',
-    'app.tsx',
-    'global.less',
+    'src/app.tsx',
+    'src/global.less',
   ];
   files.forEach((file) => {
     (0, mrm_core_1.template)(

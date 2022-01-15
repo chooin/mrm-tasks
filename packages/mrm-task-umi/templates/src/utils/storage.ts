@@ -8,8 +8,6 @@ export const getItem = <T extends any>(key: Keys): T | null => {
     if (value) {
       return JSON.parse(value).data;
     }
-
-    return null;
   } catch {}
 
   return null;
