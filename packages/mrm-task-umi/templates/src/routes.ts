@@ -4,7 +4,7 @@ import { IRoute } from 'umi';
  * 路由文档
  * https://umijs.org/docs/convention-routing
  */
-export default [
+const routes: IRoute[] = [
   {
     path: '/home',
     component: '@/layouts/default',
@@ -20,4 +20,6 @@ export default [
     path: '/*',
     redirect: '/home/index',
   },
-] as IRoute[];
+];
+
+export default routes;
