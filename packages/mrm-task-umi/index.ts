@@ -16,7 +16,6 @@ function removeFiles() {
 function addFiles() {
   const files = [
     'src/layouts/default/index.tsx',
-    'src/layouts/default/styled.tsx',
     'src/pages/home/index/index.tsx',
     'src/pages/home/index/styled.ts',
     'src/pages/document.ejs',
