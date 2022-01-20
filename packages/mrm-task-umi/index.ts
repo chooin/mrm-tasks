@@ -7,9 +7,23 @@ import {
   makeDirs,
   json,
 } from 'mrm-core';
+import semver from 'semver';
+import kleur from 'kleur';
 import path from 'path';
 
 const NodeVersion = '16';
+
+function checkEnvironment() {
+  const currentNodeVersion = semver.clean(process.version) as string;
+  if (semver.lte(currentNodeVersion, `${NodeVersion}.0.0`)) {
+    console.log(
+      `${kleur.red(
+        'error',
+      )} @: expected node version "${NodeVersion}.x". Got "${currentNodeVersion}"`,
+    );
+    process.exit(1);
+  }
+}
 
 function removeFiles() {
   deleteFiles(['src/pages/index.tsx', 'src/pages/index.less', '.prettierrc']);
@@ -133,6 +147,7 @@ function changeScripts() {
 }
 
 module.exports = function task() {
+  checkEnvironment();
   removeFiles();
   addFiles();
   addDirs();

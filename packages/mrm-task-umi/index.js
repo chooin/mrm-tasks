@@ -6,8 +6,21 @@ var __importDefault =
   };
 Object.defineProperty(exports, '__esModule', { value: true });
 const mrm_core_1 = require('mrm-core');
+const semver_1 = __importDefault(require('semver'));
+const kleur_1 = __importDefault(require('kleur'));
 const path_1 = __importDefault(require('path'));
 const NodeVersion = '16';
+function checkEnvironment() {
+  const currentNodeVersion = semver_1.default.clean(process.version);
+  if (semver_1.default.lte(currentNodeVersion, `${NodeVersion}.0.0`)) {
+    console.log(
+      `${kleur_1.default.red(
+        'error',
+      )} @: expected node version "${NodeVersion}.x". Got "${currentNodeVersion}"`,
+    );
+    process.exit(1);
+  }
+}
 function removeFiles() {
   (0, mrm_core_1.deleteFiles)([
     'src/pages/index.tsx',
@@ -131,6 +144,7 @@ function changeScripts() {
     .save();
 }
 module.exports = function task() {
+  checkEnvironment();
   removeFiles();
   addFiles();
   addDirs();
