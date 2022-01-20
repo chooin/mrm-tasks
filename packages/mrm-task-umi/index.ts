@@ -9,6 +9,8 @@ import {
 } from 'mrm-core';
 import path from 'path';
 
+const NodeVersion = '16';
+
 function removeFiles() {
   deleteFiles(['src/pages/index.tsx', 'src/pages/index.less', '.prettierrc']);
 }
@@ -29,7 +31,6 @@ function addFiles() {
     'scripts/check-yarn.js',
     'typings.d.ts',
     'commitlint.config.js',
-    '.nvmrc',
     '.umirc.dev.ts',
     '.umirc.test.ts',
     '.umirc.prod.ts',
@@ -50,6 +51,7 @@ function addDirs() {
 
 function changeFiles() {
   lines('.prettierignore').add(['dist']).save();
+  lines('.nvmrc').add([NodeVersion]).save();
   lines('.prettierrc.js')
     .add([
       "const fabric = require('@umijs/fabric');",
@@ -61,6 +63,9 @@ function changeFiles() {
     .save();
   json('package.json')
     .merge({
+      engines: {
+        node: `${NodeVersion}.x`,
+      },
       jest: {
         testPathIgnorePatterns: ['.umirc*'],
       },

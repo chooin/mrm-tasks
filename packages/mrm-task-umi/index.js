@@ -7,6 +7,7 @@ var __importDefault =
 Object.defineProperty(exports, '__esModule', { value: true });
 const mrm_core_1 = require('mrm-core');
 const path_1 = __importDefault(require('path'));
+const NodeVersion = '16';
 function removeFiles() {
   (0, mrm_core_1.deleteFiles)([
     'src/pages/index.tsx',
@@ -30,7 +31,6 @@ function addFiles() {
     'scripts/check-yarn.js',
     'typings.d.ts',
     'commitlint.config.js',
-    '.nvmrc',
     '.umirc.dev.ts',
     '.umirc.test.ts',
     '.umirc.prod.ts',
@@ -53,6 +53,7 @@ function addDirs() {
 }
 function changeFiles() {
   (0, mrm_core_1.lines)('.prettierignore').add(['dist']).save();
+  (0, mrm_core_1.lines)('.nvmrc').add([NodeVersion]).save();
   (0, mrm_core_1.lines)('.prettierrc.js')
     .add([
       "const fabric = require('@umijs/fabric');",
@@ -64,6 +65,9 @@ function changeFiles() {
     .save();
   (0, mrm_core_1.json)('package.json')
     .merge({
+      engines: {
+        node: `${NodeVersion}.x`,
+      },
       jest: {
         testPathIgnorePatterns: ['.umirc*'],
       },
