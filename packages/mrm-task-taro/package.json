@@ -9,6 +9,11 @@
     "build": "npx tsc"
   },
   "dependencies": {
-    "mrm-core": "^6.1.7"
+    "kleur": "^4.1.4",
+    "mrm-core": "^6.1.7",
+    "semver": "^7.3.5"
+  },
+  "devDependencies": {
+    "@types/semver": "^7.3.9"
   }
 }
