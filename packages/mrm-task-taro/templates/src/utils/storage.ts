@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro';
 
 export enum Keys {
-  User = 'User',
+  User = 'USER',
 }
 
 export const getItem = <T extends any>(key: Keys): T | null => {
