@@ -5,7 +5,9 @@ export enum Keys {
 }
 
 export const getItem = <T extends any>(key: Keys): T | null => {
-  return Taro.getStorageSync(key);
+  const value = Taro.getStorageSync<T>(key);
+
+  return value === '' ? null : value;
 };
 
 export const setItem = (key: Keys, value: any): void => {

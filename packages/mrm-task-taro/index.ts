@@ -35,6 +35,9 @@ function addFiles() {
     'src/pages/home/index/index.scss',
     'config/dev.js',
     'config/prod.js',
+    'src/utils/index.ts',
+    'src/utils/merge-list.ts',
+    'src/utils/storage.ts',
     '.env.dev',
     '.env.prod',
   ];
