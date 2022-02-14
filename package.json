@@ -13,11 +13,13 @@
     "build:serve": "yarn workspace mrm-task-serve build",
     "build:umi": "yarn workspace mrm-task-umi build",
     "build:taro": "yarn workspace mrm-task-taro build",
+    "build:laravel": "yarn workspace mrm-task-laravel build",
     "np:next": "yarn workspace mrm-task-next publish",
     "np:react-native": "yarn workspace mrm-task-react-native publish",
     "np:serve": "yarn workspace mrm-task-serve publish",
     "np:umi": "yarn workspace mrm-task-umi publish",
-    "np:taro": "yarn workspace mrm-task-taro publish"
+    "np:taro": "yarn workspace mrm-task-taro publish",
+    "np:laravel": "yarn workspace mrm-task-laravel publish"
   },
   "workspaces": [
     "packages/*"

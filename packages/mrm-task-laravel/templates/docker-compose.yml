@@ -1,0 +1,17 @@
+version: '3'
+services:
+  laravel:
+    image: laravel
+    restart: always
+    build:
+      context: .
+    container_name: laravel
+    volumes:
+      - ${PWD}/storage:/app/storage
+    ports:
+      - '8000:8000'
+    entrypoint:
+      - php
+      - artisan
+      - serve
+      - --host=0.0.0.0
