@@ -1,5 +1,5 @@
-import Taro from '@tarojs/taro'
+import { PageConfig } from '@tarojs/taro';
 
 export default {
-  navigationBarTitleText: '首页'
-} as Taro.PageConfig
+  navigationBarTitleText: '首页',
+} as PageConfig;

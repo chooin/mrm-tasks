@@ -42,6 +42,7 @@ function addFiles() {
     'src/utils/merge-list.ts',
     'src/utils/parse-query.ts',
     'src/utils/storage.ts',
+    'src/utils/yup.ts',
     'scripts/check-yarn.js',
     'typings.d.ts',
     'commitlint.config.js',
@@ -98,6 +99,7 @@ function installDependencies() {
       'umi-plugin-keep-alive',
       'dayjs',
       'ts-pattern',
+      'yup',
       '@ebay/nice-modal-react',
     ],
     {
