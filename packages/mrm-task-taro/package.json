@@ -1,6 +1,6 @@
 {
   "name": "mrm-task-taro",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "main": "index.js",
   "repository": "git@github.com:chooin/mrm-tasks.git",
   "author": "Devin.Zhu <chooin@126.com>",
@@ -9,6 +9,7 @@
     "build": "npx tsc"
   },
   "dependencies": {
+    "fast-files": "^1.0.9",
     "kleur": "^4.1.4",
     "mrm-core": "^6.1.7",
     "semver": "^7.3.5"
