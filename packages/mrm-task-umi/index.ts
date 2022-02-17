@@ -92,11 +92,11 @@ function installDependencies() {
   install(
     [
       '@umijs/hooks',
-      'query-string',
       'styled-components',
       'antd-mobile@next',
       'antd-mobile-icons',
       'umi-plugin-keep-alive',
+      'query-string',
       'dayjs',
       'ts-pattern',
       'yup',

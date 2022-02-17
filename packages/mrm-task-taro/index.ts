@@ -33,13 +33,11 @@ function addFiles() {
     'src/pages/home/index/index.config.ts',
     'src/pages/home/index/index.tsx',
     'src/pages/home/index/index.scss',
-    'config/dev.js',
-    'config/prod.js',
     'src/utils/index.ts',
     'src/utils/merge-list.ts',
+    'src/utils/parse-props.ts',
+    'src/utils/parse-query.ts',
     'src/utils/storage.ts',
-    '.env.dev',
-    '.env.prod',
   ];
 
   files.forEach((file) => {
@@ -72,15 +70,23 @@ function changeFiles() {
 }
 
 function installDependencies() {
-  const devDependencies = [
-    'dotenv',
-    '@tarojs/cli', // 锁定 cli 版本
-  ];
+  install(
+    ['query-string', 'dayjs', 'ts-pattern', 'yup', '@ebay/nice-modal-react'],
+    {
+      yarn: true,
+      dev: false,
+    },
+  );
 
-  install(devDependencies, {
-    yarn: true,
-    dev: true,
-  });
+  install(
+    [
+      '@tarojs/cli', // 锁定 cli 版本
+    ],
+    {
+      yarn: true,
+      dev: true,
+    },
+  );
 }
 
 module.exports = function task() {
