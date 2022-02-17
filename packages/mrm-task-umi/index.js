@@ -151,6 +151,6 @@ module.exports = function task() {
   addFiles();
   addDirs();
   changeFiles();
-  changeScripts();
   installDependencies();
+  changeScripts();
 };
