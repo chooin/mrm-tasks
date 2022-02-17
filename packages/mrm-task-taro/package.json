@@ -1,6 +1,6 @@
 {
   "name": "mrm-task-taro",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "main": "index.js",
   "repository": "git@github.com:chooin/mrm-tasks.git",
   "author": "Devin.Zhu <chooin@126.com>",
