@@ -9,6 +9,7 @@ const mrm_core_1 = require('mrm-core');
 const semver_1 = __importDefault(require('semver'));
 const kleur_1 = __importDefault(require('kleur'));
 const path_1 = __importDefault(require('path'));
+const fast_files_1 = require('fast-files');
 const NodeVersion = '16';
 function checkEnvironment() {
   const currentNodeVersion = semver_1.default.clean(process.version);
@@ -31,7 +32,7 @@ function addFiles() {
     'src/pages/home/index/index.scss',
     'src/utils/index.ts',
     'src/utils/merge-list.ts',
-    'src/utils/parse-props.ts',
+    'src/utils/merge-props.ts',
     'src/utils/parse-query.ts',
     'src/utils/storage.ts',
   ];
@@ -50,11 +51,46 @@ function addDirs() {
 function changeFiles() {
   (0, mrm_core_1.lines)('.gitignore').add('.idea').save();
   (0, mrm_core_1.lines)('.nvmrc').add([NodeVersion]).save();
+  (0, mrm_core_1.lines)('global.d.ts')
+    .add([
+      '',
+      'declare const APP_DEBUG: boolean;',
+      'declare const API_URL: string;',
+    ])
+    .save();
   (0, mrm_core_1.json)('tsconfig.json')
     .set('compilerOptions.paths', {
       '@/*': ['./src/*'],
     })
     .save();
+  (0, fast_files_1.js)()
+    .readFile('./config/dev.js')
+    .replace(
+      'defineConstants: {}',
+      `
+  defineConstants: {
+    APP_DEBUG: true,
+    APP_URL: '"https://example.com"'
+  }
+`,
+    )
+    .saveFile(null, {
+      override: true,
+    });
+  (0, fast_files_1.js)()
+    .readFile('./config/prod.js')
+    .replace(
+      'defineConstants: {}',
+      `
+  defineConstants: {
+    APP_DEBUG: false,
+    APP_URL: '"https://example.com"'
+  }
+`,
+    )
+    .saveFile(null, {
+      override: true,
+    });
   (0, mrm_core_1.json)('package.json')
     .merge({
       engines: {

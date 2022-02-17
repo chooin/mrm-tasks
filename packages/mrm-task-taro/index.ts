@@ -9,6 +9,7 @@ import {
 import semver from 'semver';
 import kleur from 'kleur';
 import path from 'path';
+import { js } from 'fast-files';
 
 const NodeVersion = '16';
 
@@ -35,7 +36,7 @@ function addFiles() {
     'src/pages/home/index/index.scss',
     'src/utils/index.ts',
     'src/utils/merge-list.ts',
-    'src/utils/parse-props.ts',
+    'src/utils/merge-props.ts',
     'src/utils/parse-query.ts',
     'src/utils/storage.ts',
   ];
@@ -52,11 +53,46 @@ function addDirs() {
 function changeFiles() {
   lines('.gitignore').add('.idea').save();
   lines('.nvmrc').add([NodeVersion]).save();
+  lines('global.d.ts')
+    .add([
+      '',
+      'declare const APP_DEBUG: boolean;',
+      'declare const API_URL: string;',
+    ])
+    .save();
   json('tsconfig.json')
     .set('compilerOptions.paths', {
       '@/*': ['./src/*'],
     })
     .save();
+  js()
+    .readFile('./config/dev.js')
+    .replace(
+      'defineConstants: {}',
+      `
+  defineConstants: {
+    APP_DEBUG: true,
+    APP_URL: '"https://example.com"'
+  }
+`,
+    )
+    .saveFile(null, {
+      override: true,
+    });
+  js()
+    .readFile('./config/prod.js')
+    .replace(
+      'defineConstants: {}',
+      `
+  defineConstants: {
+    APP_DEBUG: false,
+    APP_URL: '"https://example.com"'
+  }
+`,
+    )
+    .saveFile(null, {
+      override: true,
+    });
   json('package.json')
     .merge({
       engines: {
