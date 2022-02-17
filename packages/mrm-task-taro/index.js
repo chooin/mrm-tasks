@@ -64,7 +64,7 @@ function changeFiles() {
     })
     .save();
   (0, fast_files_1.js)()
-    .readFile('./config/dev.js')
+    .readFile('config/dev.js')
     .replace(
       'defineConstants: {}',
       `
@@ -78,7 +78,7 @@ function changeFiles() {
       override: true,
     });
   (0, fast_files_1.js)()
-    .readFile('./config/prod.js')
+    .readFile('config/prod.js')
     .replace(
       'defineConstants: {}',
       `
@@ -88,6 +88,12 @@ function changeFiles() {
   }
 `,
     )
+    .saveFile(null, {
+      override: true,
+    });
+  (0, fast_files_1.js)()
+    .readFile('src/app.config.ts')
+    .replace('pages/index/index', 'pages/home/index/index')
     .saveFile(null, {
       override: true,
     });
