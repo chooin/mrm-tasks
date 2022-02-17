@@ -29,13 +29,11 @@ function addFiles() {
     'src/pages/home/index/index.config.ts',
     'src/pages/home/index/index.tsx',
     'src/pages/home/index/index.scss',
-    'config/dev.js',
-    'config/prod.js',
     'src/utils/index.ts',
     'src/utils/merge-list.ts',
+    'src/utils/parse-props.ts',
+    'src/utils/parse-query.ts',
     'src/utils/storage.ts',
-    '.env.dev',
-    '.env.prod',
   ];
   files.forEach((file) => {
     (0, mrm_core_1.template)(
@@ -62,21 +60,26 @@ function changeFiles() {
       engines: {
         node: `${NodeVersion}.x`,
       },
-      jest: {
-        testPathIgnorePatterns: ['.umirc*'],
-      },
     })
     .save();
 }
 function installDependencies() {
-  const devDependencies = [
-    'dotenv',
-    '@tarojs/cli', // 锁定 cli 版本
-  ];
-  (0, mrm_core_1.install)(devDependencies, {
-    yarn: true,
-    dev: true,
-  });
+  (0, mrm_core_1.install)(
+    ['query-string', 'dayjs', 'ts-pattern', 'yup', '@ebay/nice-modal-react'],
+    {
+      yarn: true,
+      dev: false,
+    },
+  );
+  (0, mrm_core_1.install)(
+    [
+      '@tarojs/cli', // 锁定 cli 版本
+    ],
+    {
+      yarn: true,
+      dev: true,
+    },
+  );
 }
 module.exports = function task() {
   checkEnvironment();

@@ -62,9 +62,6 @@ function changeFiles() {
       engines: {
         node: `${NodeVersion}.x`,
       },
-      jest: {
-        testPathIgnorePatterns: ['.umirc*'],
-      },
     })
     .save();
 }
