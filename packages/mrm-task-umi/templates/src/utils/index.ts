@@ -1,6 +1,6 @@
-export { default as storage } from './storage';
+export * as storage from './storage';
 export { default as yup } from './yup';
-export { default as toast } from './toast';
+export * as toast from './toast';
 export * from './parse-query';
 export * from './merge-list';
 export * from './merge-props';

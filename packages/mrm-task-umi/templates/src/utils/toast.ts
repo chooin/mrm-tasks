@@ -1,9 +1,9 @@
-import { Toast } from 'ant-mobile';
+import { Toast } from 'antd-mobile';
 import { match, select, __ } from 'ts-pattern';
 import { ValidationError } from 'yup';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
 
-const error = (
+export const error = (
   e: ValidateErrorEntity | ValidationError | Error,
 ): Promise<void> => {
   return new Promise((resolve) => {
@@ -49,8 +49,4 @@ const error = (
       },
     });
   });
-};
-
-export default {
-  error,
 };

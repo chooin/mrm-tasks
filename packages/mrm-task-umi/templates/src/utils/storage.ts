@@ -29,11 +29,3 @@ export const removeItem = (key: Keys): void => {
 export const clear = (): void => {
   window.localStorage.clear();
 };
-
-export default {
-  getItem,
-  setItem,
-  removeItem,
-  clear,
-  Keys,
-};

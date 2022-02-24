@@ -12,7 +12,7 @@ export const setItem = (key: Keys, value: any): void => {
   Taro.setStorageSync(key, value);
 };
 
-export const removeItem = (key: Keys) => {
+export const removeItem = (key: Keys): void => {
   Taro.removeStorageSync(key);
 };
 
