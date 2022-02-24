@@ -41,9 +41,9 @@ function addFiles() {
     'src/utils/merge-list.ts',
     'src/utils/parse-query.ts',
     'src/utils/storage.ts',
+    'src/utils/toast.ts',
     'src/utils/yup.ts',
     'scripts/check-yarn.js',
-    'typings.d.ts',
     'commitlint.config.js',
     '.umirc.dev.ts',
     '.umirc.test.ts',
@@ -77,6 +77,15 @@ function changeFiles() {
       '};',
     ])
     .save();
+  (0, mrm_core_1.lines)('typings.d.ts')
+    .add([
+      '',
+      '// global variables',
+      'declare const APP_NAME: string;',
+      "declare const APP_ENV: 'prod' | 'test' | 'dev';",
+      'declare const API_URL: string;',
+    ])
+    .save();
   (0, mrm_core_1.json)('package.json')
     .merge({
       engines: {
@@ -84,6 +93,9 @@ function changeFiles() {
       },
       jest: {
         testPathIgnorePatterns: ['.umirc*'],
+      },
+      gitHooks: {
+        'commit-msg': 'yarn commitlint --edit $1',
       },
     })
     .save();
@@ -93,7 +105,7 @@ function installDependencies() {
     [
       '@umijs/hooks',
       'styled-components',
-      'antd-mobile@next',
+      'antd-mobile',
       'antd-mobile-icons',
       'umi-plugin-keep-alive',
       'query-string',
