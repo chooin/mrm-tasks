@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import Taro from '@tarojs/taro';
-import { useShow } from '@/hooks';
+import Taro, { useDidShow } from '@tarojs/taro';
 import config from '@/app.config';
 
-type RequestResponse = Promise<void | { openSettings: () => void }>;
+type RequestResult = Promise<void | { openSettings: () => void }>;
 type State = boolean | null;
 type Result = {
   state: State;
-  request: () => RequestResponse;
+  request: () => RequestResult;
 };
 
 export enum AuthorizeScopes {
@@ -17,7 +16,7 @@ export enum AuthorizeScopes {
 export function useAuthorize(scope: AuthorizeScopes): Result {
   const [state, setState] = useState<State>(null);
 
-  useShow(() => {
+  useDidShow(() => {
     getSetting();
   });
 
@@ -44,7 +43,7 @@ export function useAuthorize(scope: AuthorizeScopes): Result {
     });
   };
 
-  const request = (): RequestResponse => {
+  const request = (): RequestResult => {
     return new Promise((resolve, reject) => {
       Taro.getSetting().then(({ authSetting }) => {
         if (authSetting[scope]) {

@@ -34,6 +34,11 @@ function addFiles() {
     'src/pages/home/index/index.config.ts',
     'src/pages/home/index/index.tsx',
     'src/pages/home/index/index.scss',
+    'src/hooks/index.ts',
+    'src/hooks/useAuthorize.ts',
+    'src/hooks/useEvent.ts',
+    'src/hooks/useLoad.ts',
+    'src/hooks/useUnload.ts',
     'src/utils/index.ts',
     'src/utils/merge-list.ts',
     'src/utils/merge-props.ts',
@@ -95,7 +100,7 @@ function changeFiles() {
     });
   js()
     .readFile('src/app.config.ts')
-    .replace('pages/index/index', 'pages/home/index/index')
+    .replace("'pages/index/index'", "'pages/home/index/index'")
     .saveFile(null, {
       override: true,
     });

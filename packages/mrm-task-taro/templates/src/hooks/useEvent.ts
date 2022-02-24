@@ -1,14 +1,14 @@
 import { Events } from '@tarojs/taro';
 import { useLoad, useUnload } from '@/hooks';
 
-export interface EventEmitterResult {
+interface EventResult {
   /**
    * 事件触发与事件监听器功能（页面创建时创建，页面销毁时销毁）
    */
   emit: (...params: any[]) => void;
 }
 
-type Callback = (...args: any[]) => void;
+type EventCallback = (...args: any[]) => void;
 
 const events = new Events();
 
@@ -18,7 +18,7 @@ const events = new Events();
  * @param fn
  * @public
  */
-export function useEvent(eventType: string, fn?: Callback): EventEmitterResult {
+export function useEvent(eventType: string, fn?: EventCallback): EventResult {
   useLoad(() => {
     if (typeof fn === 'function') {
       events.on(eventType, fn);
