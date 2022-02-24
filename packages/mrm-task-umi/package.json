@@ -1,6 +1,6 @@
 {
   "name": "mrm-task-umi",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "main": "index.js",
   "repository": "git@github.com:chooin/mrm-tasks.git",
   "author": "Devin.Zhu <chooin@126.com>",
@@ -14,6 +14,12 @@
     "semver": "^7.3.5"
   },
   "devDependencies": {
-    "@types/semver": "^7.3.9"
+    "@ebay/nice-modal-react": "^1.2.0",
+    "@types/semver": "^7.3.9",
+    "antd-mobile": "^5.1.0",
+    "rc-field-form": "^1.23.0",
+    "ts-pattern": "^3.3.5",
+    "umi": "^3.5.20",
+    "yup": "^0.32.11"
   }
 }
