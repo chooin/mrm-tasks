@@ -115,7 +115,14 @@ function changeFiles() {
 
 function installDependencies() {
   install(
-    ['query-string', 'dayjs', 'ts-pattern', 'yup', '@ebay/nice-modal-react'],
+    [
+      'query-string',
+      'dayjs',
+      'ahooks',
+      'ts-pattern',
+      'yup',
+      '@ebay/nice-modal-react',
+    ],
     {
       yarn: true,
       dev: false,

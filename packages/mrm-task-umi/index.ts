@@ -103,7 +103,7 @@ function changeFiles() {
 function installDependencies() {
   install(
     [
-      '@umijs/hooks',
+      'ahooks',
       'styled-components',
       'antd-mobile',
       'antd-mobile-icons',

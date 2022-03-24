@@ -1,1 +1,1 @@
-export * from '@umijs/hooks';
+export * from 'ahooks';

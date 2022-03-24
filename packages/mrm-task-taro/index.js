@@ -112,7 +112,14 @@ function changeFiles() {
 }
 function installDependencies() {
   (0, mrm_core_1.install)(
-    ['query-string', 'dayjs', 'ts-pattern', 'yup', '@ebay/nice-modal-react'],
+    [
+      'query-string',
+      'dayjs',
+      'ahooks',
+      'ts-pattern',
+      'yup',
+      '@ebay/nice-modal-react',
+    ],
     {
       yarn: true,
       dev: false,

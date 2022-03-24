@@ -103,7 +103,7 @@ function changeFiles() {
 function installDependencies() {
   (0, mrm_core_1.install)(
     [
-      '@umijs/hooks',
+      'ahooks',
       'styled-components',
       'antd-mobile',
       'antd-mobile-icons',
