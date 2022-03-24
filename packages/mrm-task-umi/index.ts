@@ -61,7 +61,7 @@ function addFiles() {
 }
 
 function addDirs() {
-  makeDirs(['src/services', 'src/components']);
+  makeDirs(['src/services', 'src/components', 'src/enums']);
 }
 
 function changeFiles() {

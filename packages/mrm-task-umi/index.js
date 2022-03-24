@@ -63,7 +63,7 @@ function addFiles() {
   });
 }
 function addDirs() {
-  (0, mrm_core_1.makeDirs)(['src/services', 'src/components']);
+  (0, mrm_core_1.makeDirs)(['src/services', 'src/components', 'src/enums']);
 }
 function changeFiles() {
   (0, mrm_core_1.lines)('.prettierignore').add(['dist']).save();
