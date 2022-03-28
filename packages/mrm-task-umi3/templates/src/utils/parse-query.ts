@@ -5,9 +5,7 @@ type Options = {
   parseBooleans?: boolean;
 };
 
-interface Query {
-  [k: string]: string | string[] | null;
-}
+type Query = Record<string, string | string[] | null>;
 
 export function parseQuery<T extends {}>(query: Query, options: Options): T;
 

@@ -6,7 +6,7 @@ type Options = {
   expiredAt?: number;
 };
 
-export const getItem = <T extends any>(key: Keys): T | null => {
+const getItem = <T extends any>(key: Keys): T | null => {
   try {
     const value = window.localStorage.getItem(key);
     if (value) {
@@ -22,7 +22,7 @@ export const getItem = <T extends any>(key: Keys): T | null => {
   return null;
 };
 
-export const setItem = (key: Keys, value: any, options: Options = {}): void => {
+const setItem = (key: Keys, value: any, options: Options = {}): void => {
   window.localStorage.setItem(
     key,
     JSON.stringify({
@@ -32,10 +32,18 @@ export const setItem = (key: Keys, value: any, options: Options = {}): void => {
   );
 };
 
-export const removeItem = (key: Keys): void => {
+const removeItem = (key: Keys): void => {
   window.localStorage.removeItem(key);
 };
 
-export const clear = (): void => {
+const clear = (): void => {
   window.localStorage.clear();
+};
+
+export default {
+  Keys,
+  getItem,
+  setItem,
+  removeItem,
+  clear,
 };
