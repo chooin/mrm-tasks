@@ -11,7 +11,7 @@
     "build:next": "yarn workspace mrm-task-next build",
     "build:react-native": "yarn workspace mrm-task-react-native build",
     "build:serve": "yarn workspace mrm-task-serve build",
-    "build:umi": "yarn workspace mrm-task-umi build",
+    "_build:umi": "yarn workspace mrm-task-umi build",
     "build:umi3": "yarn workspace mrm-task-umi3 build",
     "build:taro": "yarn workspace mrm-task-taro build",
     "build:laravel": "yarn workspace mrm-task-laravel build",
