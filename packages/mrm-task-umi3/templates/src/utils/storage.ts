@@ -6,13 +6,14 @@ type Options = {
   expiredAt?: number;
 };
 
-const getItem = <T extends any>(key: Keys): T | null => {
+function getItem<T extends any>(key: Keys): T;
+function getItem(key: Keys) {
   try {
     const value = window.localStorage.getItem(key);
     if (value) {
       const { data, options } = JSON.parse(value);
       if (options?.expiredAt < Date.now()) {
-        removeItem(key);
+        window.localStorage.removeItem(key);
         return null;
       }
       return data;
@@ -20,9 +21,9 @@ const getItem = <T extends any>(key: Keys): T | null => {
   } catch {}
 
   return null;
-};
+}
 
-const setItem = (key: Keys, value: any, options: Options = {}): void => {
+function setItem(key: Keys, value: any, options: Options = {}): void {
   window.localStorage.setItem(
     key,
     JSON.stringify({
@@ -30,15 +31,15 @@ const setItem = (key: Keys, value: any, options: Options = {}): void => {
       options,
     }),
   );
-};
+}
 
-const removeItem = (key: Keys): void => {
+function removeItem(key: Keys): void {
   window.localStorage.removeItem(key);
-};
+}
 
-const clear = (): void => {
+function clear(): void {
   window.localStorage.clear();
-};
+}
 
 export default {
   Keys,
