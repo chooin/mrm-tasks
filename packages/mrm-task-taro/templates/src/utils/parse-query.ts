@@ -6,7 +6,7 @@ type Options = {
   parseBooleans?: boolean;
 };
 
-type Query = any;
+type Query = Partial<Record<string, string>>;
 
 export function parseQuery<T extends {}>(query: Query, options: Options): T;
 
