@@ -2,7 +2,7 @@ import queryString, { StringifyOptions, ParseOptions } from 'query-string';
 
 type Options = StringifyOptions &
   ParseOptions & {
-    trim?: boolean;
+    trimStrings?: boolean;
   };
 
 type Query = any;
@@ -10,7 +10,7 @@ type Query = any;
 export function parseQuery<T extends {}>(query: Query, options: Options): T;
 
 export function parseQuery(query: Query, options: Options) {
-  if (options.trim) {
+  if (options.trimStrings) {
     Object.entries(query).forEach(([key, value]) => {
       if (typeof value === 'string') {
         query[key] = value.trim();
