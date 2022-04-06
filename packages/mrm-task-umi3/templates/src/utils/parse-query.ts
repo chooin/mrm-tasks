@@ -3,7 +3,7 @@ import queryString from 'query-string';
 
 type Options = StringifyOptions & ParseOptions;
 
-type Query = Record<string, string | number[] | null>;
+type Query = Record<string, string | string[] | null>;
 
 export function parseQuery<T extends {}>(query: Query, options: Options): T;
 
