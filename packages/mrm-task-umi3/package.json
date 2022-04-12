@@ -1,6 +1,6 @@
 {
   "name": "mrm-task-umi3",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "main": "index.js",
   "repository": "git@github.com:chooin/mrm-tasks.git",
   "author": "Devin.Zhu <chooin@126.com>",
@@ -18,7 +18,7 @@
     "@types/semver": "^7.3.9",
     "antd-mobile": "^5.1.0",
     "rc-field-form": "^1.23.0",
-    "ts-pattern": "^3.3.5",
+    "ts-pattern": "^4.0.1",
     "umi": "^3.5.20",
     "yup": "^0.32.11"
   }
