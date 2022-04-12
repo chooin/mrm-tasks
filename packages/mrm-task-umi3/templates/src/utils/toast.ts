@@ -1,5 +1,5 @@
 import { Toast } from 'antd-mobile';
-import { match, select, __ } from 'ts-pattern';
+import { match, P } from 'ts-pattern';
 import type { ValidationError } from 'yup';
 import type { ValidateErrorEntity } from 'rc-field-form/lib/interface';
 
@@ -15,19 +15,19 @@ const error = (
       afterClose?: () => void;
     } = match(e)
       // 表单验证异常
-      .with({ errorFields: [{ errors: [select()] }] }, (_) => {
+      .with({ errorFields: [{ errors: [P.select()] }] }, (_) => {
         return {
           message: _[0][0],
         };
       })
       // yup 校验异常
-      .with({ errors: [select()] }, (_) => {
+      .with({ errors: [P.select()] }, (_) => {
         return {
           message: _[0],
         };
       })
       // Error 异常处理
-      .with({ message: __.string }, (_) => {
+      .with({ message: P.string }, (_) => {
         return {
           message: _.message,
         };
