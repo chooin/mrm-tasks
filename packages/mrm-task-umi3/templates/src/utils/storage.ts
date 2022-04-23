@@ -12,11 +12,11 @@ function getItem(key: Keys) {
     const value = window.localStorage.getItem(key);
     if (value) {
       const { data, options } = JSON.parse(value);
-      if (options?.expiredAt < Date.now()) {
+      if (options && options.expiredAt < Date.now()) {
         window.localStorage.removeItem(key);
-        return null;
+      } else {
+        return data;
       }
-      return data;
     }
   } catch {}
 
