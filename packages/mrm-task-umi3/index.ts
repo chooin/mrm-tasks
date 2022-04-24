@@ -45,6 +45,7 @@ function addFiles() {
     'src/utils/toast.ts',
     'src/utils/yup.ts',
     'scripts/check-yarn.js',
+    'jest.config.js',
     'commitlint.config.js',
     '.umirc.dev.ts',
     '.umirc.test.ts',
@@ -89,9 +90,6 @@ function changeFiles() {
     .merge({
       engines: {
         node: `${NodeVersion}.x`,
-      },
-      jest: {
-        testPathIgnorePatterns: ['.umirc*'],
       },
       gitHooks: {
         'commit-msg': 'yarn commitlint --edit $1',
