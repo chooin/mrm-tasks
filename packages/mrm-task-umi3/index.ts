@@ -119,6 +119,7 @@ function installDependencies() {
   );
   install(
     [
+      '@types/jest',
       '@types/styled-components',
       '@commitlint/config-conventional',
       '@commitlint/cli',

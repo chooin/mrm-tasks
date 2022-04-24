@@ -119,6 +119,7 @@ function installDependencies() {
   );
   (0, mrm_core_1.install)(
     [
+      '@types/jest',
       '@types/styled-components',
       '@commitlint/config-conventional',
       '@commitlint/cli',
