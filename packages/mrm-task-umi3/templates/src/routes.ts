@@ -1,4 +1,4 @@
-import { IRoute } from 'umi';
+import type { IRoute } from 'umi';
 
 /**
  * 路由文档

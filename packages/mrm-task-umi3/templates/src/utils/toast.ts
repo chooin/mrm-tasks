@@ -23,7 +23,7 @@ const error = (
       // yup 校验异常
       .with({ errors: [P.select()] }, (_) => {
         return {
-          message: _[0],
+          message: _?.[0] ?? _,
         };
       })
       // Error 异常处理

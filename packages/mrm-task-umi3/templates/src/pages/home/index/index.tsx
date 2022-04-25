@@ -1,5 +1,5 @@
 import React from 'react';
-import { IRouteComponentProps } from 'umi';
+import type { IRouteComponentProps } from 'umi';
 import { useMount } from '@/hooks';
 import { Page } from './styled';
 
