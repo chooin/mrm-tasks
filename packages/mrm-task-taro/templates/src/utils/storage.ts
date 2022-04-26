@@ -4,7 +4,7 @@ export enum Keys {
   User = 'USER',
 }
 
-export const getItem = <T extends any>(key: Keys): T => {
+export const getItem = <T = any>(key: Keys): T => {
   return Taro.getStorageSync<T>(key);
 };
 
