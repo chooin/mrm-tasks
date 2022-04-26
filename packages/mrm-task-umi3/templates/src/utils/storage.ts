@@ -6,7 +6,7 @@ type Options = {
   expiredAt?: number;
 };
 
-function getItem<T = any>(key: Keys): T;
+function getItem<T = unknown>(key: Keys): T;
 function getItem(key: Keys) {
   try {
     const value = window.localStorage.getItem(key);
