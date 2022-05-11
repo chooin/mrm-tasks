@@ -21,9 +21,9 @@ const error = (
         };
       })
       // yup 校验异常
-      .with({ errors: [P.select()] }, (_) => {
+      .with({ errors: P.select() }, (_) => {
         return {
-          message: _?.[0] ?? _,
+          message: _[0],
         };
       })
       // Error 异常处理
