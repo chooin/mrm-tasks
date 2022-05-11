@@ -5,7 +5,7 @@ import { pages } from './routes';
 
 const RootStack = createStackNavigator();
 
-export default (): JSX.Element => {
+const Routes: React.FC = () => {
   return (
     <NavigationContainer>
       <RootStack.Navigator>
@@ -16,3 +16,5 @@ export default (): JSX.Element => {
     </NavigationContainer>
   );
 };
+
+export default Routes;
