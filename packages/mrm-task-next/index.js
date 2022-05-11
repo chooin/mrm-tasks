@@ -49,7 +49,7 @@ function src() {
     'src/server/config/index.ts',
     'src/shared/typings/axios.d.ts',
     'Dockerfile',
-    'scripts/check-yarn.js',
+    'scripts/check-pnpm.js',
     'babel.config.js',
     'tsconfig.json',
   ];
@@ -65,7 +65,7 @@ function src() {
 }
 function script() {
   const pkg = (0, mrm_core_1.packageJson)();
-  pkg.setScript('preinstall', 'node scripts/check-yarn.js').save();
+  pkg.setScript('preinstall', 'node scripts/check-pnpm.js').save();
 }
 module.exports = function task({}) {
   dependency();

@@ -72,7 +72,7 @@ function typescript() {
 }
 function src() {
   const files = [
-    'scripts/check-yarn.js',
+    'scripts/check-pnpm.js',
     'scripts/pod-upgrade.sh',
     'src/hooks/index.ts',
     'src/pages/home/index/index.tsx',
@@ -100,7 +100,7 @@ function src() {
 function script() {
   const pkg = (0, mrm_core_1.packageJson)();
   pkg
-    .setScript('preinstall', 'node scripts/check-yarn.js')
+    .setScript('preinstall', 'node scripts/check-pnpm.js')
     .setScript('install', 'npx pod-install')
     .setScript('pod-upgrade', 'sh scripts/pod-upgrade.sh')
     .save();

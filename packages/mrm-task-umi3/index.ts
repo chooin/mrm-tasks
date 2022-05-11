@@ -44,7 +44,7 @@ function addFiles() {
     'src/utils/storage.ts',
     'src/utils/toast.ts',
     'src/utils/yup.ts',
-    'scripts/check-yarn.js',
+    'scripts/check-pnpm.js',
     'jest.config.js',
     'commitlint.config.js',
     '.umirc.dev.ts',
@@ -151,7 +151,7 @@ function changeScripts() {
     .setScript('dev', 'UMI_ENV=dev umi dev')
     .setScript('build:test', 'UMI_ENV=test umi build')
     .setScript('build:prod', 'UMI_ENV=prod umi build')
-    .setScript('preinstall', 'node scripts/check-yarn.js')
+    .setScript('preinstall', 'node scripts/check-pnpm.js')
     .setScript('postinstall', postinstall)
     .setScript('prettier', prettier)
     .setScript('test', test)

@@ -1,52 +1,39 @@
-import {json, install, template, packageJson, makeDirs} from 'mrm-core'
-import path from 'path'
+import { json, install, template, packageJson, makeDirs } from 'mrm-core';
+import path from 'path';
 
 interface Config {}
 
 function dependency() {
-  const dependencies = [
-    'styled-components',
-    'react-query',
-    'axios',
-  ]
+  const dependencies = ['styled-components', 'react-query', 'axios'];
   const devDependencies = [
     '@types/react',
     '@types/styled-components',
     'typescript',
     'babel-plugin-module-resolver',
-  ]
+  ];
 
   install(dependencies, {
     yarn: true,
-    dev: false
-  })
+    dev: false,
+  });
   install(devDependencies, {
     yarn: true,
-    dev: true
-  })
+    dev: true,
+  });
 }
 
 function environment() {
-  const files = [
-    '.env.development',
-    '.env.production',
-    '.env.test',
-  ]
+  const files = ['.env.development', '.env.production', '.env.test'];
 
   files.forEach((file) => {
-    template(
-      file,
-      path.join(__dirname, 'templates', file)
-    )
-    .apply()
-    .save()
-  })
+    template(file, path.join(__dirname, 'templates', file)).apply().save();
+  });
 }
 
 function typescript() {
-  const tsconfig = json('tsconfig.json')
+  const tsconfig = json('tsconfig.json');
 
-  tsconfig.save()
+  tsconfig.save();
 }
 
 function src() {
@@ -62,44 +49,32 @@ function src() {
     'src/shared/typings/axios.d.ts',
 
     'Dockerfile',
-    'scripts/check-yarn.js',
+    'scripts/check-pnpm.js',
     'babel.config.js',
     'tsconfig.json',
-  ]
+  ];
 
   files.forEach((file) => {
-    template(
-      file,
-      path.join(__dirname, 'templates', file)
-    )
-      .apply()
-      .save()
-  })
+    template(file, path.join(__dirname, 'templates', file)).apply().save();
+  });
 
-  makeDirs([
-    'src/client/utils',
-
-    'src/server/utils',
-  ])
+  makeDirs(['src/client/utils', 'src/server/utils']);
 }
 
 function script() {
-  const pkg = packageJson()
+  const pkg = packageJson();
 
-  pkg
-    .setScript('preinstall', 'node scripts/check-yarn.js')
-    .save()
+  pkg.setScript('preinstall', 'node scripts/check-pnpm.js').save();
 }
 
 module.exports = function task({}: Config) {
-  dependency()
-  environment()
-  typescript()
-  src()
-  script()
-}
+  dependency();
+  environment();
+  typescript();
+  src();
+  script();
+};
 
-module.exports.parameters = {
-}
+module.exports.parameters = {};
 
-module.exports.description = 'Mrm task for next.js'
+module.exports.description = 'Mrm task for next.js';
