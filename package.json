@@ -1,7 +1,6 @@
 {
   "name": "mrm-tasks",
   "private": true,
-  "version": "0.0.1",
   "repository": "git@github.com:chooin/mrm-tasks.git",
   "author": "Devin.Zhu <chooin@126.com>",
   "license": "MIT",
@@ -9,7 +8,12 @@
     "prepare": "husky install",
     "preinstall": "npx only-allow pnpm",
     "build": "pnpm --filter './packages/*' build",
-    "publish": "pnpm --filter './packages/*' publish"
+    "np:react-native": "pnpm -r --filter './packages/mrm-task-react-native' publish",
+    "np:serve": "pnpm -r --filter './packages/mrm-task-serve' publish",
+    "np:umi": "pnpm -r --filter './packages/mrm-task-umi' publish",
+    "np:umi3": "pnpm -r --filter './packages/mrm-task-umi3' publish",
+    "np:taro": "pnpm -r --filter './packages/mrm-task-taro' publish",
+    "np:laravel": "pnpm -r --filter './packages/mrm-task-laravel' publish"
   },
   "workspaces": [
     "packages/*"
