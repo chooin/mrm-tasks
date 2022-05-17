@@ -1,6 +1,7 @@
 {
   "name": "mrm-tasks",
   "private": true,
+  "version": "0.0.1",
   "repository": "git@github.com:chooin/mrm-tasks.git",
   "author": "Devin.Zhu <chooin@126.com>",
   "license": "MIT",
