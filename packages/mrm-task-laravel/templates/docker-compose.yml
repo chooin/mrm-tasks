@@ -5,6 +5,8 @@ services:
     restart: always
     build:
       context: .
+      args:
+        ENV: test
     container_name: laravel
     volumes:
       - ${PWD}/storage:/app/storage
