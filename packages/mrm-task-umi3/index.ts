@@ -81,7 +81,7 @@ function changeFiles() {
       '',
       '// global variables',
       'declare const APP_NAME: string;',
-      "declare const APP_ENV: 'prod' | 'test' | 'dev';",
+      "declare const APP_ENV: 'production' | 'testing' | 'local';",
       'declare const API_URL: string;',
     ])
     .save();
@@ -147,9 +147,9 @@ function changeScripts() {
     .save();
   pkg
     .setScript('start', 'yarn dev')
-    .setScript('dev', 'UMI_ENV=dev umi dev')
-    .setScript('build:test', 'UMI_ENV=test umi build')
-    .setScript('build:prod', 'UMI_ENV=prod umi build')
+    .setScript('dev', 'UMI_ENV=local umi dev')
+    .setScript('build:testing', 'UMI_ENV=testing umi build')
+    .setScript('build:production', 'UMI_ENV=production umi build')
     .setScript('preinstall', 'npx only-allow yarn')
     .setScript('postinstall', postinstall)
     .setScript('prettier', prettier)
