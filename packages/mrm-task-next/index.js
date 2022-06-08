@@ -44,12 +44,7 @@ function src() {
     'src/client/config/index.ts',
     'src/client/pages/home/index/index.tsx',
     'src/client/pages/home/index/styled.ts',
-    'src/client/pages/layout/index.tsx',
-    'src/client/pages/layout/styled.ts',
-    'src/server/config/index.ts',
-    'src/shared/typings/axios.d.ts',
     'Dockerfile',
-    'scripts/check-pnpm.js',
     'babel.config.js',
     'tsconfig.json',
   ];

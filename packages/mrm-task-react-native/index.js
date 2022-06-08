@@ -9,7 +9,6 @@ const mrm_core_1 = require('mrm-core');
 const path_1 = __importDefault(require('path'));
 function dependency() {
   const dependencies = [
-    // route
     '@react-navigation/native',
     '@react-navigation/stack',
     'react-native-gesture-handler',
@@ -17,29 +16,22 @@ function dependency() {
     'react-native-safe-area-context',
     'react-native-screens',
     '@react-navigation/bottom-tabs',
-    // lifecycle
     'react-native-lifecycle',
-    // style
     'styled-components',
-    // ant-design
     '@react-native-community/cameraroll',
     '@react-native-picker/picker',
     '@react-native-community/segmented-control',
     '@react-native-community/slider',
     'react-native-pager-view',
-    // other
     'axios',
     '@react-native-community/async-storage',
   ];
   const devDependencies = [
-    // ts and ts helper
     'typescript',
     '@types/react',
     '@types/react-native',
-    // babel
     '@babel/plugin-proposal-export-namespace-from',
     'babel-plugin-module-resolver',
-    // other
     '@types/styled-components',
   ];
   (0, mrm_core_1.install)(dependencies, {
@@ -72,7 +64,6 @@ function typescript() {
 }
 function src() {
   const files = [
-    'scripts/check-pnpm.js',
     'scripts/pod-upgrade.sh',
     'src/hooks/index.ts',
     'src/pages/home/index/index.tsx',
@@ -100,7 +91,7 @@ function src() {
 function script() {
   const pkg = (0, mrm_core_1.packageJson)();
   pkg
-    .setScript('preinstall', 'node scripts/check-pnpm.js')
+    .setScript('preinstall', 'npx only-allow yarn')
     .setScript('install', 'npx pod-install')
     .setScript('pod-upgrade', 'sh scripts/pod-upgrade.sh')
     .save();
