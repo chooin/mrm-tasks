@@ -6,7 +6,7 @@ services:
     build:
       context: .
       args:
-        ENV: test
+        ENV: production
     container_name: laravel
     volumes:
       - ${PWD}/storage:/app/storage
