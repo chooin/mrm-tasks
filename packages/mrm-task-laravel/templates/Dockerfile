@@ -11,5 +11,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 WORKDIR /app
 COPY . .
 RUN ln -s ./laravel.ini /usr/local/etc/php/conf.d/laravel.ini
-RUN composer install
-RUN php artisan optimize --env=$ENV
+RUN composer install --optimize-autoloader --no-dev
+RUN php artisan config:cache --env=$ENV
+RUN php artisan route:cache --env=$ENV
