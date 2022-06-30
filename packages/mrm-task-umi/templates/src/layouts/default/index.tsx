@@ -1,11 +1,8 @@
-import React from 'react';
+import type React from 'react';
+import { Outlet } from 'umi';
 
-type Props = {
-  children: React.ReactElement;
-};
-
-const Layout: React.FC<Props> = (props) => {
-  return <>{React.cloneElement(props.children, {})}</>;
+const Layout: React.FC = () => {
+  return <Outlet />;
 };
 
 export default Layout;

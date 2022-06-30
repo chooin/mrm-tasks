@@ -1,4 +1,4 @@
-# UmiJS 3 脚手架
+# UmiJS 4 脚手架（develop version）
 
 ```shell
 # 和官方一样创建项目

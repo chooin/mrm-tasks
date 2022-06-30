@@ -5,12 +5,9 @@ export default defineConfig({
   define: {
     APP_NAME: 'APP_NAME',
   },
-  nodeModulesTransform: {
-    type: 'none',
+  history: {
+    type: 'browser',
   },
-  fastRefresh: {},
-  dva: {},
-  antd: false,
-  hash: true,
+  npmClient: 'pnpm',
   routes,
 });

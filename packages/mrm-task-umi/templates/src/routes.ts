@@ -1,10 +1,4 @@
-import type { IRoute } from 'umi';
-
-/**
- * 路由文档
- * https://umijs.org/docs/convention-routing
- */
-const routes: IRoute[] = [
+const routes = [
   {
     path: '/home',
     component: '@/layouts/default',

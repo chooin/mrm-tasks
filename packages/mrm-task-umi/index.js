@@ -23,9 +23,10 @@ function checkEnvironment() {
 }
 function removeFiles() {
   (0, mrm_core_1.deleteFiles)([
+    'src/layouts/index.tsx',
+    'src/layouts/index.less',
     'src/pages/index.tsx',
-    'src/pages/index.less',
-    '.prettierrc',
+    'src/pages/docs.tsx',
   ]);
 }
 function addFiles() {
@@ -49,7 +50,6 @@ function addFiles() {
     '.umirc.testing.ts',
     '.umirc.production.ts',
     '.umirc.ts',
-    '.eslintrc.js',
     'src/app.tsx',
     'src/global.less',
   ];
@@ -68,15 +68,6 @@ function addDirs() {
 function changeFiles() {
   (0, mrm_core_1.lines)('.prettierignore').add(['dist']).save();
   (0, mrm_core_1.lines)('.nvmrc').add([NodeVersion]).save();
-  (0, mrm_core_1.lines)('.prettierrc.js')
-    .add([
-      "const fabric = require('@umijs/fabric');",
-      '',
-      'module.exports = {',
-      '  ...fabric.prettier,',
-      '};',
-    ])
-    .save();
   (0, mrm_core_1.lines)('typings.d.ts')
     .add([
       '',
@@ -93,6 +84,9 @@ function changeFiles() {
       },
       gitHooks: {
         'commit-msg': 'yarn commitlint --edit $1',
+      },
+      'lint-staged': {
+        '*.{js,jsx,ts,tsx,css,less}': ['umi lint'],
       },
     })
     .save();
@@ -122,7 +116,7 @@ function installDependencies() {
       '@types/styled-components',
       '@commitlint/config-conventional',
       '@commitlint/cli',
-      '@umijs/fabric',
+      '@umijs/lint',
     ],
     {
       pnpm: true,
@@ -133,26 +127,19 @@ function installDependencies() {
 function changeScripts() {
   const pkg = (0, mrm_core_1.packageJson)();
   const postinstall = pkg.getScript('postinstall');
-  const prettier = pkg.getScript('prettier');
-  const test = pkg.getScript('test');
-  const testCoverage = pkg.getScript('test:coverage');
   pkg
+    .removeScript('dev')
     .removeScript('build')
     .removeScript('postinstall')
-    .removeScript('prettier')
-    .removeScript('test')
-    .removeScript('test:coverage')
+    .removeScript('start')
     .save();
   pkg
-    .setScript('start', 'yarn dev')
+    .setScript('start', 'pnpm dev')
     .setScript('dev', 'UMI_ENV=local umi dev')
     .setScript('build:testing', 'UMI_ENV=testing umi build')
     .setScript('build:production', 'UMI_ENV=production umi build')
-    .setScript('preinstall', 'npx only-allow yarn')
+    .setScript('preinstall', 'npx only-allow pnpm')
     .setScript('postinstall', postinstall)
-    .setScript('prettier', prettier)
-    .setScript('test', test)
-    .setScript('test:coverage', testCoverage)
     .save();
 }
 module.exports = function task() {
