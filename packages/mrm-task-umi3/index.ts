@@ -104,7 +104,6 @@ function installDependencies() {
       'styled-components',
       'antd-mobile',
       'antd-mobile-icons',
-      'umi-plugin-keep-alive',
       'query-string',
       'dayjs',
       'ts-pattern',

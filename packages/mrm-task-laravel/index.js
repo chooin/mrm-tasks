@@ -8,7 +8,12 @@ Object.defineProperty(exports, '__esModule', { value: true });
 const mrm_core_1 = require('mrm-core');
 const path_1 = __importDefault(require('path'));
 function addFiles() {
-  const files = ['docker-compose.yml', 'Dockerfile', 'laravel.ini'];
+  const files = [
+    'docker-compose.production.yml',
+    'docker-compose.testing.yml',
+    'Dockerfile',
+    'laravel.ini',
+  ];
   files.forEach((file) => {
     (0, mrm_core_1.template)(
       file,

@@ -1,33 +1,34 @@
-'use strict';
-var __importDefault =
-  (this && this.__importDefault) ||
-  function (mod) {
-    return mod && mod.__esModule ? mod : { default: mod };
-  };
-Object.defineProperty(exports, '__esModule', { value: true });
-const mrm_core_1 = require('mrm-core');
-const semver_1 = __importDefault(require('semver'));
-const kleur_1 = __importDefault(require('kleur'));
-const path_1 = __importDefault(require('path'));
+import {
+  install,
+  packageJson,
+  template,
+  deleteFiles,
+  lines,
+  makeDirs,
+  json,
+} from 'mrm-core';
+import semver from 'semver';
+import kleur from 'kleur';
+import path from 'path';
+
 const NodeVersion = '16';
+
 function checkEnvironment() {
-  const currentNodeVersion = semver_1.default.clean(process.version);
-  if (semver_1.default.lte(currentNodeVersion, `${NodeVersion}.0.0`)) {
+  const currentNodeVersion = semver.clean(process.version) as string;
+  if (semver.lte(currentNodeVersion, `${NodeVersion}.0.0`)) {
     console.log(
-      `${kleur_1.default.red(
+      `${kleur.red(
         'error',
       )} @: expected node version "${NodeVersion}.x". Got "${currentNodeVersion}"`,
     );
     process.exit(1);
   }
 }
+
 function removeFiles() {
-  (0, mrm_core_1.deleteFiles)([
-    'src/pages/index.tsx',
-    'src/pages/index.less',
-    '.prettierrc',
-  ]);
+  deleteFiles(['src/pages/index.tsx', 'src/pages/index.less', '.prettierrc']);
 }
+
 function addFiles() {
   const files = [
     'src/layouts/default/index.tsx',
@@ -53,22 +54,20 @@ function addFiles() {
     'src/app.tsx',
     'src/global.less',
   ];
+
   files.forEach((file) => {
-    (0, mrm_core_1.template)(
-      file,
-      path_1.default.join(__dirname, 'templates', file),
-    )
-      .apply()
-      .save();
+    template(file, path.join(__dirname, 'templates', file)).apply().save();
   });
 }
+
 function addDirs() {
-  (0, mrm_core_1.makeDirs)(['src/services', 'src/components', 'src/enums']);
+  makeDirs(['src/services', 'src/components', 'src/enums']);
 }
+
 function changeFiles() {
-  (0, mrm_core_1.lines)('.prettierignore').add(['dist']).save();
-  (0, mrm_core_1.lines)('.nvmrc').add([NodeVersion]).save();
-  (0, mrm_core_1.lines)('.prettierrc.js')
+  lines('.prettierignore').add(['dist']).save();
+  lines('.nvmrc').add([NodeVersion]).save();
+  lines('.prettierrc.js')
     .add([
       "const fabric = require('@umijs/fabric');",
       '',
@@ -77,7 +76,7 @@ function changeFiles() {
       '};',
     ])
     .save();
-  (0, mrm_core_1.lines)('typings.d.ts')
+  lines('typings.d.ts')
     .add([
       '',
       '// global variables',
@@ -86,7 +85,7 @@ function changeFiles() {
       'declare const API_URL: string;',
     ])
     .save();
-  (0, mrm_core_1.json)('package.json')
+  json('package.json')
     .merge({
       engines: {
         node: `${NodeVersion}.x`,
@@ -97,8 +96,9 @@ function changeFiles() {
     })
     .save();
 }
+
 function installDependencies() {
-  (0, mrm_core_1.install)(
+  install(
     [
       'ahooks',
       'styled-components',
@@ -109,13 +109,14 @@ function installDependencies() {
       'ts-pattern',
       'yup',
       '@ebay/nice-modal-react',
+      'axios',
     ],
     {
-      yarn: true,
+      pnpm: true,
       dev: false,
     },
   );
-  (0, mrm_core_1.install)(
+  install(
     [
       '@types/jest',
       '@types/styled-components',
@@ -124,13 +125,15 @@ function installDependencies() {
       '@umijs/fabric',
     ],
     {
-      yarn: true,
+      pnpm: true,
       dev: true,
     },
   );
 }
+
 function changeScripts() {
-  const pkg = (0, mrm_core_1.packageJson)();
+  const pkg = packageJson();
+
   const postinstall = pkg.getScript('postinstall');
   const prettier = pkg.getScript('prettier');
   const test = pkg.getScript('test');
@@ -154,6 +157,7 @@ function changeScripts() {
     .setScript('test:coverage', testCoverage)
     .save();
 }
+
 module.exports = function task() {
   checkEnvironment();
   removeFiles();

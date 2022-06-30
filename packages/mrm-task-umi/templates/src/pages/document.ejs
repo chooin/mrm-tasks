@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title><%= context.config.define.APP_NAME %></title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    <% if(context.config.define.APP_ENV === 'local' || context.config.define.APP_ENV === 'testing') { %>
+      (function () {
+        var script = document.createElement("script");
+        script.src =
+          "https://cdn.bootcdn.net/ajax/libs/eruda/2.4.1/eruda.min.js";
+        script.async = true;
+        document.getElementsByTagName("head")[0].appendChild(script);
+        script.onload = function () {
+          eruda.init();
+        };
+      })();
+    <% } %>
+  </script>
+</body>
+</html>

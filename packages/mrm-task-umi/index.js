@@ -109,9 +109,10 @@ function installDependencies() {
       'ts-pattern',
       'yup',
       '@ebay/nice-modal-react',
+      'axios',
     ],
     {
-      yarn: true,
+      pnpm: true,
       dev: false,
     },
   );
@@ -124,7 +125,7 @@ function installDependencies() {
       '@umijs/fabric',
     ],
     {
-      yarn: true,
+      pnpm: true,
       dev: true,
     },
   );
