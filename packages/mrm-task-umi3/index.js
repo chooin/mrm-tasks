@@ -49,6 +49,7 @@ function addFiles() {
     '.umirc.testing.ts',
     '.umirc.production.ts',
     '.umirc.ts',
+    '.yarnrc',
     '.eslintrc.js',
     'src/app.tsx',
     'src/global.less',

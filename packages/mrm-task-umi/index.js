@@ -27,6 +27,7 @@ function removeFiles() {
     'src/layouts/index.less',
     'src/pages/index.tsx',
     'src/pages/docs.tsx',
+    'src/assets/yay.jpg',
   ]);
 }
 function addFiles() {
@@ -103,7 +104,7 @@ function installDependencies() {
       'ts-pattern',
       'yup',
       '@ebay/nice-modal-react',
-      'axios',
+      'rc-field-form',
     ],
     {
       pnpm: true,
