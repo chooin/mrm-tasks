@@ -13,7 +13,8 @@
     "np:umi": "pnpm -r --filter './packages/mrm-task-umi' publish",
     "np:umi3": "pnpm -r --filter './packages/mrm-task-umi3' publish",
     "np:taro": "pnpm -r --filter './packages/mrm-task-taro' publish",
-    "np:laravel": "pnpm -r --filter './packages/mrm-task-laravel' publish"
+    "np:laravel": "pnpm -r --filter './packages/mrm-task-laravel' publish",
+    "np:pkg": "pnpm -r --filter './packages/pkg' publish"
   },
   "workspaces": [
     "packages/*"

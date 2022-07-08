@@ -41,6 +41,12 @@ importers:
     dependencies:
       mrm-core: 6.1.7
 
+  packages/mrm-task-pkg:
+    specifiers:
+      mrm-core: ^6.1.7
+    dependencies:
+      mrm-core: 6.1.7
+
   packages/mrm-task-react-native:
     specifiers:
       mrm-core: ^6.1.7
