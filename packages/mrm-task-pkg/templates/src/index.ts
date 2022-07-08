@@ -1,1 +1,4 @@
+/**
+ * @public
+ */
 export function halo() {}

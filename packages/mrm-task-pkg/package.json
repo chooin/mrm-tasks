@@ -1,6 +1,6 @@
 {
   "name": "mrm-task-pkg",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "main": "index.js",
   "repository": "git@github.com:chooin/mrm-tasks.git",
   "author": "Devin.Zhu <chooin@126.com>",
@@ -9,6 +9,8 @@
     "build": "npx tsc"
   },
   "dependencies": {
-    "mrm-core": "^6.1.7"
+    "kleur": "^4.1.4",
+    "mrm-core": "^6.1.7",
+    "semver": "^7.3.5"
   }
 }

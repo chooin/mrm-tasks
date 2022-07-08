@@ -1,7 +1,21 @@
-import { install, packageJson, template, lines, json } from 'mrm-core';
+import { install, template, lines, json } from 'mrm-core';
 import path from 'path';
+import semver from 'semver';
+import kleur from 'kleur';
 
 const NodeVersion = '16';
+
+function checkEnvironment() {
+  const currentNodeVersion = semver.clean(process.version) as string;
+  if (semver.lte(currentNodeVersion, `${NodeVersion}.0.0`)) {
+    console.log(
+      `${kleur.red(
+        'error',
+      )} @: expected node version "${NodeVersion}.x". Got "${currentNodeVersion}"`,
+    );
+    process.exit(1);
+  }
+}
 
 function addFiles() {
   const files = [
@@ -11,7 +25,7 @@ function addFiles() {
     'api-extractor.json',
     'jest.config.js',
     'tsconfig.json',
-    '.gitignore',
+    'package.json',
   ];
 
   files.forEach((file) => {
@@ -21,6 +35,9 @@ function addFiles() {
 
 function changeFiles() {
   lines('.nvmrc').add([NodeVersion]).save();
+  lines('.gitignore')
+    .add(['.DS_Store', 'dist/', 'node_modules/', '.idea', 'temp'])
+    .save();
   json('package.json')
     .merge({
       engines: {
@@ -32,20 +49,14 @@ function changeFiles() {
 
 function installDependencies() {
   install(['@types/jest', 'jest', 'rollup', 'typescript', 'zx'], {
-    yarn: true,
+    pnpm: true,
     dev: true,
   });
 }
 
-function changeScripts() {
-  const pkg = packageJson();
-
-  pkg.setScript('preinstall', 'npx only-allow pnpm').save();
-}
-
 module.exports = function task() {
+  checkEnvironment();
   addFiles();
   changeFiles();
   installDependencies();
-  changeScripts();
 };
