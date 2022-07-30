@@ -17,3 +17,7 @@ services:
       - artisan
       - serve
       - --host=0.0.0.0
+    healthcheck:
+      test: ['CMD', 'curl', '0.0.0.0/v1/health']
+      retries: 3
+      timeout: 5s
