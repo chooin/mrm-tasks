@@ -103,6 +103,7 @@ function installDependencies() {
     [
       'ahooks',
       'styled-components',
+      'antd-mobile',
       'query-string',
       'dayjs',
       'ts-pattern',
