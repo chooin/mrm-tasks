@@ -10,6 +10,7 @@ export default defineConfig({
   },
   fastRefresh: {},
   dva: {},
+  devtool: 'hidden-source-map',
   antd: false,
   hash: true,
   routes,
