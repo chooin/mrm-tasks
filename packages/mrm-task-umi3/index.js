@@ -87,8 +87,6 @@ function installDependencies() {
     (0, mrm_core_1.install)([
         'ahooks',
         'styled-components',
-        'antd-mobile',
-        'antd-mobile-icons',
         'query-string',
         'dayjs',
         'ts-pattern',

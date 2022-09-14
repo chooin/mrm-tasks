@@ -7,9 +7,12 @@ const mrm_core_1 = require("mrm-core");
 const path_1 = __importDefault(require("path"));
 function addFiles() {
     const files = [
+        'build-production.sh',
+        'build-testing.sh',
         'docker-compose.production.yml',
         'docker-compose.testing.yml',
         'Dockerfile',
+        'Makefile',
         'laravel.ini',
     ];
     files.forEach((file) => {

@@ -3,9 +3,12 @@ import path from 'path';
 
 function addFiles() {
   const files = [
+    'build-production.sh',
+    'build-testing.sh',
     'docker-compose.production.yml',
     'docker-compose.testing.yml',
     'Dockerfile',
+    'Makefile',
     'laravel.ini',
   ];
 
