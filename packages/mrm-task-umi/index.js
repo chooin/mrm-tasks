@@ -31,6 +31,7 @@ function addFiles() {
         'src/pages/home/index/styled.ts',
         'src/pages/document.ejs',
         'src/hooks/index.ts',
+        'src/hooks/use-search-params.ts',
         'src/routes.ts',
         'src/utils/index.ts',
         'src/utils/merge-props.ts',
@@ -103,6 +104,10 @@ function installDependencies() {
         '@commitlint/config-conventional',
         '@commitlint/cli',
         '@umijs/lint',
+        'lint-staged',
+        'stylelint',
+        'eslint',
+        'husky',
     ], {
         yarn: true,
         dev: true,
@@ -124,6 +129,7 @@ function changeScripts() {
         .setScript('build:production', 'UMI_ENV=production umi build')
         .setScript('preinstall', 'npx only-allow yarn')
         .setScript('postinstall', postinstall)
+        .setScript('prepare', 'husky install')
         .save();
 }
 module.exports = function task() {
