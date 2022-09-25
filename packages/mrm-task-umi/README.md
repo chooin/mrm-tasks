@@ -4,7 +4,7 @@
 # 和官方一样创建项目
 mkdir myapp && cd myapp
 
-pnpm dlx create-umi@latest
+yarn create umi
 
 # 然后再执行
 npx mrm umi

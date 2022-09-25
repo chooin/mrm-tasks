@@ -111,7 +111,7 @@ function installDependencies() {
       'rc-field-form',
     ],
     {
-      pnpm: true,
+      yarn: true,
       dev: false,
     },
   );
@@ -124,7 +124,7 @@ function installDependencies() {
       '@umijs/lint',
     ],
     {
-      pnpm: true,
+      yarn: true,
       dev: true,
     },
   );
@@ -141,11 +141,11 @@ function changeScripts() {
     .removeScript('start')
     .save();
   pkg
-    .setScript('start', 'pnpm dev')
+    .setScript('start', 'yarn dev')
     .setScript('dev', 'UMI_ENV=local umi dev')
     .setScript('build:testing', 'UMI_ENV=testing umi build')
     .setScript('build:production', 'UMI_ENV=production umi build')
-    .setScript('preinstall', 'npx only-allow pnpm')
+    .setScript('preinstall', 'npx only-allow yarn')
     .setScript('postinstall', postinstall)
     .save();
 }
