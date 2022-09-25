@@ -10,7 +10,6 @@ import {
 import semver from 'semver';
 import kleur from 'kleur';
 import path from 'path';
-import { exec } from 'child_process';
 
 const NodeVersion = '16';
 
