@@ -23,7 +23,6 @@ function addFiles(config) {
         'src/layouts/default/index.tsx',
         'src/pages/home/index/index.tsx',
         'src/pages/home/index/styled.ts',
-        'src/pages/document.ejs',
         'src/hooks/index.ts',
         'src/routes.ts',
         'src/utils/index.ts',
@@ -46,14 +45,26 @@ function addFiles(config) {
         (0, mrm_core_1.template)(file, path_1.default.join(__dirname, 'templates', file)).apply().save();
     });
     if (config.platform === 'pc') {
-        (0, mrm_core_1.template)('.umirc.ts', path_1.default.join(__dirname, 'templates', '.umirc.pc.ts')).apply().save();
-        (0, mrm_core_1.template)('src/utils/toast.ts', path_1.default.join(__dirname, 'templates', 'src/utils/toast.pc.ts')).apply().save();
-        (0, mrm_core_1.template)('src/pages/document.ejs', path_1.default.join(__dirname, 'templates', 'src/pages/document.pc.ejs')).apply().save();
+        (0, mrm_core_1.template)('.umirc.ts', path_1.default.join(__dirname, 'templates', '.umirc.pc.ts'))
+            .apply()
+            .save();
+        (0, mrm_core_1.template)('src/utils/toast.ts', path_1.default.join(__dirname, 'templates', 'src/utils/toast.pc.ts'))
+            .apply()
+            .save();
+        (0, mrm_core_1.template)('src/pages/document.ejs', path_1.default.join(__dirname, 'templates', 'src/pages/document.pc.ejs'))
+            .apply()
+            .save();
     }
     else {
-        (0, mrm_core_1.template)('.umirc.ts', path_1.default.join(__dirname, 'templates', '.umirc.mobile.ts')).apply().save();
-        (0, mrm_core_1.template)('src/utils/toast.ts', path_1.default.join(__dirname, 'templates', 'src/utils/toast.mobile.ts')).apply().save();
-        (0, mrm_core_1.template)('src/pages/document.ejs', path_1.default.join(__dirname, 'templates', 'src/pages/document.mobile.ejs')).apply().save();
+        (0, mrm_core_1.template)('.umirc.ts', path_1.default.join(__dirname, 'templates', '.umirc.mobile.ts'))
+            .apply()
+            .save();
+        (0, mrm_core_1.template)('src/utils/toast.ts', path_1.default.join(__dirname, 'templates', 'src/utils/toast.mobile.ts'))
+            .apply()
+            .save();
+        (0, mrm_core_1.template)('src/pages/document.ejs', path_1.default.join(__dirname, 'templates', 'src/pages/document.mobile.ejs'))
+            .apply()
+            .save();
     }
 }
 function addDirs() {
@@ -115,9 +126,7 @@ function installDependencies(config) {
         dev: true,
     });
     if (config.platform === 'mobile') {
-        (0, mrm_core_1.install)([
-            'antd-mobile',
-        ], {
+        (0, mrm_core_1.install)(['antd-mobile'], {
             yarn: true,
             dev: false,
         });

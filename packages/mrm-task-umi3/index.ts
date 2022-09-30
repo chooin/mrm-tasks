@@ -38,7 +38,6 @@ function addFiles(config: Config) {
     'src/layouts/default/index.tsx',
     'src/pages/home/index/index.tsx',
     'src/pages/home/index/styled.ts',
-    'src/pages/document.ejs',
     'src/hooks/index.ts',
     'src/routes.ts',
     'src/utils/index.ts',
