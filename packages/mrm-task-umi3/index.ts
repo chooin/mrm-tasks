@@ -54,7 +54,6 @@ function addFiles(config: Config) {
     '.yarnrc',
     '.eslintrc.js',
     'src/app.tsx',
-    'src/global.less',
   ];
 
   files.forEach((file) => {
@@ -77,6 +76,12 @@ function addFiles(config: Config) {
     )
       .apply()
       .save();
+    template(
+      'src/global.less',
+      path.join(__dirname, 'templates', 'src/global.pc.less'),
+    )
+      .apply()
+      .save();
   } else {
     template('.umirc.ts', path.join(__dirname, 'templates', '.umirc.mobile.ts'))
       .apply()
@@ -90,6 +95,12 @@ function addFiles(config: Config) {
     template(
       'src/pages/document.ejs',
       path.join(__dirname, 'templates', 'src/pages/document.mobile.ejs'),
+    )
+      .apply()
+      .save();
+    template(
+      'src/global.less',
+      path.join(__dirname, 'templates', 'src/global.mobile.less'),
     )
       .apply()
       .save();
