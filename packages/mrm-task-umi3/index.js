@@ -18,7 +18,7 @@ function checkEnvironment() {
 function removeFiles() {
     (0, mrm_core_1.deleteFiles)(['src/pages/index.tsx', 'src/pages/index.less', '.prettierrc']);
 }
-function addFiles() {
+function addFiles(config) {
     const files = [
         'src/layouts/default/index.tsx',
         'src/pages/home/index/index.tsx',
@@ -31,14 +31,12 @@ function addFiles() {
         'src/utils/merge-list.ts',
         'src/utils/parse-query.ts',
         'src/utils/storage.ts',
-        'src/utils/toast.ts',
         'src/utils/yup.ts',
         'jest.config.js',
         'commitlint.config.js',
         '.umirc.local.ts',
         '.umirc.testing.ts',
         '.umirc.production.ts',
-        '.umirc.ts',
         '.yarnrc',
         '.eslintrc.js',
         'src/app.tsx',
@@ -47,6 +45,16 @@ function addFiles() {
     files.forEach((file) => {
         (0, mrm_core_1.template)(file, path_1.default.join(__dirname, 'templates', file)).apply().save();
     });
+    if (config.platform === 'pc') {
+        (0, mrm_core_1.template)('.umirc.ts', path_1.default.join(__dirname, 'templates', '.umirc.pc.ts')).apply().save();
+        (0, mrm_core_1.template)('src/utils/toast.ts', path_1.default.join(__dirname, 'templates', 'src/utils/toast.pc.ts')).apply().save();
+        (0, mrm_core_1.template)('src/pages/document.ejs', path_1.default.join(__dirname, 'templates', 'src/pages/document.pc.ejs')).apply().save();
+    }
+    else {
+        (0, mrm_core_1.template)('.umirc.ts', path_1.default.join(__dirname, 'templates', '.umirc.mobile.ts')).apply().save();
+        (0, mrm_core_1.template)('src/utils/toast.ts', path_1.default.join(__dirname, 'templates', 'src/utils/toast.mobile.ts')).apply().save();
+        (0, mrm_core_1.template)('src/pages/document.ejs', path_1.default.join(__dirname, 'templates', 'src/pages/document.mobile.ejs')).apply().save();
+    }
 }
 function addDirs() {
     (0, mrm_core_1.makeDirs)(['src/services', 'src/components', 'src/enums']);
@@ -83,11 +91,10 @@ function changeFiles() {
     })
         .save();
 }
-function installDependencies() {
+function installDependencies(config) {
     (0, mrm_core_1.install)([
         'ahooks',
         'styled-components',
-        'antd-mobile',
         'query-string',
         'dayjs',
         'ts-pattern',
@@ -107,6 +114,14 @@ function installDependencies() {
         yarn: true,
         dev: true,
     });
+    if (config.platform === 'mobile') {
+        (0, mrm_core_1.install)([
+            'antd-mobile',
+        ], {
+            yarn: true,
+            dev: false,
+        });
+    }
 }
 function changeScripts() {
     const pkg = (0, mrm_core_1.packageJson)();
@@ -133,12 +148,12 @@ function changeScripts() {
         .setScript('test:coverage', testCoverage)
         .save();
 }
-module.exports = function task() {
+module.exports = function task(config = { platform: 'mobile' }) {
     checkEnvironment();
     removeFiles();
-    addFiles();
+    addFiles(config);
     addDirs();
     changeFiles();
-    installDependencies();
+    installDependencies(config);
     changeScripts();
 };

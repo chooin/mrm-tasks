@@ -11,6 +11,10 @@ import semver from 'semver';
 import kleur from 'kleur';
 import path from 'path';
 
+type Config = {
+  platform: 'mobile' | 'pc';
+};
+
 const NodeVersion = '16';
 
 function checkEnvironment() {
@@ -29,7 +33,7 @@ function removeFiles() {
   deleteFiles(['src/pages/index.tsx', 'src/pages/index.less', '.prettierrc']);
 }
 
-function addFiles() {
+function addFiles(config: Config) {
   const files = [
     'src/layouts/default/index.tsx',
     'src/pages/home/index/index.tsx',
@@ -42,14 +46,12 @@ function addFiles() {
     'src/utils/merge-list.ts',
     'src/utils/parse-query.ts',
     'src/utils/storage.ts',
-    'src/utils/toast.ts',
     'src/utils/yup.ts',
     'jest.config.js',
     'commitlint.config.js',
     '.umirc.local.ts',
     '.umirc.testing.ts',
     '.umirc.production.ts',
-    '.umirc.ts',
     '.yarnrc',
     '.eslintrc.js',
     'src/app.tsx',
@@ -59,6 +61,40 @@ function addFiles() {
   files.forEach((file) => {
     template(file, path.join(__dirname, 'templates', file)).apply().save();
   });
+
+  if (config.platform === 'pc') {
+    template('.umirc.ts', path.join(__dirname, 'templates', '.umirc.pc.ts'))
+      .apply()
+      .save();
+    template(
+      'src/utils/toast.ts',
+      path.join(__dirname, 'templates', 'src/utils/toast.pc.ts'),
+    )
+      .apply()
+      .save();
+    template(
+      'src/pages/document.ejs',
+      path.join(__dirname, 'templates', 'src/pages/document.pc.ejs'),
+    )
+      .apply()
+      .save();
+  } else {
+    template('.umirc.ts', path.join(__dirname, 'templates', '.umirc.mobile.ts'))
+      .apply()
+      .save();
+    template(
+      'src/utils/toast.ts',
+      path.join(__dirname, 'templates', 'src/utils/toast.mobile.ts'),
+    )
+      .apply()
+      .save();
+    template(
+      'src/pages/document.ejs',
+      path.join(__dirname, 'templates', 'src/pages/document.mobile.ejs'),
+    )
+      .apply()
+      .save();
+  }
 }
 
 function addDirs() {
@@ -98,12 +134,11 @@ function changeFiles() {
     .save();
 }
 
-function installDependencies() {
+function installDependencies(config: Config) {
   install(
     [
       'ahooks',
       'styled-components',
-      'antd-mobile',
       'query-string',
       'dayjs',
       'ts-pattern',
@@ -128,6 +163,12 @@ function installDependencies() {
       dev: true,
     },
   );
+  if (config.platform === 'mobile') {
+    install(['antd-mobile'], {
+      yarn: true,
+      dev: false,
+    });
+  }
 }
 
 function changeScripts() {
@@ -157,12 +198,12 @@ function changeScripts() {
     .save();
 }
 
-module.exports = function task() {
+module.exports = function task(config: Config = { platform: 'mobile' }) {
   checkEnvironment();
   removeFiles();
-  addFiles();
+  addFiles(config);
   addDirs();
   changeFiles();
-  installDependencies();
+  installDependencies(config);
   changeScripts();
 };

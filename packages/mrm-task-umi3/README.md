@@ -7,5 +7,7 @@ mkdir myapp && cd myapp
 yarn create @umijs/umi-app
 
 # 然后再执行
-npx mrm umi3
+npx mrm umi3 --config:platform mobile # 移动端
+
+npx mrm umi3 --config:platform pc # PC 端
 ```
