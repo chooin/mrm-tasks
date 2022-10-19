@@ -39,7 +39,6 @@ function addFiles(config) {
         '.yarnrc',
         '.eslintrc.js',
         'src/app.tsx',
-        'src/global.less',
     ];
     files.forEach((file) => {
         (0, mrm_core_1.template)(file, path_1.default.join(__dirname, 'templates', file)).apply().save();
@@ -54,6 +53,9 @@ function addFiles(config) {
         (0, mrm_core_1.template)('src/pages/document.ejs', path_1.default.join(__dirname, 'templates', 'src/pages/document.pc.ejs'))
             .apply()
             .save();
+        (0, mrm_core_1.template)('src/global.less', path_1.default.join(__dirname, 'templates', 'src/global.pc.less'))
+            .apply()
+            .save();
     }
     else {
         (0, mrm_core_1.template)('.umirc.ts', path_1.default.join(__dirname, 'templates', '.umirc.mobile.ts'))
@@ -63,6 +65,9 @@ function addFiles(config) {
             .apply()
             .save();
         (0, mrm_core_1.template)('src/pages/document.ejs', path_1.default.join(__dirname, 'templates', 'src/pages/document.mobile.ejs'))
+            .apply()
+            .save();
+        (0, mrm_core_1.template)('src/global.less', path_1.default.join(__dirname, 'templates', 'src/global.mobile.less'))
             .apply()
             .save();
     }

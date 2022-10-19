@@ -1,6 +1,13 @@
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
 import NiceModal from '@ebay/nice-modal-react';
 
+const theme = {};
+
 export function rootContainer(container: React.ReactElement) {
-  return React.createElement(NiceModal.Provider, null, container);
+  return (
+    <ThemeProvider theme={theme}>
+      {React.createElement(NiceModal.Provider, null, container)}
+    </ThemeProvider>
+  );
 }
