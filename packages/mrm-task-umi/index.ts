@@ -27,6 +27,7 @@ function checkEnvironment() {
 
 function removeFiles() {
   deleteFiles([
+    '.npmrc',
     'src/layouts/index.tsx',
     'src/layouts/index.less',
     'src/pages/index.tsx',
@@ -57,6 +58,8 @@ function addFiles() {
     '.umirc.testing.ts',
     '.umirc.production.ts',
     '.umirc.ts',
+    '.yarnrc',
+    '.eslintrc.js',
     'src/app.tsx',
     'src/global.less',
   ];
@@ -138,10 +141,12 @@ function changeScripts() {
   const pkg = packageJson();
 
   const postinstall = pkg.getScript('postinstall');
+  const setup = pkg.getScript('setup');
   pkg
     .removeScript('dev')
     .removeScript('build')
     .removeScript('postinstall')
+    .removeScript('setup')
     .removeScript('start')
     .save();
   pkg
@@ -151,7 +156,7 @@ function changeScripts() {
     .setScript('build:production', 'UMI_ENV=production umi build')
     .setScript('preinstall', 'npx only-allow yarn')
     .setScript('postinstall', postinstall)
-    .setScript('prepare', 'husky install')
+    .setScript('setup', setup)
     .save();
 }
 
