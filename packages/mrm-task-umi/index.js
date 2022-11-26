@@ -7,7 +7,7 @@ const mrm_core_1 = require("mrm-core");
 const semver_1 = __importDefault(require("semver"));
 const kleur_1 = __importDefault(require("kleur"));
 const path_1 = __importDefault(require("path"));
-const NodeVersion = '16';
+const NodeVersion = '18';
 function checkEnvironment() {
     const currentNodeVersion = semver_1.default.clean(process.version);
     if (semver_1.default.lte(currentNodeVersion, `${NodeVersion}.0.0`)) {
@@ -59,6 +59,15 @@ function addDirs() {
 function changeFiles() {
     (0, mrm_core_1.lines)('.prettierignore').add(['dist']).save();
     (0, mrm_core_1.lines)('.nvmrc').add([NodeVersion]).save();
+    (0, mrm_core_1.lines)('.prettierrc.js')
+        .add([
+        "const fabric = require('@umijs/fabric');",
+        '',
+        'module.exports = {',
+        '  ...fabric.prettier,',
+        '};',
+    ])
+        .save();
     (0, mrm_core_1.lines)('typings.d.ts')
         .add([
         '',
@@ -75,9 +84,6 @@ function changeFiles() {
         },
         gitHooks: {
             'commit-msg': 'yarn commitlint --edit $1',
-        },
-        'lint-staged': {
-            '*.{js,jsx,ts,tsx,css,less}': ['umi lint'],
         },
     })
         .save();

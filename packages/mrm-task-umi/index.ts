@@ -11,7 +11,7 @@ import semver from 'semver';
 import kleur from 'kleur';
 import path from 'path';
 
-const NodeVersion = '16';
+const NodeVersion = '18';
 
 function checkEnvironment() {
   const currentNodeVersion = semver.clean(process.version) as string;
@@ -73,6 +73,15 @@ function addDirs() {
 function changeFiles() {
   lines('.prettierignore').add(['dist']).save();
   lines('.nvmrc').add([NodeVersion]).save();
+  lines('.prettierrc.js')
+    .add([
+      "const fabric = require('@umijs/fabric');",
+      '',
+      'module.exports = {',
+      '  ...fabric.prettier,',
+      '};',
+    ])
+    .save();
   lines('typings.d.ts')
     .add([
       '',
@@ -89,9 +98,6 @@ function changeFiles() {
       },
       gitHooks: {
         'commit-msg': 'yarn commitlint --edit $1',
-      },
-      'lint-staged': {
-        '*.{js,jsx,ts,tsx,css,less}': ['umi lint'],
       },
     })
     .save();
