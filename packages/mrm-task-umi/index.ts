@@ -102,14 +102,11 @@ function installDependencies() {
     [
       'ahooks',
       'styled-components',
-      'antd-mobile',
-      'antd-mobile-icons',
       'query-string',
       'dayjs',
       'ts-pattern',
       'yup',
       '@ebay/nice-modal-react',
-      'rc-field-form',
     ],
     {
       yarn: true,
@@ -122,11 +119,7 @@ function installDependencies() {
       '@types/styled-components',
       '@commitlint/config-conventional',
       '@commitlint/cli',
-      '@umijs/lint',
-      'lint-staged',
-      'stylelint',
-      'eslint',
-      'husky',
+      '@umijs/fabric',
     ],
     {
       yarn: true,

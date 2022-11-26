@@ -86,14 +86,11 @@ function installDependencies() {
     (0, mrm_core_1.install)([
         'ahooks',
         'styled-components',
-        'antd-mobile',
-        'antd-mobile-icons',
         'query-string',
         'dayjs',
         'ts-pattern',
         'yup',
         '@ebay/nice-modal-react',
-        'rc-field-form',
     ], {
         yarn: true,
         dev: false,
@@ -103,11 +100,7 @@ function installDependencies() {
         '@types/styled-components',
         '@commitlint/config-conventional',
         '@commitlint/cli',
-        '@umijs/lint',
-        'lint-staged',
-        'stylelint',
-        'eslint',
-        'husky',
+        '@umijs/fabric',
     ], {
         yarn: true,
         dev: true,
