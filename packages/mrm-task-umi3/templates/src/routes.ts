@@ -12,7 +12,7 @@ const routes: IRoute[] = [
       {
         path: '/home/index',
         component: '@/pages/home/index',
-        title: 'Home Page',
+        name: 'Home Page',
       },
     ],
   },

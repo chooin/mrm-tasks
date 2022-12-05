@@ -6,7 +6,7 @@ import { Page } from './styled';
 const Index: React.FC<IRouteComponentProps> = ({ route }) => {
   useMount(() => {});
 
-  return <Page>{route.title}</Page>;
+  return <Page>{route.name}</Page>;
 };
 
 export default Index;
