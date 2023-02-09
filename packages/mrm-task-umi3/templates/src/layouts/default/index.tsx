@@ -1,10 +1,7 @@
 import React from 'react';
+import { IRouteComponentProps } from 'umi';
 
-type Props = {
-  children: React.ReactElement;
-};
-
-const Layout: React.FC<Props> = (props) => {
+const Layout: React.FC<IRouteComponentProps> = (props) => {
   return <>{React.cloneElement(props.children, {})}</>;
 };
 
