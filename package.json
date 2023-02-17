@@ -7,14 +7,8 @@
   "scripts": {
     "prepare": "husky install",
     "preinstall": "npx only-allow pnpm",
-    "build": "pnpm --filter './packages/*' build",
-    "np:react-native": "pnpm --filter 'mrm-task-react-native' publish",
-    "np:serve": "pnpm --filter 'mrm-task-serve' publish",
-    "np:umi": "pnpm -filter 'mrm-task-umi' publish",
-    "np:umi3": "pnpm --filter mrm-task-umi3 publish",
-    "np:taro": "pnpm --filter 'mrm-task-taro' publish",
-    "np:laravel": "pnpm --filter 'mrm-task-laravel' publish",
-    "np:pkg": "pnpm --filter 'mrm-task-pkg' publish"
+    "build": "pnpm -r build",
+    "publish": "pnpm -r publish --no-git-checks"
   },
   "workspaces": [
     "packages/*"
