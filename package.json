@@ -8,13 +8,13 @@
     "prepare": "husky install",
     "preinstall": "npx only-allow pnpm",
     "build": "pnpm --filter './packages/*' build",
-    "np:react-native": "pnpm -r --filter './packages/mrm-task-react-native' publish",
-    "np:serve": "pnpm -r --filter './packages/mrm-task-serve' publish",
-    "np:umi": "pnpm -r --filter './packages/mrm-task-umi' publish",
-    "np:umi3": "pnpm -r --filter './packages/mrm-task-umi3' publish",
-    "np:taro": "pnpm -r --filter './packages/mrm-task-taro' publish",
-    "np:laravel": "pnpm -r --filter './packages/mrm-task-laravel' publish",
-    "np:pkg": "pnpm -r --filter './packages/mrm-task-pkg' publish"
+    "np:react-native": "pnpm --filter 'mrm-task-react-native' publish",
+    "np:serve": "pnpm --filter 'mrm-task-serve' publish",
+    "np:umi": "pnpm -filter 'mrm-task-umi' publish",
+    "np:umi3": "pnpm --filter mrm-task-umi3 publish",
+    "np:taro": "pnpm --filter 'mrm-task-taro' publish",
+    "np:laravel": "pnpm --filter 'mrm-task-laravel' publish",
+    "np:pkg": "pnpm --filter 'mrm-task-pkg' publish"
   },
   "workspaces": [
     "packages/*"
