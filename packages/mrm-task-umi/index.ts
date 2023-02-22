@@ -115,11 +115,6 @@ function installDependencies() {
       '@types/styled-components',
       '@commitlint/config-conventional',
       '@commitlint/cli',
-      'prettier',
-      'prettier-plugin-organize-imports',
-      'prettier-plugin-packagejson',
-      'husky',
-      'lint-staged',
     ],
     {
       pnpm: true,

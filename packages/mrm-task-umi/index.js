@@ -40,7 +40,6 @@ function addFiles() {
         'src/utils/storage.ts',
         'src/utils/toast.ts',
         'src/utils/yup.ts',
-        'jest.config.js',
         'commitlint.config.js',
         '.umirc.local.ts',
         '.umirc.testing.ts',
@@ -94,15 +93,9 @@ function installDependencies() {
         dev: false,
     });
     (0, mrm_core_1.install)([
-        '@types/jest',
         '@types/styled-components',
         '@commitlint/config-conventional',
         '@commitlint/cli',
-        'prettier',
-        'prettier-plugin-organize-imports',
-        'prettier-plugin-packagejson',
-        'husky',
-        'lint-staged',
     ], {
         pnpm: true,
         dev: true,
