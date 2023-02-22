@@ -21,7 +21,7 @@ function removeFiles() {
         'src/layouts/index.less',
         'src/pages/index.tsx',
         'src/pages/docs.tsx',
-        'src/assets/yay.jpg',
+        'src/assets',
     ]);
 }
 function addFiles() {
@@ -31,7 +31,7 @@ function addFiles() {
         'src/pages/home/index/styled.ts',
         'src/pages/document.ejs',
         'src/hooks/index.ts',
-        'src/hooks/use-search-params.ts',
+        'src/hooks/use-query.ts',
         'src/routes.ts',
         'src/utils/index.ts',
         'src/utils/merge-props.ts',
@@ -47,9 +47,6 @@ function addFiles() {
         '.umirc.production.ts',
         '.umirc.ts',
         '.eslintrc.js',
-        '.lintstagedrc',
-        '.prettierignore',
-        '.prettierrc',
         '.stylelintrc.js',
         'src/app.tsx',
         'src/global.less',
@@ -64,15 +61,6 @@ function addDirs() {
 function changeFiles() {
     (0, mrm_core_1.lines)('.prettierignore').add(['dist']).save();
     (0, mrm_core_1.lines)('.nvmrc').add([NodeVersion]).save();
-    (0, mrm_core_1.lines)('.prettierrc.js')
-        .add([
-        "const fabric = require('@umijs/fabric');",
-        '',
-        'module.exports = {',
-        '  ...fabric.prettier,',
-        '};',
-    ])
-        .save();
     (0, mrm_core_1.lines)('typings.d.ts')
         .add([
         '',
