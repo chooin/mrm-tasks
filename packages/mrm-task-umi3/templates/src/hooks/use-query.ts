@@ -3,7 +3,7 @@ import type { ParseOptions, StringifyOptions } from 'query-string';
 import { parseQuery } from '@/utils';
 import { useState } from 'react';
 
-export const useQuery = <T = {}>(
+export const useQuery = <T = unknown>(
   options?: StringifyOptions & ParseOptions,
 ): T => {
   const [query] = useState<T>(
