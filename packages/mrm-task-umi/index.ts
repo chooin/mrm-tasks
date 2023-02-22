@@ -27,7 +27,6 @@ function checkEnvironment() {
 
 function removeFiles() {
   deleteFiles([
-    '.npmrc',
     'src/layouts/index.tsx',
     'src/layouts/index.less',
     'src/pages/index.tsx',
@@ -58,8 +57,11 @@ function addFiles() {
     '.umirc.testing.ts',
     '.umirc.production.ts',
     '.umirc.ts',
-    '.yarnrc',
     '.eslintrc.js',
+    '.lintstagedrc',
+    '.prettierignore',
+    '.prettierrc',
+    '.stylelintrc.js',
     'src/app.tsx',
     'src/global.less',
   ];
@@ -99,10 +101,12 @@ function changeFiles() {
       engines: {
         node: `${NodeVersion}.x`,
       },
-      gitHooks: {
-        'commit-msg': 'yarn commitlint --edit $1',
-      },
     })
+    .save();
+  lines('.npmrc')
+    .add([
+      'ignore-engines=true'
+    ])
     .save();
 }
 
@@ -116,9 +120,10 @@ function installDependencies() {
       'ts-pattern',
       'yup',
       '@ebay/nice-modal-react',
+      '@umijs/max',
     ],
     {
-      yarn: true,
+      pnpm: true,
       dev: false,
     },
   );
@@ -128,10 +133,14 @@ function installDependencies() {
       '@types/styled-components',
       '@commitlint/config-conventional',
       '@commitlint/cli',
-      '@umijs/fabric',
+      'prettier',
+      'prettier-plugin-organize-imports',
+      'prettier-plugin-packagejson',
+      'husky',
+      'lint-staged',
     ],
     {
-      yarn: true,
+      pnpm: true,
       dev: true,
     },
   );
@@ -150,11 +159,11 @@ function changeScripts() {
     .removeScript('start')
     .save();
   pkg
-    .setScript('start', 'yarn dev')
+    .setScript('start', 'pnpm dev')
     .setScript('dev', 'UMI_ENV=local umi dev')
     .setScript('build:testing', 'UMI_ENV=testing umi build')
     .setScript('build:production', 'UMI_ENV=production umi build')
-    .setScript('preinstall', 'npx only-allow yarn')
+    .setScript('preinstall', 'npx only-allow pnpm')
     .setScript('postinstall', postinstall)
     .setScript('setup', setup)
     .save();

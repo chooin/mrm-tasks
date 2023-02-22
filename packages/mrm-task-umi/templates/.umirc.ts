@@ -8,7 +8,7 @@ export default defineConfig({
   history: {
     type: 'browser',
   },
-  npmClient: 'yarn',
+  npmClient: 'pnpm',
   devtool: 'hidden-source-map',
   routes,
 });
