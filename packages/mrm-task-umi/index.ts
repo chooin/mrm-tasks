@@ -51,7 +51,6 @@ function addFiles() {
     'src/utils/storage.ts',
     'src/utils/toast.ts',
     'src/utils/yup.ts',
-    'jest.config.js',
     'commitlint.config.js',
     '.umirc.local.ts',
     '.umirc.testing.ts',
@@ -113,7 +112,6 @@ function installDependencies() {
   );
   install(
     [
-      '@types/jest',
       '@types/styled-components',
       '@commitlint/config-conventional',
       '@commitlint/cli',

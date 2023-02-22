@@ -59,7 +59,7 @@ function addDirs() {
     (0, mrm_core_1.makeDirs)(['src/services', 'src/components', 'src/enums']);
 }
 function changeFiles() {
-    (0, mrm_core_1.lines)('.prettierignore').add(['dist']).save();
+    // lines('.prettierignore').add(['dist']).save();
     (0, mrm_core_1.lines)('.nvmrc').add([NodeVersion]).save();
     (0, mrm_core_1.lines)('typings.d.ts')
         .add([
@@ -77,11 +77,7 @@ function changeFiles() {
         },
     })
         .save();
-    (0, mrm_core_1.lines)('.npmrc')
-        .add([
-        'ignore-engines=true'
-    ])
-        .save();
+    (0, mrm_core_1.lines)('.npmrc').add(['ignore-engines=true']).save();
 }
 function installDependencies() {
     (0, mrm_core_1.install)([
