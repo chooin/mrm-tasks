@@ -90,6 +90,7 @@ function installDependencies() {
         '@umijs/max',
         'antd-mobile',
         'antd',
+        'type-fest',
     ], {
         pnpm: true,
         dev: false,
