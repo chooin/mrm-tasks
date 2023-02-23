@@ -32,6 +32,7 @@ function addFiles() {
         'src/pages/document.ejs',
         'src/hooks/index.ts',
         'src/hooks/use-query.ts',
+        'src/hooks/use-history.ts',
         'src/routes.ts',
         'src/utils/index.ts',
         'src/utils/merge-props.ts',
