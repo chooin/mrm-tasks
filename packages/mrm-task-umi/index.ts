@@ -97,6 +97,7 @@ function installDependencies() {
   install(
     [
       'ahooks',
+      'styled-components',
       'query-string',
       'dayjs',
       'ts-pattern',
