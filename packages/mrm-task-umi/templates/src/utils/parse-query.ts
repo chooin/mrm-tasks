@@ -1,4 +1,4 @@
-import type { StringifyOptions, ParseOptions } from 'query-string';
+import type { ParseOptions } from 'query-string';
 import queryString from 'query-string';
 
 export function parseQuery<T = unknown>(
