@@ -1,12 +1,11 @@
 import type { StringifyOptions, ParseOptions } from 'query-string';
 import queryString from 'query-string';
 
-type Options = StringifyOptions & ParseOptions;
+export function parseQuery<T = unknown>(
+  query: string,
+  options?: ParseOptions,
+): T;
 
-type Query = Record<string, string | string[] | null>;
-
-export function parseQuery<T = unknown>(query: Query, options?: Options): T;
-
-export function parseQuery(query: Query, options: Options = {}) {
-  return queryString.parse(queryString.stringify(query, options), options);
+export function parseQuery(query: string, options: ParseOptions = {}) {
+  return queryString.parse(query, options);
 }
