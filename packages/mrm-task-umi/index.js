@@ -88,6 +88,8 @@ function installDependencies() {
         'yup',
         '@ebay/nice-modal-react',
         '@umijs/max',
+        'antd-mobile',
+        'antd',
     ], {
         pnpm: true,
         dev: false,

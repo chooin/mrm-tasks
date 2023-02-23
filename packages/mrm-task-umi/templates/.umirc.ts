@@ -8,6 +8,7 @@ export default defineConfig({
   history: {
     type: 'browser',
   },
+  styledComponents: {},
   npmClient: 'pnpm',
   devtool: 'hidden-source-map',
   routes,

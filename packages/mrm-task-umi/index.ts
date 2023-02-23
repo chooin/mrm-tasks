@@ -97,13 +97,14 @@ function installDependencies() {
   install(
     [
       'ahooks',
-      'styled-components',
       'query-string',
       'dayjs',
       'ts-pattern',
       'yup',
       '@ebay/nice-modal-react',
       '@umijs/max',
+      'antd-mobile',
+      'antd',
     ],
     {
       pnpm: true,
