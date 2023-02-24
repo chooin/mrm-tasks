@@ -4,20 +4,14 @@ importers:
   .:
     specifiers:
       '@types/node': ^16.18.12
-      '@types/react': ^17.0.53
-      '@types/react-native': ^0.66.27
       '@types/semver': ^7.3.13
-      '@types/styled-components': ^5.1.26
       husky: ^7.0.4
       prettier: 2.5.1
       pretty-quick: 3.1.3
       typescript: ^4.9.5
     devDependencies:
       '@types/node': 16.18.12
-      '@types/react': 17.0.53
-      '@types/react-native': 0.66.27
       '@types/semver': 7.3.13
-      '@types/styled-components': 5.1.26
       husky: 7.0.4
       prettier: 2.5.1
       pretty-quick: 3.1.3_prettier@2.5.1
@@ -133,16 +127,6 @@ packages:
       to-fast-properties: 2.0.0
     dev: false
 
-  /@types/hoist-non-react-statics/3.3.1:
-    resolution:
-      {
-        integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==,
-      }
-    dependencies:
-      '@types/react': 17.0.53
-      hoist-non-react-statics: 3.3.2
-    dev: true
-
   /@types/minimatch/3.0.5:
     resolution:
       {
@@ -157,56 +141,11 @@ packages:
       }
     dev: true
 
-  /@types/prop-types/15.7.5:
-    resolution:
-      {
-        integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==,
-      }
-    dev: true
-
-  /@types/react-native/0.66.27:
-    resolution:
-      {
-        integrity: sha512-RBIYqiAiLRFY2ygNZgNmoi9z5pe4wQS3CKWTNbHDhEB05NzYSh54QVvn9SdOrAB/RSRualrOIpXxgdFnrZtuyQ==,
-      }
-    dependencies:
-      '@types/react': 17.0.53
-    dev: true
-
-  /@types/react/17.0.53:
-    resolution:
-      {
-        integrity: sha512-1yIpQR2zdYu1Z/dc1OxC+MA6GR240u3gcnP4l6mvj/PJiVaqHsQPmWttsvHsfnhfPbU2FuGmo0wSITPygjBmsw==,
-      }
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.2
-      csstype: 3.1.1
-    dev: true
-
-  /@types/scheduler/0.16.2:
-    resolution:
-      {
-        integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==,
-      }
-    dev: true
-
   /@types/semver/7.3.13:
     resolution:
       {
         integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==,
       }
-    dev: true
-
-  /@types/styled-components/5.1.26:
-    resolution:
-      {
-        integrity: sha512-KuKJ9Z6xb93uJiIyxo/+ksS7yLjS1KzG6iv5i78dhVg/X3u5t1H7juRWqVmodIdz6wGVaIApo1u01kmFRdJHVw==,
-      }
-    dependencies:
-      '@types/hoist-non-react-statics': 3.3.1
-      '@types/react': 17.0.53
-      csstype: 3.1.1
     dev: true
 
   /@vue/compiler-core/3.0.11:
@@ -449,13 +388,6 @@ packages:
     engines: { node: '>=4' }
     hasBin: true
     dev: false
-
-  /csstype/3.1.1:
-    resolution:
-      {
-        integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==,
-      }
-    dev: true
 
   /deep-extend/0.6.0:
     resolution:
@@ -702,15 +634,6 @@ packages:
         integrity: sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==,
       }
     dev: false
-
-  /hoist-non-react-statics/3.3.2:
-    resolution:
-      {
-        integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==,
-      }
-    dependencies:
-      react-is: 16.13.1
-    dev: true
 
   /human-signals/1.1.1:
     resolution:
@@ -1306,13 +1229,6 @@ packages:
       minimist: 1.2.8
       strip-json-comments: 2.0.1
     dev: false
-
-  /react-is/16.13.1:
-    resolution:
-      {
-        integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==,
-      }
-    dev: true
 
   /readme-badger/0.3.0:
     resolution:
