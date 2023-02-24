@@ -8,14 +8,14 @@ interface Result {
   push(path: string): void;
   push(location: Location): void;
   replace(path: string): void;
-  replace(location: Location): void;
+  replace(options: Location): void;
   go(delta: number): void;
   forward(): void;
   back(): void;
 }
 
 export function useHistory(): Result {
-  const stringifyUrl = (location: Location) => {
+  const stringifyUrl = (location: string | Location) => {
     if (typeof location === 'string') {
       return location;
     } else {
@@ -26,12 +26,12 @@ export function useHistory(): Result {
     }
   };
 
-  const push = (location: Location) => {
-    history.push(stringifyUrl(location));
+  const push = (options: string | Location) => {
+    history.push(stringifyUrl(options));
   };
 
-  const replace = (location: Location) => {
-    history.push(stringifyUrl(location));
+  const replace = (options: string | Location) => {
+    history.push(stringifyUrl(options));
   };
 
   return {
