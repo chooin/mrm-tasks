@@ -78,6 +78,7 @@ function changeFiles() {
     })
         .save();
     (0, mrm_core_1.lines)('.npmrc').add(['ignore-engines=true']).save();
+    (0, mrm_core_1.lines)('.gitignore').add(['!.umirc.local.ts']).save();
 }
 function installDependencies() {
     (0, mrm_core_1.install)([
