@@ -92,6 +92,7 @@ function changeFiles() {
     })
     .save();
   lines('.npmrc').add(['ignore-engines=true']).save();
+  lines('.gitignore').add(['!.umirc.local.ts']).save();
 }
 
 function installDependencies() {
