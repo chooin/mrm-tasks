@@ -105,9 +105,7 @@ function installDependencies() {
       'ts-pattern',
       'yup',
       '@ebay/nice-modal-react',
-      '@umijs/max',
       'antd-mobile',
-      'antd',
       'type-fest',
     ],
     {
