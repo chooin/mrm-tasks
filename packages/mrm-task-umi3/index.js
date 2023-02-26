@@ -102,7 +102,7 @@ function changeFiles() {
             node: `${NodeVersion}.x`,
         },
         gitHooks: {
-            'commit-msg': 'yarn commitlint --edit $1',
+            'commit-msg': 'npx --no-install commitlint --edit $1',
         },
     })
         .save();

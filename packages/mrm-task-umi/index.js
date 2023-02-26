@@ -108,8 +108,6 @@ function installDependencies() {
 }
 function changeScripts() {
     const pkg = (0, mrm_core_1.packageJson)();
-    const postinstall = pkg.getScript('postinstall');
-    const setup = pkg.getScript('setup');
     pkg
         .removeScript('dev')
         .removeScript('build')
@@ -119,12 +117,12 @@ function changeScripts() {
         .save();
     pkg
         .setScript('start', 'pnpm dev')
-        .setScript('dev', 'UMI_ENV=local umi dev')
-        .setScript('build:testing', 'UMI_ENV=testing umi build')
-        .setScript('build:production', 'UMI_ENV=production umi build')
+        .setScript('dev', 'UMI_ENV=local max dev')
+        .setScript('build:testing', 'UMI_ENV=testing max build')
+        .setScript('build:production', 'UMI_ENV=production max build')
         .setScript('preinstall', 'npx only-allow pnpm')
-        .setScript('postinstall', postinstall)
-        .setScript('setup', setup)
+        .setScript('postinstall', 'max setup')
+        .setScript('setup', 'max setup')
         .save();
 }
 module.exports = function task() {
