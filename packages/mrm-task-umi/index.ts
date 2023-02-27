@@ -130,6 +130,7 @@ function installDependencies() {
   );
   uninstall(['umi'], {
     pnpm: true,
+    dev: false,
   });
 }
 
