@@ -65,9 +65,11 @@ function changeFiles() {
         .add([
         '',
         '// global variables',
-        'declare const APP_NAME: string;',
-        "declare const APP_ENV: 'production' | 'testing' | 'local';",
-        'declare const API_URL: string;',
+        'declare global {',
+        '  const APP_NAME: string;',
+        "  const APP_ENV: 'production' | 'testing' | 'local';",
+        '  const API_URL: string;',
+        '}',
     ])
         .save();
     (0, mrm_core_1.json)('package.json')
