@@ -106,6 +106,12 @@ function installDependencies() {
         pnpm: true,
         dev: true,
     });
+    (0, mrm_core_1.uninstall)([
+        'umi',
+    ], {
+        pnpm: true,
+        dev: false,
+    });
 }
 function changeScripts() {
     const pkg = (0, mrm_core_1.packageJson)();

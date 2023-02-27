@@ -1,5 +1,6 @@
 import {
   install,
+  uninstall,
   packageJson,
   template,
   deleteFiles,
@@ -127,6 +128,10 @@ function installDependencies() {
       dev: true,
     },
   );
+  uninstall(['umi'], {
+    pnpm: true,
+    dev: false,
+  });
 }
 
 function changeScripts() {
