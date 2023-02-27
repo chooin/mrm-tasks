@@ -1,4 +1,4 @@
-import { history } from 'umi';
+import { history } from '@umijs/max';
 import querystring from 'query-string';
 
 type Location = { pathname: string; query: Record<string, any> };

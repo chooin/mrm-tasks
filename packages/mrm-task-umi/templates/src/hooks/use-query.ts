@@ -1,4 +1,4 @@
-import { useLocation } from 'umi';
+import { useLocation } from '@umijs/max';
 import type { ParseOptions, StringifyOptions } from 'query-string';
 import { parseQuery } from '@/utils';
 import { useState } from 'react';
