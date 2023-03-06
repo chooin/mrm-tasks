@@ -99,6 +99,10 @@ function changeFiles() {
 }
 
 function installDependencies() {
+  uninstall(['umi'], {
+    pnpm: true,
+    dev: false,
+  });
   install(
     [
       'ahooks',
@@ -128,10 +132,6 @@ function installDependencies() {
       dev: true,
     },
   );
-  uninstall(['umi'], {
-    pnpm: true,
-    dev: false,
-  });
 }
 
 function changeScripts() {

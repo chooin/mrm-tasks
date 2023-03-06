@@ -1,13 +1,19 @@
+import { useState } from 'react';
 import { history } from 'umi';
 import type { ParseOptions, StringifyOptions } from 'query-string';
 import { parseQuery } from '@/utils';
-import { useState } from 'react';
 
-export const useQuery = <T = unknown>(
-  options?: StringifyOptions & ParseOptions,
-): T => {
+type Options = StringifyOptions &
+  ParseOptions & {
+    defaultValue?: Record<string, any>;
+  };
+
+export const useQuery = <T = unknown>(options?: Options): T => {
   const [query] = useState<T>(
-    parseQuery<T>(history.location.query ?? {}, options),
+    Object.assign(
+      options?.defaultValue ?? {},
+      parseQuery<T>(history.location.query ?? {}, options),
+    ),
   );
 
   return query;
