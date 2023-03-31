@@ -41,7 +41,6 @@ function addFiles() {
     'src/layouts/default/index.tsx',
     'src/pages/home/index/index.tsx',
     'src/pages/home/index/styled.ts',
-    'src/pages/document.ejs',
     'src/hooks/index.ts',
     'src/hooks/use-query.ts',
     'src/hooks/use-history.ts',
@@ -52,8 +51,6 @@ function addFiles() {
     'src/utils/parse-query.ts',
     'src/utils/storage.ts',
     'src/utils/toast.ts',
-    'src/utils/yup.ts',
-    'commitlint.config.js',
     '.umirc.local.ts',
     '.umirc.testing.ts',
     '.umirc.production.ts',
@@ -74,7 +71,6 @@ function addDirs() {
 }
 
 function changeFiles() {
-  // lines('.prettierignore').add(['dist']).save();
   lines('.nvmrc').add([NodeVersion]).save();
   lines('typings.d.ts')
     .add([

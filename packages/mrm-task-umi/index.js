@@ -29,7 +29,6 @@ function addFiles() {
         'src/layouts/default/index.tsx',
         'src/pages/home/index/index.tsx',
         'src/pages/home/index/styled.ts',
-        'src/pages/document.ejs',
         'src/hooks/index.ts',
         'src/hooks/use-query.ts',
         'src/hooks/use-history.ts',
@@ -40,8 +39,6 @@ function addFiles() {
         'src/utils/parse-query.ts',
         'src/utils/storage.ts',
         'src/utils/toast.ts',
-        'src/utils/yup.ts',
-        'commitlint.config.js',
         '.umirc.local.ts',
         '.umirc.testing.ts',
         '.umirc.production.ts',
@@ -59,7 +56,6 @@ function addDirs() {
     (0, mrm_core_1.makeDirs)(['src/services', 'src/components', 'src/enums']);
 }
 function changeFiles() {
-    // lines('.prettierignore').add(['dist']).save();
     (0, mrm_core_1.lines)('.nvmrc').add([NodeVersion]).save();
     (0, mrm_core_1.lines)('typings.d.ts')
         .add([
@@ -100,9 +96,7 @@ function installDependencies() {
         pnpm: true,
         dev: false,
     });
-    (0, mrm_core_1.install)([
-        '@types/styled-components',
-    ], {
+    (0, mrm_core_1.install)(['@types/styled-components'], {
         pnpm: true,
         dev: true,
     });
