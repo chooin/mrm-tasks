@@ -9,7 +9,7 @@ export async function getInitialState() {}
 export function rootContainer(container: React.ReactElement) {
   return (
     <ThemeProvider theme={theme}>
-      {React.createElement(NiceModal.Provider, null, container)}
+      <NiceModal.Provider>{container}</NiceModal.Provider>
     </ThemeProvider>
   );
 }

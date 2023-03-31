@@ -94,7 +94,6 @@ function changeFiles() {
       },
     })
     .save();
-  lines('.npmrc').add(['ignore-engines=true']).save();
   lines('.gitignore').add(['!.umirc.local.ts']).save();
 }
 
@@ -114,24 +113,16 @@ function installDependencies() {
       '@ebay/nice-modal-react',
       'antd-mobile',
       'type-fest',
-      '@umijs/max',
     ],
     {
       pnpm: true,
       dev: false,
     },
   );
-  install(
-    [
-      '@types/styled-components',
-      '@commitlint/config-conventional',
-      '@commitlint/cli',
-    ],
-    {
-      pnpm: true,
-      dev: true,
-    },
-  );
+  install(['@types/styled-components'], {
+    pnpm: true,
+    dev: true,
+  });
 }
 
 function changeScripts() {
