@@ -6,7 +6,7 @@ const theme = {};
 
 export async function getInitialState() {}
 
-export function rootContainer(container: React.ReactElement) {
+export function rootContainer(container: JSX.Element) {
   return (
     <ThemeProvider theme={theme}>
       <NiceModal.Provider>{container}</NiceModal.Provider>
