@@ -9,6 +9,7 @@
     "build": "npx tsc"
   },
   "dependencies": {
+    "execa": "^7.1.1",
     "kleur": "^4.1.5",
     "mrm-core": "^6.1.7",
     "semver": "^7.3.8"

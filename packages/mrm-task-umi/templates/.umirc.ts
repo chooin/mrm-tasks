@@ -11,6 +11,11 @@ export default defineConfig({
   initialState: {},
   model: {},
   npmClient: 'pnpm',
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+  },
   devtool: 'hidden-source-map',
+  hash: true,
   routes,
 });
