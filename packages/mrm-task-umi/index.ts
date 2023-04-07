@@ -48,7 +48,6 @@ function addFiles() {
     'src/utils/index.ts',
     'src/utils/merge-props.ts',
     'src/utils/merge-list.ts',
-    'src/utils/parse-query.ts',
     'src/utils/storage.ts',
     'src/utils/toast.ts',
     '.umirc.local.ts',
