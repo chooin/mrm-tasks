@@ -26,38 +26,44 @@ function removeFiles() {
 }
 function addFiles() {
     const files = [
-        'src/layouts/default/index.tsx',
-        'src/pages/home/index/index.tsx',
-        'src/pages/home/index/styled.ts',
+        'src/components/.gitkeep',
+        'src/enums/.gitkeep',
         'src/hooks/index.ts',
         'src/hooks/use-query.ts',
         'src/hooks/use-history.ts',
-        'src/routes.ts',
+        'src/layouts/default/index.tsx',
+        'src/pages/home/index/index.tsx',
+        'src/pages/home/index/styled.ts',
+        'src/services/.gitkeep',
         'src/utils/index.ts',
         'src/utils/merge-props.ts',
         'src/utils/merge-list.ts',
         'src/utils/storage.ts',
         'src/utils/toast.ts',
+        'src/routes.ts',
+        'src/app.tsx',
+        'src/global.less',
         '.umirc.local.ts',
         '.umirc.testing.ts',
         '.umirc.production.ts',
         '.umirc.ts',
         '.eslintrc.js',
         '.stylelintrc.js',
-        'src/app.tsx',
-        'src/global.less',
     ];
     files.forEach((file) => {
         (0, mrm_core_1.template)(file, path_1.default.join(__dirname, 'templates', file)).apply().save();
     });
 }
 function addDirs() {
-    (0, mrm_core_1.makeDirs)(['src/services', 'src/components', 'src/enums']);
+    // makeDirs(['src/services', 'src/components', 'src/enums']);
 }
 function changeFiles() {
     (0, mrm_core_1.lines)('.nvmrc').add([NodeVersion]).save();
+    (0, mrm_core_1.lines)('.gitignore').remove('/.umirc.local.ts');
     (0, mrm_core_1.lines)('typings.d.ts')
+        .remove("import 'umi/typings';")
         .add([
+        "import '@umijs/max/typings';",
         '',
         '// global variables',
         'declare global {',
@@ -79,7 +85,6 @@ function changeFiles() {
 function uninstallDependencies() {
     (0, mrm_core_1.uninstall)(['umi'], {
         pnpm: true,
-        dev: false,
     });
 }
 function installDependencies() {
@@ -91,8 +96,8 @@ function installDependencies() {
         'ts-pattern',
         'yup',
         '@ebay/nice-modal-react',
-        'antd-mobile',
         'type-fest',
+        '@umijs/max',
     ], {
         pnpm: true,
         dev: false,

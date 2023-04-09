@@ -1,4 +1,3 @@
-import { Toast } from 'antd-mobile';
 import { match, P } from 'ts-pattern';
 import type { ValidationError } from 'yup';
 
@@ -6,10 +5,8 @@ const error = (e: ValidationError | Error): Promise<void> => {
   return new Promise((resolve) => {
     const {
       message,
-      afterClose,
     }: {
       message: string;
-      afterClose?: () => void;
     } = match(e)
       // yup 校验异常
       .with({ errors: P.select() }, (_) => {
@@ -29,16 +26,7 @@ const error = (e: ValidationError | Error): Promise<void> => {
         };
       });
 
-    Toast.show({
-      content: message,
-      position: 'center',
-      maskClickable: true,
-      duration: Math.min(message.length * 300, 8000),
-      afterClose: () => {
-        resolve();
-        afterClose?.();
-      },
-    });
+    window.alert(message);
   });
 };
 
