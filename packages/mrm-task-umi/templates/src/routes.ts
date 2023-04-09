@@ -4,9 +4,9 @@ const routes = [
     component: '@/layouts/default',
     routes: [
       {
+        name: 'Home Page',
         path: '/home/index',
         component: '@/pages/home/index',
-        title: 'Home Page',
       },
     ],
   },

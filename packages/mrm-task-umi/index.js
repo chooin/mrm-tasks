@@ -27,6 +27,7 @@ function removeFiles() {
 function addFiles() {
     const files = [
         'src/components/.gitkeep',
+        'src/constants/.gitkeep',
         'src/enums/.gitkeep',
         'src/hooks/index.ts',
         'src/hooks/use-query.ts',
@@ -98,11 +99,12 @@ function installDependencies() {
         '@ebay/nice-modal-react',
         'type-fest',
         '@umijs/max',
+        'axios',
     ], {
         pnpm: true,
         dev: false,
     });
-    (0, mrm_core_1.install)(['@types/styled-components'], {
+    (0, mrm_core_1.install)(['@types/styled-components', '@types/node'], {
         pnpm: true,
         dev: true,
     });

@@ -5,9 +5,6 @@ export default defineConfig({
   define: {
     APP_NAME: 'APP_NAME',
   },
-  history: {
-    type: 'browser',
-  },
   initialState: {},
   model: {},
   npmClient: 'pnpm',

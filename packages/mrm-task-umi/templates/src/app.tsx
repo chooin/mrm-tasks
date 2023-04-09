@@ -2,9 +2,9 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import NiceModal from '@ebay/nice-modal-react';
 
-const theme = {};
-
 export async function getInitialState() {}
+
+const theme = {};
 
 export function rootContainer(container: JSX.Element) {
   return (
