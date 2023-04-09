@@ -76,12 +76,14 @@ function changeFiles() {
         .save();
     (0, mrm_core_1.lines)('.gitignore').add(['!.umirc.local.ts']).save();
 }
-async function installDependencies() {
-    await (0, mrm_core_1.uninstall)(['umi'], {
+function uninstallDependencies() {
+    (0, mrm_core_1.uninstall)(['umi'], {
         pnpm: true,
         dev: false,
     });
-    await (0, mrm_core_1.install)([
+}
+function installDependencies() {
+    (0, mrm_core_1.install)([
         'ahooks',
         'styled-components',
         'query-string',
@@ -122,9 +124,10 @@ function changeScripts() {
 module.exports = async function task() {
     checkEnvironment();
     removeFiles();
+    uninstallDependencies();
     addFiles();
     addDirs();
     changeFiles();
-    await installDependencies();
+    installDependencies();
     changeScripts();
 };

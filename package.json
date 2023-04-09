@@ -9,11 +9,9 @@
     "prepare": "husky install",
     "preinstall": "npx only-allow pnpm",
     "build": "pnpm -r build",
-    "publish": "pnpm -r publish --no-git-checks"
+    "publish": "pnpm -r publish --no-git-checks",
+    "changeset": "changeset"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "devDependencies": {
     "@changesets/cli": "^2.26.1",
     "@types/node": "^18.15.11",

@@ -92,12 +92,15 @@ function changeFiles() {
   lines('.gitignore').add(['!.umirc.local.ts']).save();
 }
 
-async function installDependencies() {
-  await uninstall(['umi'], {
+function uninstallDependencies() {
+  uninstall(['umi'], {
     pnpm: true,
     dev: false,
   });
-  await install(
+}
+
+function installDependencies() {
+  install(
     [
       'ahooks',
       'styled-components',
@@ -144,9 +147,10 @@ function changeScripts() {
 module.exports = async function task() {
   checkEnvironment();
   removeFiles();
+  uninstallDependencies();
   addFiles();
   addDirs();
   changeFiles();
-  await installDependencies();
+  installDependencies();
   changeScripts();
 };
