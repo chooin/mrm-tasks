@@ -10,6 +10,7 @@ import {
 import semver from 'semver';
 import kleur from 'kleur';
 import path from 'path';
+import { execSync } from 'child_process';
 
 const NodeVersion = '18';
 
@@ -74,7 +75,6 @@ function addDirs() {
 
 function changeFiles() {
   lines('.nvmrc').add([NodeVersion]).save();
-  lines('.gitignore').remove('/.umirc.local.ts');
   lines('typings.d.ts')
     .remove("import 'umi/typings';")
     .add([
@@ -95,7 +95,10 @@ function changeFiles() {
       },
     })
     .save();
-  lines('.gitignore').add(['!.umirc.local.ts']).save();
+  lines('.gitignore')
+    .remove(['/.umirc.local.ts'])
+    .add(['!.umirc.local.ts'])
+    .save();
 }
 
 function uninstallDependencies() {
@@ -129,6 +132,11 @@ function installDependencies() {
   });
 }
 
+function shell() {
+  execSync('pnpx @umijs/max g prettier');
+  execSync('pnpx @umijs/max g precommit');
+}
+
 function changeScripts() {
   const pkg = packageJson();
 
@@ -159,4 +167,5 @@ module.exports = async function task() {
   changeFiles();
   installDependencies();
   changeScripts();
+  shell();
 };

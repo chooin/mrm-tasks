@@ -7,6 +7,7 @@ const mrm_core_1 = require("mrm-core");
 const semver_1 = __importDefault(require("semver"));
 const kleur_1 = __importDefault(require("kleur"));
 const path_1 = __importDefault(require("path"));
+const child_process_1 = require("child_process");
 const NodeVersion = '18';
 function checkEnvironment() {
     const currentNodeVersion = semver_1.default.clean(process.version);
@@ -60,7 +61,6 @@ function addDirs() {
 }
 function changeFiles() {
     (0, mrm_core_1.lines)('.nvmrc').add([NodeVersion]).save();
-    (0, mrm_core_1.lines)('.gitignore').remove('/.umirc.local.ts');
     (0, mrm_core_1.lines)('typings.d.ts')
         .remove("import 'umi/typings';")
         .add([
@@ -81,7 +81,7 @@ function changeFiles() {
         },
     })
         .save();
-    (0, mrm_core_1.lines)('.gitignore').add(['!.umirc.local.ts']).save();
+    (0, mrm_core_1.lines)('.gitignore').remove(['/.umirc.local.ts']).add(['!.umirc.local.ts']).save();
 }
 function uninstallDependencies() {
     (0, mrm_core_1.uninstall)(['umi'], {
@@ -108,6 +108,10 @@ function installDependencies() {
         pnpm: true,
         dev: true,
     });
+}
+function shell() {
+    (0, child_process_1.execSync)('pnpx @umijs/max g prettier');
+    (0, child_process_1.execSync)('pnpx @umijs/max g precommit');
 }
 function changeScripts() {
     const pkg = (0, mrm_core_1.packageJson)();
@@ -137,4 +141,5 @@ module.exports = async function task() {
     changeFiles();
     installDependencies();
     changeScripts();
+    shell();
 };
