@@ -56,9 +56,6 @@ function addFiles() {
         (0, mrm_core_1.template)(file, path_1.default.join(__dirname, 'templates', file)).apply().save();
     });
 }
-function addDirs() {
-    // makeDirs(['src/services', 'src/components', 'src/enums']);
-}
 function changeFiles() {
     (0, mrm_core_1.lines)('.nvmrc').add([NodeVersion]).save();
     (0, mrm_core_1.lines)('typings.d.ts')
@@ -81,7 +78,10 @@ function changeFiles() {
         },
     })
         .save();
-    (0, mrm_core_1.lines)('.gitignore').remove(['/.umirc.local.ts']).add(['!.umirc.local.ts']).save();
+    (0, mrm_core_1.lines)('.gitignore')
+        .remove(['/.umirc.local.ts'])
+        .add(['!.umirc.local.ts'])
+        .save();
 }
 function uninstallDependencies() {
     (0, mrm_core_1.uninstall)(['umi'], {
@@ -137,7 +137,6 @@ module.exports = async function task() {
     removeFiles();
     uninstallDependencies();
     addFiles();
-    addDirs();
     changeFiles();
     installDependencies();
     changeScripts();

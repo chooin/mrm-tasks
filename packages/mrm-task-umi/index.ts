@@ -69,10 +69,6 @@ function addFiles() {
   });
 }
 
-function addDirs() {
-  // makeDirs(['src/services', 'src/components', 'src/enums']);
-}
-
 function changeFiles() {
   lines('.nvmrc').add([NodeVersion]).save();
   lines('typings.d.ts')
@@ -163,7 +159,6 @@ module.exports = async function task() {
   removeFiles();
   uninstallDependencies();
   addFiles();
-  addDirs();
   changeFiles();
   installDependencies();
   changeScripts();
