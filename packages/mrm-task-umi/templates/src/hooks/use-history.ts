@@ -41,7 +41,7 @@ export function useHistory(): Result {
   };
 
   const replace = (options: string | Location) => {
-    history.push(stringifyUrl(options));
+    history.replace(stringifyUrl(options));
   };
 
   return {
