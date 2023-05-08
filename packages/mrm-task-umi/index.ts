@@ -100,6 +100,7 @@ function changeFiles() {
 function uninstallDependencies() {
   uninstall(['umi'], {
     pnpm: true,
+    dev: false,
   });
 }
 

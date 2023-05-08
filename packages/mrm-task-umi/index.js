@@ -84,8 +84,11 @@ function changeFiles() {
         .save();
 }
 function uninstallDependencies() {
-    (0, mrm_core_1.uninstall)(['umi'], {
+    (0, mrm_core_1.uninstall)([
+        'umi',
+    ], {
         pnpm: true,
+        dev: false,
     });
 }
 function installDependencies() {
