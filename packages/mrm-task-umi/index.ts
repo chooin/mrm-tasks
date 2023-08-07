@@ -95,6 +95,7 @@ function changeFiles() {
     .remove(['/.umirc.local.ts'])
     .add(['!.umirc.local.ts'])
     .save();
+  lines('.prettierignore').add(['package.json']).save();
 }
 
 function uninstallDependencies() {
@@ -114,7 +115,6 @@ function installDependencies() {
       'ts-pattern',
       'yup',
       '@ebay/nice-modal-react',
-      'type-fest',
       '@umijs/max',
       'axios',
     ],
