@@ -8,7 +8,4 @@ pnpm dlx create-umi@latest
 
 # 然后再执行
 npx mrm umi
-
-# 再添加 Prettier、Jest、Precommit
-pnpm umi g
 ```

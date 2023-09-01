@@ -82,9 +82,7 @@ function changeFiles() {
         .remove(['/.umirc.local.ts'])
         .add(['!.umirc.local.ts'])
         .save();
-    (0, mrm_core_1.lines)('.prettierignore')
-        .add(['package.json'])
-        .save();
+    (0, mrm_core_1.lines)('.prettierignore').add(['package.json', '.umirc.*']).save();
 }
 function uninstallDependencies() {
     (0, mrm_core_1.uninstall)(['umi'], {
@@ -113,8 +111,8 @@ function installDependencies() {
     });
 }
 function shell() {
-    (0, child_process_1.execSync)('pnpx @umijs/max g prettier');
-    (0, child_process_1.execSync)('pnpx @umijs/max g precommit');
+    (0, child_process_1.execSync)('npx @umijs/max g prettier');
+    (0, child_process_1.execSync)('npx @umijs/max g precommit');
 }
 function changeScripts() {
     const pkg = (0, mrm_core_1.packageJson)();

@@ -95,7 +95,7 @@ function changeFiles() {
     .remove(['/.umirc.local.ts'])
     .add(['!.umirc.local.ts'])
     .save();
-  lines('.prettierignore').add(['package.json']).save();
+  lines('.prettierignore').add(['package.json', '.umirc.*']).save();
 }
 
 function uninstallDependencies() {
@@ -130,8 +130,8 @@ function installDependencies() {
 }
 
 function shell() {
-  execSync('pnpx @umijs/max g prettier');
-  execSync('pnpx @umijs/max g precommit');
+  execSync('npx @umijs/max g prettier');
+  execSync('npx @umijs/max g precommit');
 }
 
 function changeScripts() {

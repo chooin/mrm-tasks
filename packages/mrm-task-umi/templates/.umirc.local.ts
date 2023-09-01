@@ -2,7 +2,7 @@ import { defineConfig } from '@umijs/max';
 
 export default defineConfig({
   define: {
-    APP_ENV: 'local',
+    APP_ENV: process.env.UMI_ENV,
     API_URL: 'https://example.com/v1/',
   },
   headScripts: [
