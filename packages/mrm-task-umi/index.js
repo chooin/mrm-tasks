@@ -8,7 +8,7 @@ const semver_1 = __importDefault(require("semver"));
 const kleur_1 = __importDefault(require("kleur"));
 const path_1 = __importDefault(require("path"));
 const child_process_1 = require("child_process");
-const NodeVersion = '18';
+const NodeVersion = '20';
 function checkEnvironment() {
     const currentNodeVersion = semver_1.default.clean(process.version);
     if (semver_1.default.lte(currentNodeVersion, `${NodeVersion}.0.0`)) {

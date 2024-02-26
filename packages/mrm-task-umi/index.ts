@@ -12,7 +12,7 @@ import kleur from 'kleur';
 import path from 'path';
 import { execSync } from 'child_process';
 
-const NodeVersion = '18';
+const NodeVersion = '20';
 
 function checkEnvironment() {
   const currentNodeVersion = semver.clean(process.version) as string;
