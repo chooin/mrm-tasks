@@ -1,3 +1,7 @@
+import semver from 'semver';
+import kleur from 'kleur';
+import path from 'path';
+import { execSync } from 'child_process';
 import {
   install,
   uninstall,
@@ -7,10 +11,6 @@ import {
   lines,
   json,
 } from 'mrm-core';
-import semver from 'semver';
-import kleur from 'kleur';
-import path from 'path';
-import { execSync } from 'child_process';
 
 const NodeVersion = '20';
 
