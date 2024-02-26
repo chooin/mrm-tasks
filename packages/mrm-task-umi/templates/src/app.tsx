@@ -1,4 +1,4 @@
-import React from 'react';
+import { JSX } from 'react';
 import { ThemeProvider } from 'styled-components';
 import NiceModal from '@ebay/nice-modal-react';
 
