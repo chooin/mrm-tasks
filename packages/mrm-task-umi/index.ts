@@ -130,8 +130,8 @@ function installDependencies() {
 }
 
 function shell() {
-  execSync('npx @umijs/max g prettier');
-  execSync('npx @umijs/max g precommit');
+  execSync('pnpx @umijs/max g prettier');
+  execSync('pnpx @umijs/max g precommit');
 }
 
 function changeScripts() {

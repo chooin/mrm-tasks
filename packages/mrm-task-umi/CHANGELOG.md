@@ -1,5 +1,11 @@
 # mrm-task-umi
 
+## 2.5.0
+
+### Minor Changes
+
+- npx -> pnpx
+
 ## 2.4.0
 
 ### Minor Changes
