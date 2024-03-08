@@ -111,8 +111,8 @@ function installDependencies() {
     });
 }
 function shell() {
-    (0, child_process_1.execSync)('pnpx @umijs/max g prettier');
-    (0, child_process_1.execSync)('pnpx @umijs/max g precommit');
+    (0, child_process_1.execSync)('max g prettier');
+    (0, child_process_1.execSync)('max g precommit');
 }
 function changeScripts() {
     const pkg = (0, mrm_core_1.packageJson)();

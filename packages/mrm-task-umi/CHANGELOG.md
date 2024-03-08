@@ -1,5 +1,11 @@
 # mrm-task-umi
 
+## 2.6.0
+
+### Minor Changes
+
+- max
+
 ## 2.5.0
 
 ### Minor Changes
