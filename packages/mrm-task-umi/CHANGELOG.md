@@ -1,5 +1,11 @@
 # mrm-task-umi
 
+## 2.7.0
+
+### Minor Changes
+
+- 修复 bug
+
 ## 2.6.0
 
 ### Minor Changes

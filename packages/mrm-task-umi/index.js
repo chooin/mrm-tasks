@@ -85,10 +85,7 @@ function changeFiles() {
     (0, mrm_core_1.lines)('.prettierignore').add(['package.json', '.umirc.*']).save();
 }
 function uninstallDependencies() {
-    (0, mrm_core_1.uninstall)(['umi'], {
-        pnpm: true,
-        dev: false,
-    });
+    (0, child_process_1.execSync)('pnpm remove umi');
 }
 function installDependencies() {
     (0, mrm_core_1.install)([
@@ -111,8 +108,8 @@ function installDependencies() {
     });
 }
 function shell() {
-    (0, child_process_1.execSync)('max g prettier');
-    (0, child_process_1.execSync)('max g precommit');
+    (0, child_process_1.execSync)('pnpx @umijs/max g prettier');
+    (0, child_process_1.execSync)('pnpx @umijs/max g precommit');
 }
 function changeScripts() {
     const pkg = (0, mrm_core_1.packageJson)();
@@ -135,8 +132,8 @@ function changeScripts() {
 }
 module.exports = async function task() {
     checkEnvironment();
-    removeFiles();
     uninstallDependencies();
+    removeFiles();
     addFiles();
     changeFiles();
     installDependencies();

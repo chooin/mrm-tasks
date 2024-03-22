@@ -4,7 +4,6 @@ import path from 'path';
 import { execSync } from 'child_process';
 import {
   install,
-  uninstall,
   packageJson,
   template,
   deleteFiles,
@@ -99,10 +98,7 @@ function changeFiles() {
 }
 
 function uninstallDependencies() {
-  uninstall(['umi'], {
-    pnpm: true,
-    dev: false,
-  });
+  execSync('pnpm remove umi');
 }
 
 function installDependencies() {
@@ -130,8 +126,8 @@ function installDependencies() {
 }
 
 function shell() {
-  execSync('max g prettier');
-  execSync('max g precommit');
+  execSync('pnpx @umijs/max g prettier');
+  execSync('pnpx @umijs/max g precommit');
 }
 
 function changeScripts() {
@@ -157,8 +153,8 @@ function changeScripts() {
 
 module.exports = async function task() {
   checkEnvironment();
-  removeFiles();
   uninstallDependencies();
+  removeFiles();
   addFiles();
   changeFiles();
   installDependencies();
